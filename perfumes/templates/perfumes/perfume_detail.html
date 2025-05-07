@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% block title %}{{ perfume.name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <!-- Left: Images -->
+        <div class="col-md-6 text-center">
+            <!-- Lightbox -->
+            <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:9999;">
+                <button onclick="prevImage()" style="position:absolute; left:20px; font-size:2rem; background:none; border:none; color:white;">&#10094;</button>
+                <img id="lightbox-img" style="max-width:90%; max-height:90%;" />
+                <button onclick="nextImage()" style="position:absolute; right:20px; font-size:2rem; background:none; border:none; color:white;">&#10095;</button>
+                <span onclick="closeLightbox()" style="position:absolute; top:20px; right:30px; font-size:2rem; color:white; cursor:pointer;">&times;</span>
+            </div>
+
+            <!-- Main Image -->
+            <div class="zoom-container">
+                <img id="mainImage" src="{{ perfume.image.url }}" class="img-fluid rounded shadow"
+                     style="max-height: 500px; object-fit: cover;" alt="Main Image">
+              </div>
+              
+
+            <!-- Thumbnails -->
+            <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+                {% if perfume.image %}
+                    <img src="{{ perfume.image.url }}" class="thumbnail-img active">
+                {% endif %}
+                {% for img in perfume.additional_images.all %}
+                    <img src="{{ img.image.url }}" class="thumbnail-img">
+                {% endfor %}
+            </div>
+            <script>
+                const main = document.getElementById('mainImage');
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                const thumbnails = Array.from(document.querySelectorAll('.thumbnail-img'));
+                const imageSources = thumbnails.map(img => img.src);
+                let currentImageIndex = 0;
+            
+                thumbnails.forEach((thumb, index) => {
+                    thumb.addEventListener('click', () => {
+                        main.src = thumb.src;
+                        currentImageIndex = index;
+                        thumbnails.forEach(img => img.classList.remove('active'));
+                        thumb.classList.add('active');
+                    });
+                });
+            
+                main.addEventListener('click', () => {
+                    lightboxImg.src = imageSources[currentImageIndex];
+                    lightbox.style.display = 'flex';
+                });
+            
+                function closeLightbox() {
+                    lightbox.style.display = 'none';
+                }
+            
+                function nextImage() {
+                    currentImageIndex = (currentImageIndex + 1) % imageSources.length;
+                    updateLightboxImage();
+                }
+            
+                function prevImage() {
+                    currentImageIndex = (currentImageIndex - 1 + imageSources.length) % imageSources.length;
+                    updateLightboxImage();
+                }
+            
+                function updateLightboxImage() {
+                    lightboxImg.src = imageSources[currentImageIndex];
+                    main.src = imageSources[currentImageIndex];
+                    thumbnails.forEach(img => img.classList.remove('active'));
+                    thumbnails[currentImageIndex].classList.add('active');
+                }
+            </script>
+        </div>
+
+        <!-- Right: Perfume Info -->
+        <div class="col-md-6">
+            <h1 class="text-light">{{ perfume.name }}</h1>
+
+            {% if average_rating > 0 %}
+                <div class="d-flex align-items-center mb-2">
+                    {% for _ in filled_stars %}<span class="text-warning">&#9733;</span>{% endfor %}
+                    {% for _ in empty_stars %}<span class="text-secondary">&#9734;</span>{% endfor %}
+                    <span class="text-light ms-2">({{ average_rating }}/5 - {{ review_count }} review{{ review_count|pluralize }})</span>
+                </div>
+            {% else %}
+                <small class="text-light">(No reviews yet)</small>
+            {% endif %}
+
+            <p class="text-light">
+                Brand: 
+                <a href="{% url 'perfumes_by_brand' perfume.brand %}" class="text-info">{{ perfume.brand }}</a>
+            </p>
+            
+            <h3 class="text-warning">${{ perfume.price }}</h3>
+
+            <p><strong>Availability:</strong>
+                {% if perfume.stock > 0 %}
+                    <span class="text-success">In Stock ({{ perfume.stock }})</span>
+                {% else %}
+                    <span class="text-danger">Out of Stock</span>
+                {% endif %}
+            </p>
+
+            {% if perfume.is_for_trade %}
+                <span class="badge bg-success">Available for Trade</span>
+            {% endif %}
+
+            <form method="POST" action="{% url 'add_to_cart' perfume.id %}" onsubmit="handleAddToCart(event)">
+                {% csrf_token %}
+                <div class="input-group mb-3" style="max-width: 200px;">
+                    <input type="number" name="quantity" value="1" min="1" class="form-control" id="quantityInput">
+                    <button type="submit" class="btn btn-success">Add to Cart</button>
+                </div>
+            </form>
+            
+            <button id="wishlist-toggle-btn" class="btn btn-outline-light" data-id="{{ perfume.id }}">
+                {% if in_wishlist %}
+                    💖
+                {% else %}
+                    🤍
+                {% endif %}
+            </button>
+
+            <div class="mt-4">
+                <a href="{% url 'perfume_list' %}" class="btn btn-outline-light">&larr; Back to All Perfumes</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Description & Reviews -->
+    <div class="row mt-5">
+        <div class="col">
+            <ul class="nav nav-tabs" id="detailTabs" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button">Description</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button">Reviews</button>
+                </li>
+            </ul>
+            <div class="tab-content bg-dark p-4 rounded-bottom">
+                <div class="tab-pane fade show active text-light" id="desc">
+                    <p>{{ perfume.description }}</p>
+                </div>
+                <div class="tab-pane fade text-light" id="reviews">
+                    <h5>Reviews ({{ perfume.reviews.count }})</h5>
+                    {% for review in perfume.reviews.all %}
+                        <div class="border-bottom pb-2 mb-3">
+                            <strong>{{ review.user.username }}</strong>
+                            <span class="text-warning">({{ review.rating }}★)</span>
+                            <p class="mb-1">{{ review.comment }}</p>
+                            <small class="text-muted">{{ review.created_at|date:"M d, Y" }}</small>
+                        </div>
+                    {% empty %}
+                        <p>No reviews yet.</p>
+                    {% endfor %}
+
+                    {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'add_review' perfume.id %}" class="mt-4">
+                            {% csrf_token %}
+                            <div class="mb-2">
+                                <label for="rating" class="form-label">Rating:</label>
+                                <select name="rating" id="rating" class="form-select" style="max-width: 100px;">
+                                    {% for i in "54321" %}
+                                        <option value="{{ i }}">{{ i }}★</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="mb-2">
+                                <label for="comment" class="form-label">Your Review:</label>
+                                <textarea name="comment" rows="3" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit Review</button>
+                        </form>
+                    {% else %}
+                        <p>Please <a href="{% url 'login' %}" class="text-warning">log in</a> to leave a review.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const btn = document.getElementById("wishlist-toggle-btn");
+
+        if (btn) {
+            btn.addEventListener("click", function () {
+                const perfumeId = btn.dataset.id;
+
+                fetch(`/wishlist/toggle/${perfumeId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === 'added') {
+                        btn.textContent = '💖';
+                    } else {
+                        btn.textContent = '🤍';
+                    }
+
+                    // Обнови брояча на wish list-а в навигацията, ако има такъв
+                    const wishCount = document.getElementById("wishlist-count");
+                    if (wishCount) {
+                        let current = parseInt(wishCount.textContent) || 0;
+                        wishCount.textContent = data.status === 'added' ? current + 1 : current - 1;
+                    }
+                });
+            });
+        }
+    });
+</script>
+
+{% endblock %}

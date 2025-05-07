@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Perfume{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center text-light mb-4">Add a New Perfume</h2>
+    <form method="POST" enctype="multipart/form-data" class="bg-dark p-4 rounded shadow-lg text-light">
+        {% csrf_token %}
+        
+        <!-- Images -->
+        <div class="mb-3">
+            <label for="main_image" class="form-label">Main Image</label>
+            <input type="file" name="main_image" class="form-control" required>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="extra_image1" class="form-label">Additional Image 1</label>
+                <input type="file" name="extra_image1" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="extra_image2" class="form-label">Additional Image 2</label>
+                <input type="file" name="extra_image2" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="extra_image3" class="form-label">Additional Image 3</label>
+                <input type="file" name="extra_image3" class="form-control">
+            </div>
+        </div>
+
+        <!-- Basic Info -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Perfume Name</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="brand" class="form-label">Brand</label>
+            <input type="text" name="brand" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" rows="3" class="form-control" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price (USD)</label>
+            <input type="number" step="0.01" name="price" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" name="stock" min="0" class="form-control" required value="{{ perfume.stock|default_if_none:'' }}">
+          </div>
+          
+
+        <!-- Trade Option -->
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="is_for_trade" id="is_for_trade">
+            <label class="form-check-label" for="is_for_trade">
+                Available for Trade
+            </label>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary w-100">Add Perfume</button>
+    </form>
+</div>
+{% endblock %}

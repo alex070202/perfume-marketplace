@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}My Perfumes{% endblock %}
+
+{% block content %}
+<h1>My Perfumes</h1>
+<div class="row">
+    {% for perfume in perfumes %}
+        {% if perfume.name %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    {% if perfume.image %}
+                        <img src="{{ perfume.image.url }}" class="img-fluid mb-3" alt="Perfume Image">
+                    {% endif %}
+
+                    <h5 class="card-title">{{ perfume.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ perfume.brand }}</h6>
+                    <p class="card-text">{{ perfume.description }}</p>
+
+                    {% if perfume.price %}
+                        <p><strong>${{ perfume.price }}</strong></p>
+                    {% endif %}
+
+                    {% if perfume.is_for_trade %}
+                        <span class="badge bg-success">Available for Trade</span>
+                    {% endif %}
+
+                    <a href="{% url 'delete_perfume' perfume.id %}" class="btn btn-danger mt-3">Delete</a>
+                    <a href="{% url 'edit_perfume' perfume.id %}" class="btn btn-warning mt-2">Edit</a>
+
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% empty %}
+        <p>You haven't added any perfumes yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

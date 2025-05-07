@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Order Detail{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-light">Order #{{ order.id }}</h2>
+    <p class="text-light">Placed by: <strong>{{ order.buyer.username }}</strong></p>
+
+    <div class="mb-3 text-light">
+        <p><strong>Full Name:</strong> {{ order.full_name }}</p>
+        <p><strong>Email:</strong> {{ order.email }}</p>
+        <p><strong>Phone:</strong> {{ order.phone }}</p>
+        <p><strong>Address:</strong> {{ order.address }}</p>
+        {% if order.notes %}
+            <p><strong>Notes:</strong> {{ order.notes }}</p>
+        {% endif %}
+    </div>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Perfume</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ item.perfume.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.price|floatformat:2 }}</td>
+                <td>${{ item.price|floatformat:2|floatformat:2|floatformat:2|floatformat:2 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="status" class="form-label text-light">Update Status:</label>
+            <select name="status" id="status" class="form-select" style="max-width: 200px;">
+                {% for code, label in status_choices %}
+                    <option value="{{ code }}" {% if order.status == code %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-warning">Update</button>
+        <a href="{% url 'sales_dashboard' %}" class="btn btn-secondary ms-2">Back</a>
+    </form>
+</div>
+{% endblock %}

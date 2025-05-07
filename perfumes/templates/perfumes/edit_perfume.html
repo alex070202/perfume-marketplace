@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Perfume{% endblock %}
+
+{% block content %}
+<h1>Edit Perfume</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" name="name" class="form-control" value="{{ perfume.name }}">
+    </div>
+
+    <div class="mb-3">
+        <label for="brand" class="form-label">Brand:</label>
+        <input type="text" name="brand" class="form-control" value="{{ perfume.brand }}">
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea name="description" class="form-control">{{ perfume.description }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input type="text" name="price" class="form-control" value="{{ perfume.price }}">
+    </div>
+
+    <div class="mb-3">
+        <label for="is_for_trade" class="form-check-label">Available for Trade:</label>
+        <input type="checkbox" name="is_for_trade" class="form-check-input" {% if perfume.is_for_trade %}checked{% endif %}>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Main Image:</label>
+        <input type="file" name="main_image" class="form-control">
+        {% if perfume.image %}
+            <small>Current: <img src="{{ perfume.image.url }}" style="height: 80px;"></small>
+        {% endif %}
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Additional Image 1:</label>
+        <input type="file" name="extra_image1" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Additional Image 2:</label>
+        <input type="file" name="extra_image2" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Additional Image 3:</label>
+        <input type="file" name="extra_image3" class="form-control">
+    </div>
+    
+    <div class="mb-3">
+        <label for="stock" class="form-label">Stock</label>
+        <input type="number" name="stock" min="0" class="form-control" required value="{{ perfume.stock|default_if_none:'' }}">
+    </div>
+      
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a href="{% url 'my_perfumes' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

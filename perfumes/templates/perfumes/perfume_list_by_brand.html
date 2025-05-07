@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Perfumes by {{ brand_name }}{% endblock %}
+
+{% block content %}
+    <h1 class="text-light mb-4">Perfumes by {{ brand_name }}</h1>
+    <div class="row">
+        {% for perfume in perfumes %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                {% if perfume.image %}
+                    <img src="{{ perfume.image.url }}" class="card-img-top" alt="{{ perfume.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ perfume.name }}</h5>
+                    <p><strong>${{ perfume.price }}</strong></p>
+                    {% if perfume.is_for_trade %}
+                        <span class="badge bg-success">Available for Trade</span>
+                    {% endif %}
+                </div>
+                <a href="{% url 'perfume_detail' perfume.id %}" class="view-details-btn">View Details</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

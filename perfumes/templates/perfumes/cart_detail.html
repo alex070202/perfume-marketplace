@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Cart{% endblock %}
+
+{% block content %}
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+<div class="container mt-5">
+    <h1 class="text-light">🛒 Your Cart</h1>
+
+    {% if cart_items %}
+    <form method="POST" action="{% url 'update_cart' %}" id="cartForm">
+        {% csrf_token %}
+        <table class="table table-dark table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Perfume</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr data-price="{{ item.perfume.price }}" data-item-id="{{ item.id }}">
+                    <td>{{ item.perfume.name }}</td>
+                    <td>
+                        <input type="number" name="quantity_{{ item.id }}" value="{{ item.quantity }}" min="1"
+                               class="form-control quantity-input" style="width: 80px;">
+                    </td>
+                    <td>${{ item.perfume.price }}</td>
+                    <td class="item-subtotal">${{ item.perfume.price|floatformat:2|add:item.quantity|floatformat:2 }}</td>
+                    <td>
+                        <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger btn-sm">Remove</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="text-warning">Total: $<span id="cartTotal">{{ total|floatformat:2 }}</span></h3>
+            {% comment %} <button type="submit" class="btn btn-success">Update Cart</button> {% endcomment %}
+        </div>
+    </form>
+    <script>
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('input', () => {
+                let total = 0;
+        
+                document.querySelectorAll('tr[data-item-id]').forEach(row => {
+                    const price = parseFloat(row.dataset.price);
+                    const quantity = parseInt(row.querySelector('.quantity-input').value);
+                    const subtotal = price * quantity;
+                    row.querySelector('.item-subtotal').innerText = `$${subtotal.toFixed(2)}`;
+                    total += subtotal;
+                });
+        
+                document.getElementById('cartTotal').innerText = total.toFixed(2);
+            });
+        });
+        </script>
+        
+
+        <div class="mt-4 d-flex justify-content-between">
+            <a href="{% url 'perfume_list' %}" class="btn btn-outline-light">← Continue Shopping</a>
+            <a href="{% url 'checkout' %}" class="btn btn-warning">Proceed to Checkout</a>
+        </div>
+    {% else %}
+    <p class="text-light mt-4">Your cart is empty. <a href="{% url 'perfume_list' %}" class="text-warning">Start shopping!</a></p>
+    {% endif %}
+</div>
+{% endblock %}
