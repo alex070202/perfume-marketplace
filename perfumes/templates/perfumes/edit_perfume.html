@@ -58,7 +58,16 @@
         <label for="stock" class="form-label">Stock</label>
         <input type="number" name="stock" min="0" class="form-control" required value="{{ perfume.stock|default_if_none:'' }}">
     </div>
-      
+    
+    <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select name="category" class="form-select" required>
+          <option value="men" {% if perfume.category == 'men' %}selected{% endif %}>Men</option>
+          <option value="women" {% if perfume.category == 'women' %}selected{% endif %}>Women</option>
+          <option value="unisex" {% if perfume.category == 'unisex' %}selected{% endif %}>Unisex</option>
+        </select>
+      </div> 
+    
     <button type="submit" class="btn btn-primary">Save Changes</button>
     <a href="{% url 'my_perfumes' %}" class="btn btn-secondary">Cancel</a>
 </form>

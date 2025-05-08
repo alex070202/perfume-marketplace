@@ -33,6 +33,7 @@ urlpatterns = [
     path('shipping-returns/', TemplateView.as_view(template_name='perfumes/shipping_returns.html'), name='shipping_returns'),
     path('wishlist/', views.wishlist, name='wishlist'),
     path('wishlist/toggle/<int:perfume_id>/', views.toggle_wishlist, name='toggle_wishlist'),
+    path('perfumes/category/<str:category>/', views.perfume_category, name='perfume_category'),
 
 
 

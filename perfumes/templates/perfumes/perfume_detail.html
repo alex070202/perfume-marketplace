@@ -94,6 +94,11 @@
                 <a href="{% url 'perfumes_by_brand' perfume.brand %}" class="text-info">{{ perfume.brand }}</a>
             </p>
             
+            <p class="card-subtitle mb-2 text-light">
+                Category: 
+                {% if perfume.category == 'men' %}Men{% elif perfume.category == 'women' %}Women{% else %}Unisex{% endif %}
+            </p>
+
             <h3 class="text-warning">${{ perfume.price }}</h3>
 
             <p><strong>Availability:</strong>
@@ -115,7 +120,7 @@
                     <button type="submit" class="btn btn-success">Add to Cart</button>
                 </div>
             </form>
-            
+
             <button id="wishlist-toggle-btn" class="btn btn-outline-light" data-id="{{ perfume.id }}">
                 {% if in_wishlist %}
                     💖

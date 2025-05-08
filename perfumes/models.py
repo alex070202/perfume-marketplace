@@ -11,6 +11,15 @@ class Perfume(models.Model):
     image = models.ImageField(upload_to='perfume_images/', blank=True, null=True)
     stock = models.PositiveIntegerField(default=0)
 
+    CATEGORY_CHOICES = [
+    ('men', 'Men'),
+    ('women', 'Women'),
+    ('unisex', 'Unisex'),
+    ]
+    
+    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='unisex')
+
+
     def __str__(self):
         return f"{self.name} by {self.brand}"
 

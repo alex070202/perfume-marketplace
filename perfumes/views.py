@@ -47,7 +47,8 @@ def add_perfume(request):
         brand = request.POST['brand']
         description = request.POST['description']
         price = request.POST['price']
-        stock = request.POST['stock']  # <-- ново
+        stock = request.POST['stock']
+        category = request.POST.get('category')
         is_for_trade = 'is_for_trade' in request.POST
         main_image = request.FILES.get('main_image')
 
@@ -60,10 +61,11 @@ def add_perfume(request):
             brand=brand,
             description=description,
             price=price,
-            stock=stock,  # <-- добавено
+            stock=stock,  
             is_for_trade=is_for_trade,
             owner=request.user,
-            image=main_image
+            image=main_image,
+            category=category
         )
         perfume.save()
 
@@ -147,6 +149,7 @@ def edit_perfume(request, perfume_id):
         perfume.description = request.POST['description']
         perfume.price = request.POST['price']
         perfume.stock = request.POST['stock']
+        perfume.category = request.POST['category']
         perfume.is_for_trade = 'is_for_trade' in request.POST
 
         if 'main_image' in request.FILES:
@@ -405,4 +408,7 @@ def add_review(request, perfume_id):
 def about_us(request):
     return render(request, 'perfumes/about_us.html')
 
+def perfume_category(request, category):
+    perfumes = Perfume.objects.filter(category=category)
+    return render(request, 'perfumes/perfume_list.html', {'perfumes': perfumes})
 

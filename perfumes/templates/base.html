@@ -11,80 +11,97 @@
 
 <body class="bg-black text-white">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-        <img src="{% static 'img/final_logo1.png' %}" alt="PerfumeSwap Logo" height="140">
-    </a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/perfumes/">All Perfumes</a></li>
-            <form class="d-flex" method="get" action="{% url 'perfume_list' %}">
-              <input class="form-control me-2" type="search" name="q" placeholder="Search perfumes..." value="{{ request.GET.q }}">
-              <button class="btn btn-outline-light" type="submit">Search</button>
-            </form>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person fs-5"></i>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary mt-2" aria-labelledby="userDropdown">
-                {% if user.is_authenticated %}
-                  <li><a class="dropdown-item text-white" href="{% url 'my_orders' %}">My Orders</a></li>
-                  <li><a class="dropdown-item text-white" href="{% url 'sales_dashboard' %}">Sales dashboard</a></li>
-                  <li><a class="dropdown-item text-white" href="{% url 'add_perfume' %}">Add perfume</a></li>
-                  <li><a class="dropdown-item text-white" href="{% url 'my_perfumes' %}">My perfumes</a></li>
-                  <li><hr class="dropdown-divider bg-secondary"></li>
-                  <li>
-                    <form method="post" action="{% url 'logout' %}">
-                      {% csrf_token %}
-                      <button type="submit" class="dropdown-item text-white">Logout</button>
-                    </form>
-                  </li>
-                {% else %}
-                  <li><a class="dropdown-item text-white" href="{% url 'register' %}">Register</a></li>
-                  <li><a class="dropdown-item text-white" href="{% url 'login' %}">Login</a></li>
-                  {% comment %} <li><a class="dropdown-item text-white" href="{% url 'wishlist' %}">Wish List</a></li> {% endcomment %}
-                  <li><a class="dropdown-item text-white" href="{% url 'cart_detail' %}">Shopping Cart</a></li>
-                  <li><a class="dropdown-item text-white" href="{% url 'checkout' %}">Checkout</a></li>
-                {% endif %}
-              </ul>
-            </li>
-            <!-- ❤️ Wish List icon with count -->
-            <li class="nav-item position-relative">
-              <a class="nav-link" href="{% url 'wishlist' %}">
-                ❤️ Wish List
-                {% if user.is_authenticated %}
-                  {% with user.wishlistitem_set.count as wish_count %}
-                    <span id="wishlist-count" class="badge bg-danger position-absolute top-0 start-100 translate-middle">{{ wish_count }}</span>
-                  {% endwith %}
-                {% endif %}
-              </a>
-            </li>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+          <img src="{% static 'img/final_logo1.png' %}" alt="PerfumeSwap Logo" height="140">
+      </a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <!-- 🧭 Навигация -->
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+  
+          <!-- Категории dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="{% url 'perfume_list' %}" id="perfumeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Perfumes
+            </a>
+            <ul class="dropdown-menu bg-dark border-secondary mt-2" aria-labelledby="perfumeDropdown">
+              <li><a class="dropdown-item text-white" href="{% url 'perfume_list' %}">All</a></li>
+              <li><a class="dropdown-item text-white" href="{% url 'perfume_category' 'men' %}">Men</a></li>
+              <li><a class="dropdown-item text-white" href="{% url 'perfume_category' 'women' %}">Women</a></li>
+              <li><a class="dropdown-item text-white" href="{% url 'perfume_category' 'unisex' %}">Unisex</a></li>
+            </ul>
+          </li>
           
-            <li class="nav-item position-relative">
-              <a class="nav-link" href="{% url 'cart_detail' %}">
-                🛒 Cart
-                {% if user.is_authenticated %}
-                  {% with user.cart.cartitem_set.count as count %}
-                    {% if count > 0 %}
-                      <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">{{ count }}</span>
-                    {% endif %}
-                  {% endwith %}
-                {% endif %}
-              </a>
-            </li>
-
+  
+          <!-- Икони (wishlist, cart) -->
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="{% url 'wishlist' %}">
+              ❤️ Wish List
+              {% if user.is_authenticated %}
+                {% with user.wishlistitem_set.count as wish_count %}
+                  <span id="wishlist-count" class="badge bg-danger position-absolute top-0 start-100 translate-middle">{{ wish_count }}</span>
+                {% endwith %}
+              {% endif %}
+            </a>
+          </li>
+  
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="{% url 'cart_detail' %}">
+              🛒 Cart
+              {% if user.is_authenticated %}
+                {% with user.cart.cartitem_set.count as count %}
+                  {% if count > 0 %}
+                    <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">{{ count }}</span>
+                  {% endif %}
+                {% endwith %}
+              {% endif %}
+            </a>
+          </li>
+  
+          <!-- Потребителско меню -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person fs-5"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary mt-2" aria-labelledby="userDropdown">
+              {% if user.is_authenticated %}
+                <li><a class="dropdown-item text-white" href="{% url 'my_orders' %}">My Orders</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'sales_dashboard' %}">Sales dashboard</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'add_perfume' %}">Add perfume</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'my_perfumes' %}">My perfumes</a></li>
+                <li><hr class="dropdown-divider bg-secondary"></li>
+                <li>
+                  <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="dropdown-item text-white">Logout</button>
+                  </form>
+                </li>
+              {% else %}
+                <li><a class="dropdown-item text-white" href="{% url 'register' %}">Register</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'login' %}">Login</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'cart_detail' %}">Shopping Cart</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'checkout' %}">Checkout</a></li>
+              {% endif %}
+            </ul>
+          </li>
         </ul>
+  
+        <!-- 🔍 Търсачка извън UL -->
+        <form class="d-flex" method="get" action="{% url 'perfume_list' %}">
+          <input class="form-control me-2" type="search" name="q" placeholder="Search perfumes..." value="{{ request.GET.q }}">
+          <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+  
 
 <div class="container mt-5">
   {% block content %}
