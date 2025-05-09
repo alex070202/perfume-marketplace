@@ -10,6 +10,7 @@ class Perfume(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='perfume_images/', blank=True, null=True)
     stock = models.PositiveIntegerField(default=0)
+    notes = models.TextField(blank=True, null=True)
 
     CATEGORY_CHOICES = [
     ('men', 'Men'),

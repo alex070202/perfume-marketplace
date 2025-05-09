@@ -49,6 +49,7 @@ def add_perfume(request):
         price = request.POST['price']
         stock = request.POST['stock']
         category = request.POST.get('category')
+        notes = request.POST.get('notes')
         is_for_trade = 'is_for_trade' in request.POST
         main_image = request.FILES.get('main_image')
 
@@ -65,6 +66,7 @@ def add_perfume(request):
             is_for_trade=is_for_trade,
             owner=request.user,
             image=main_image,
+            notes=notes,
             category=category
         )
         perfume.save()
@@ -166,6 +168,8 @@ def edit_perfume(request, perfume_id):
         for img in [extra_image1, extra_image2, extra_image3]:
             if img:
                 PerfumeImage.objects.create(perfume=perfume, image=img)
+
+        perfume.notes = request.POST.get('notes')
 
         perfume.save()
         messages.success(request, 'Perfume updated successfully!')

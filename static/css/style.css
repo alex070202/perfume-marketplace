@@ -106,14 +106,4 @@
 
 .perfume-card:hover img {
     transform: scale(1.1);
-}
-.navbar .form-control:focus {
-    box-shadow: none;
-    border-color: #ffc107;
-  }
-  .navbar .btn-outline-light:hover {
-    background-color: #ffc107;
-    color: rgba(0, 0, 0, 0.278);
-    border-color: #ffc107;
-  }
-  
+}  

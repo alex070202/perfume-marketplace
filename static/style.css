@@ -40,3 +40,32 @@
 .card:hover .view-details-btn {
     opacity: 1;
 }
+
+/* Navbar Sticky Animation */
+.transition-navbar {
+    transition: top 0.3s ease-in-out;
+}
+
+/* Скриване на navbar при скрол надолу */
+.nav-hidden {
+    top: -120px;
+    transition: top 0.3s ease-in-out;
+}
+/* Осигурява място под fixed navbar */
+body {
+    padding-top: 120px;
+}
+
+/* Фиксиране и стилове за navbar */
+#mainNavbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+    background-color: rgba(0, 0, 0, 0.85); /* или полупрозрачен фон */
+    backdrop-filter: blur(10px); /* за по-модерен ефект */
+    transition: top 0.3s ease-in-out;
+}
+
+
+  

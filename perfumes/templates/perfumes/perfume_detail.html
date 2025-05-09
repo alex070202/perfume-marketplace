@@ -143,13 +143,27 @@
                     <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button">Description</button>
                 </li>
                 <li class="nav-item">
+                    <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes" type="button">Notes</button>
+                </li>
+                <li class="nav-item">
                     <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button">Reviews</button>
                 </li>
             </ul>
+            
             <div class="tab-content bg-dark p-4 rounded-bottom">
                 <div class="tab-pane fade show active text-light" id="desc">
                     <p>{{ perfume.description }}</p>
                 </div>
+            
+                <div class="tab-pane fade text-light" id="notes">
+                    {% if perfume.notes %}
+                        <h5>Fragrance Notes</h5>
+                        <p>{{ perfume.notes }}</p>
+                    {% else %}
+                        <p>No notes available for this perfume.</p>
+                    {% endif %}
+                </div>
+                
                 <div class="tab-pane fade text-light" id="reviews">
                     <h5>Reviews ({{ perfume.reviews.count }})</h5>
                     {% for review in perfume.reviews.all %}
