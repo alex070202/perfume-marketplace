@@ -169,36 +169,42 @@
 {% include 'partials/footer.html' %}
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.wishlist-icon-btn').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.preventDefault();  // предотвратява презареждане
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const isAuthenticated = {{ user.is_authenticated|yesno:"true,false" }};
         const perfumeId = btn.dataset.id;
-  
+
+        if (!isAuthenticated) {
+          window.location.href = "{% url 'login' %}?next=" + window.location.pathname;
+          return;
+        }
+
         fetch(`/wishlist/toggle/${perfumeId}/`, {
           method: 'POST',
           headers: {
             'X-CSRFToken': '{{ csrf_token }}',
             'X-Requested-With': 'XMLHttpRequest'
           }
-        }).then(res => res.json())
-          .then(data => {
-            if (data.status === 'added') {
-              btn.innerHTML = '<i class="bi bi-heart-fill text-danger"></i>';
-            } else {
-              btn.innerHTML = '<i class="bi bi-heart text-white"></i>';
-            }
-  
-            const wishCount = document.getElementById("wishlist-count");
-            if (wishCount) {
-              let count = parseInt(wishCount.textContent) || 0;
-              wishCount.textContent = data.status === 'added' ? count + 1 : count - 1;
-            }
-          });
+        })
+        .then(res => res.json())
+        .then(data => {
+          btn.innerHTML = data.status === 'added'
+            ? '<i class="bi bi-heart-fill text-danger"></i>'
+            : '<i class="bi bi-heart text-white"></i>';
+
+          const wishCount = document.getElementById("wishlist-count");
+          if (wishCount) {
+            let count = parseInt(wishCount.textContent) || 0;
+            wishCount.textContent = data.status === 'added' ? count + 1 : Math.max(count - 1, 0);
+          }
+        });
       });
     });
   });
-  </script>
+</script>
 
+    
 </body>
 </html>

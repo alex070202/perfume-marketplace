@@ -113,21 +113,23 @@
                 <span class="badge bg-success">Available for Trade</span>
             {% endif %}
 
-            <form method="POST" action="{% url 'add_to_cart' perfume.id %}" onsubmit="handleAddToCart(event)">
-                {% csrf_token %}
-                <div class="input-group mb-3" style="max-width: 200px;">
-                    <input type="number" name="quantity" value="1" min="1" class="form-control" id="quantityInput">
-                    <button type="submit" class="btn btn-success">Add to Cart</button>
-                </div>
-            </form>
-
-            <button id="wishlist-toggle-btn" class="btn btn-outline-light" data-id="{{ perfume.id }}">
-                {% if in_wishlist %}
-                    💖
-                {% else %}
-                    🤍
-                {% endif %}
-            </button>
+            <div class="d-flex align-items-center mb-3 gap-2" style="max-width: 200px;">
+                <form method="POST" action="{% url 'add_to_cart' perfume.id %}" onsubmit="handleAddToCart(event)" class="flex-grow-1">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="number" name="quantity" value="1" min="1" class="form-control" id="quantityInput">
+                        <button type="submit" class="btn btn-success">Add to cart</button>
+                    </div>
+                </form>
+                <button class="wishlist-icon-btn p-0 m-0 border-0 bg-transparent" data-id="{{ perfume.id }}" title="Add to Wish List">
+                    {% if user.is_authenticated and perfume.in_wishlist %}
+                      <i class="bi bi-heart-fill text-danger fs-4"></i>
+                    {% else %}
+                      <i class="bi bi-heart text-white fs-4"></i>
+                    {% endif %}
+                </button>
+            </div>
+            
 
             <div class="mt-4">
                 <a href="{% url 'perfume_list' %}" class="btn btn-outline-light">&larr; Back to All Perfumes</a>
@@ -205,11 +207,9 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const btn = document.getElementById("wishlist-toggle-btn");
-
         if (btn) {
             btn.addEventListener("click", function () {
                 const perfumeId = btn.dataset.id;
-
                 fetch(`/wishlist/toggle/${perfumeId}/`, {
                     method: 'POST',
                     headers: {
@@ -219,22 +219,17 @@
                 })
                 .then(res => res.json())
                 .then(data => {
-                    if (data.status === 'added') {
-                        btn.textContent = '💖';
-                    } else {
-                        btn.textContent = '🤍';
-                    }
-
-                    // Обнови брояча на wish list-а в навигацията, ако има такъв
+                    btn.textContent = data.status === 'added' ? '💖' : '🤍';
                     const wishCount = document.getElementById("wishlist-count");
                     if (wishCount) {
-                        let current = parseInt(wishCount.textContent) || 0;
-                        wishCount.textContent = data.status === 'added' ? current + 1 : current - 1;
+                        let count = parseInt(wishCount.textContent) || 0;
+                        wishCount.textContent = data.status === 'added' ? count + 1 : count - 1;
                     }
                 });
             });
         }
     });
-</script>
+    </script>
+    
 
 {% endblock %}

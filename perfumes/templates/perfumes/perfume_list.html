@@ -19,15 +19,14 @@
                 <p class="card-subtitle">{{ perfume.brand }}</p>
                 <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
                     <strong class="text-warning mb-0">${{ perfume.price }}</strong>
-                    {% if user.is_authenticated %}
-                      <button class="wishlist-icon-btn p-0 m-0 border-0 bg-transparent" data-id="{{ perfume.id }}">
-                        {% if perfume.in_wishlist %}
+                    <button class="wishlist-icon-btn p-0 m-0 border-0 bg-transparent" data-id="{{ perfume.id }}">
+                        {% if user.is_authenticated and perfume.in_wishlist %}
                           <i class="bi bi-heart-fill text-danger"></i>
                         {% else %}
                           <i class="bi bi-heart text-white"></i>
                         {% endif %}
                       </button>
-                    {% endif %}
+                      
                   </div>
                   
               </div>

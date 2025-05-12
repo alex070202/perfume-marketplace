@@ -386,7 +386,8 @@ def perfume_detail(request, perfume_id):
 
     in_wishlist = False
     if request.user.is_authenticated:
-        in_wishlist = WishlistItem.objects.filter(user=request.user, perfume=perfume).exists()
+        in_wishlist = perfume.wishlistitem_set.filter(user=request.user).exists()
+
 
     return render(request, 'perfumes/perfume_detail.html', {
         'perfume': perfume,
