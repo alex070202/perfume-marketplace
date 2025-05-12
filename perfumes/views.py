@@ -221,12 +221,15 @@ def add_to_cart(request, perfume_id):
 @login_required
 def cart_detail(request):
     cart, _ = Cart.objects.get_or_create(user=request.user)
-    items = cart.cartitem_set.all()
-    total = sum(item.perfume.price * item.quantity for item in items)
-    return render(request,'perfumes/cart_detail.html', {
-        'cart_items': items,
+    cart_items = cart.cartitem_set.all()
+    for item in cart_items:
+        item.subtotal = item.perfume.price * item.quantity
+    total = sum(item.subtotal for item in cart_items)
+    return render(request, 'perfumes/cart_detail.html', {
+        'cart_items': cart_items,
         'total': total
     })
+
 
 @require_POST
 @login_required
@@ -255,6 +258,8 @@ def update_cart(request):
 
     messages.success(request, 'Cart updated successfully!')
     return redirect('cart_detail')
+
+
 
 def perfumes_by_brand(request, brand_name):
     perfumes = Perfume.objects.filter(brand__iexact=brand_name)
@@ -399,6 +404,14 @@ def perfume_detail(request, perfume_id):
         'empty_stars': empty_stars,
         'in_wishlist': in_wishlist,
     })
+
+@login_required
+def remove_from_wishlist(request, perfume_id):
+    perfume = get_object_or_404(Perfume, id=perfume_id)
+    WishlistItem.objects.filter(user=request.user, perfume=perfume).delete()
+    messages.success(request, f"{perfume.name} was removed from your wishlist.")
+    return redirect('wishlist')
+
 
 @login_required
 def add_review(request, perfume_id):

@@ -19,18 +19,20 @@
                 <p class="card-subtitle">{{ perfume.brand }}</p>
                 <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
                     <strong class="text-warning mb-0">${{ perfume.price }}</strong>
+                
+                    <!-- Wishlist -->
                     <button class="wishlist-icon-btn p-0 m-0 border-0 bg-transparent" data-id="{{ perfume.id }}">
                         {% if user.is_authenticated and perfume.in_wishlist %}
-                          <i class="bi bi-heart-fill text-danger"></i>
+                            <i class="bi bi-heart-fill text-danger"></i>
                         {% else %}
-                          <i class="bi bi-heart text-white"></i>
+                            <i class="bi bi-heart text-white"></i>
                         {% endif %}
-                      </button>
-                      
-                  </div>
-                  
+                    </button>
+                    <button class="btn btn-sm btn-success add-to-cart-btn" data-id="{{ perfume.id }}" data-name="{{ perfume.name }}" data-price="{{ perfume.price }}" data-image="{{ perfume.image.url }}">
+                        <i class="bi bi-cart-plus"></i>
+                    </button>
+                </div>
               </div>
-              
         </div>
     </div>
     {% endfor %}
@@ -69,7 +71,39 @@
         });
     });
     </script>
-    
-    
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const isAuthenticated = {{ user.is_authenticated|yesno:"true,false" }};
+                    
+                    if (!isAuthenticated) {
+                        // Пренасочи към login със запазен път за връщане
+                        window.location.href = "{% url 'login' %}?next=" + window.location.pathname;
+                        return;
+                    }
+        
+                    const perfumeId = this.dataset.id;
+                    const name = this.dataset.name;
+                    const price = this.dataset.price;
+                    const image = this.dataset.image;
+        
+                    fetch(`/cart/add/${perfumeId}/`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: new URLSearchParams({ quantity: 1 })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        showCartToast(name, image, price);
+                    });
+                });
+            });
+        });
+        </script>
+        
 {% endblock %}

@@ -1,14 +1,34 @@
 {% extends 'base.html' %}
 {% block title %}My Wish List{% endblock %}
+
 {% block content %}
-<h2 class="text-light">Wish List</h2>
-{% for item in items %}
-    <div class="card bg-dark text-light mb-3 p-3">
-        <h5>{{ item.perfume.name }}</h5>
-        <p>{{ item.perfume.brand }}</p>
-        <a href="{% url 'perfume_detail' item.perfume.id %}" class="btn btn-outline-light">View</a>
+<div class="container py-4">
+  <h2 class="text-light mb-4">My Wish List</h2>
+
+  {% for item in items %}
+    <div class="d-flex align-items-center justify-content-between border-bottom py-2">
+      <div class="d-flex align-items-center">
+        <img src="{{ item.perfume.image.url }}" alt="{{ item.perfume.name }}" class="me-3 rounded"
+             style="width: 60px; height: 60px; object-fit: cover;">
+        <div>
+          <h6 class="mb-0">{{ item.perfume.name }}</h6>
+          <small class="text-light">${{ item.perfume.price }}</small>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center gap-2">
+        <a href="{% url 'perfume_detail' item.perfume.id %}" class="btn btn-sm btn-outline-light">View</a>
+
+        <form method="POST" action="{% url 'remove_from_wishlist' item.perfume.id %}">
+          {% csrf_token %}
+          <button class="btn btn-sm btn-outline-danger" title="Remove from Wishlist">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </form>
+      </div>
     </div>
-{% empty %}
-    <p class="text-light">No items in your wish list yet.</p>
-{% endfor %}
+  {% empty %}
+    <p class="text-light">Your wishlist is empty.</p>
+  {% endfor %}
+</div>
 {% endblock %}
