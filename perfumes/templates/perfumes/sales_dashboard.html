@@ -4,6 +4,7 @@
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-light">📦 Orders For Your Products</h1>
+
     {% if items %}
         <table class="table table-dark table-striped">
             <thead>
@@ -19,20 +20,24 @@
             </thead>
             <tbody>
                 {% for item in items %}
-                <tr>
-                    <td>#{{ item.order.id }}</td>
-                    <td>{{ item.order.buyer.username }}</td>
-                    <td>{{ item.perfume.name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>${{ item.price|floatformat:2 }}</td>
-                    <td>{{ item.order.get_status_display }}</td>
-                    <td>
-                        <a href="{% url 'order_detail' item.id %}" class="btn btn-outline-info btn-sm">
-                          View Details &rarr;
-                        </a>
-                      </td>
-                      
-                </tr>
+                    <tr>
+                        <td>#{{ item.order.id }}</td>
+                        <td>{{ item.order.buyer.username }}</td>
+                        <td>{{ item.perfume.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.price|floatformat:2 }}</td>
+                        <td>{{ item.order.get_status_display }}</td>
+                        <td>
+                            <a href="{% url 'order_detail' item.id %}" class="btn btn-outline-info btn-sm">
+                                View Details &rarr;
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7" class="text-end text-info small">
+                            Ordered on: {{ item.order.created_at|date:"F j, Y, H:i" }}
+                        </td>
+                    </tr>
                 {% endfor %}
             </tbody>
         </table>

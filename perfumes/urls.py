@@ -44,5 +44,6 @@ urlpatterns = [
     path('trade/respond/<int:request_id>/', views.respond_exchange, name='respond_trade_offer'),
     path('exchange/delivery/<int:trade_id>/', views.provide_delivery_info, name='provide_delivery_info'),
     path('exchange/summary/<int:trade_id>/', views.trade_summary, name='trade_summary'),
+    path('trade/cancel/<int:offer_id>/', views.cancel_trade_offer, name='cancel_trade_offer'),
 
 ]

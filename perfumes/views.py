@@ -333,12 +333,12 @@ def checkout(request):
 
 @login_required
 def my_orders(request):
-    orders = request.user.orders.prefetch_related('items__perfume', 'items__seller')
+    orders = request.user.orders.prefetch_related('items__perfume', 'items__seller').order_by('-created_at')
     return render(request, 'perfumes/my_orders.html', {'orders': orders})
 
 @login_required
 def sales_dashboard(request):
-    items = OrderItem.objects.filter(seller=request.user).select_related('order', 'perfume')
+    items = OrderItem.objects.filter(seller=request.user).select_related('order', 'perfume').order_by('-order__created_at')
     return render(request, 'perfumes/sales_dashboard.html', {'items': items})
 
 @login_required
@@ -480,12 +480,12 @@ def incoming_requests(request):
     return render(request, 'perfumes/my_received_offers.html', {'received_offers': offers})
 @login_required
 def my_sent_offers(request):
-    sent_offers = request.user.sent_trades.select_related('offered_perfume', 'requested_perfume', 'user_to')
+    sent_offers = request.user.sent_trades.select_related('offered_perfume', 'requested_perfume', 'user_to').order_by('-created_at')
     return render(request, 'perfumes/my_sent_offers.html', {'sent_offers': sent_offers})
 
 @login_required
 def my_received_offers(request):
-    received_offers = request.user.received_trades.select_related('offered_perfume', 'requested_perfume', 'user_from')
+    received_offers = request.user.received_trades.select_related('offered_perfume', 'requested_perfume', 'user_from').order_by('-created_at')
     return render(request, 'perfumes/my_received_offers.html', {'received_offers': received_offers})
 
 from .models import TradeOffer, TradeDeliveryInfo
@@ -541,4 +541,10 @@ def trade_summary(request, trade_id):
         'from_info': offer.delivery_info_from,
         'to_info': offer.delivery_info_to,
     })
-
+@login_required
+@require_POST
+def cancel_trade_offer(request, offer_id):
+    offer = get_object_or_404(TradeOffer, id=offer_id, user_from=request.user, status='pending')
+    offer.delete()
+    messages.success(request, "Trade offer canceled.")
+    return redirect('my_sent_offers')

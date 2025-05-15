@@ -7,6 +7,7 @@
         {% for order in orders %}
             <div class="card bg-dark text-white mb-4">
                 <div class="card-header">
+                <p class="text-info text-end m-0">Ordered on: {{ order.created_at|date:"F j, Y, H:i" }}</p>
                     Order #{{ order.id }} - Status: <strong>{{ order.get_status_display }}</strong>
                 </div>
                 <div class="card-body">
