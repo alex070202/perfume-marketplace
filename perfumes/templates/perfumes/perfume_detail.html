@@ -121,16 +121,23 @@
                         <button type="submit" class="btn btn-success">Add to cart</button>
                     </div>
                 </form>
+
+                <!-- ❤️ Wish List Button -->
                 <button class="wishlist-icon-btn p-0 m-0 border-0 bg-transparent" data-id="{{ perfume.id }}" title="Add to Wish List">
                     {% if user.is_authenticated and perfume.in_wishlist %}
-                      <i class="bi bi-heart-fill text-danger fs-4"></i>
+                        <i class="bi bi-heart-fill text-danger fs-4"></i>
                     {% else %}
-                      <i class="bi bi-heart text-white fs-4"></i>
+                        <i class="bi bi-heart text-white fs-4"></i>
                     {% endif %}
                 </button>
-            </div>
-            
 
+<!-- 🔄 Trade Button (if available for trade and not owned by current user) -->
+                {% if user.is_authenticated and perfume.is_for_trade and perfume.owner != user %}
+                    <a href="{% url 'exchange_request' perfume.id %}" class="btn btn-outline-info ms-2" title="Propose Trade">
+                        <i class="bi bi-arrow-left-right"></i> Trade
+                    </a>
+                {% endif %}
+            </div>
             <div class="mt-4">
                 <a href="{% url 'perfume_list' %}" class="btn btn-outline-light">&larr; Back to All Perfumes</a>
             </div>

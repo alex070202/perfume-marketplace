@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Sent Trade Offers{% endblock %}
+{% block content %}
+<h2 class="text-light">Sent Trade Offers</h2>
+{% for offer in sent_offers %}
+  <div class="card bg-dark text-light mb-3 p-3">
+    <p>You offered <strong>{{ offer.offered_perfume.name }}</strong> for
+       <strong>{{ offer.requested_perfume.name }}</strong> owned by <strong>{{ offer.user_to.username }}</strong></p>
+
+    <p>Status: <span class="badge bg-secondary">{{ offer.status|capfirst }}</span></p>
+        {% if offer.both_delivery_infos_submitted %}
+    <a href="{% url 'trade_summary' offer.id %}" class="btn btn-outline-info btn-sm mt-2">
+        View Trade Details
+    </a>
+{% endif %}
+
+    {% if offer.status == 'accepted' and not offer.delivery_info_from %}
+      <a href="{% url 'provide_delivery_info' trade_id=offer.id %}" class="btn btn-outline-info btn-sm mt-2">Provide Delivery Info</a>
+    {% endif %}
+
+    {% if offer.delivery_info_from and offer.delivery_info_to %}
+      <div class="mt-3 border-top pt-2">
+        <h6>Receiver Delivery Info</h6>
+        <p><strong>Name:</strong> {{ offer.delivery_info_to.full_name }}</p>
+        <p><strong>Address:</strong> {{ offer.delivery_info_to.address }}</p>
+        <p><strong>Phone:</strong> {{ offer.delivery_info_to.phone }}</p>
+        {% if offer.delivery_info_to.note %}
+          <p><strong>Note:</strong> {{ offer.delivery_info_to.note }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+{% empty %}
+  <p class="text-light">No sent trade offers.</p>
+{% endfor %}
+{% endblock %}

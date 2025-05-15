@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+
 class Perfume(models.Model):
     name = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
@@ -101,3 +102,44 @@ class WishlistItem(models.Model):
 
     class Meta:
         unique_together = ('user', 'perfume')
+
+class TradeOffer(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('accepted', 'Accepted'),
+        ('rejected', 'Rejected'),
+    ]
+
+    user_from = models.ForeignKey(User, related_name='sent_trades', on_delete=models.CASCADE)
+    user_to = models.ForeignKey(User, related_name='received_trades', on_delete=models.CASCADE)
+    offered_perfume = models.ForeignKey('Perfume', related_name='offered_trades', on_delete=models.CASCADE)
+    requested_perfume = models.ForeignKey('Perfume', related_name='requested_trades', on_delete=models.CASCADE)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+    created_at = models.DateTimeField(auto_now_add=True)
+    additional_payment = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.user_from} offers {self.offered_perfume} for {self.requested_perfume}"
+    @property
+    def delivery_info_from(self):
+        return self.delivery_infos.filter(submitted_by=self.user_from).first()
+
+    @property
+    def delivery_info_to(self):
+        return self.delivery_infos.filter(submitted_by=self.user_to).first()
+
+    @property
+    def both_delivery_infos_submitted(self):
+        return bool(self.delivery_info_from and self.delivery_info_to)
+        
+class TradeDeliveryInfo(models.Model):
+    trade_offer = models.ForeignKey('TradeOffer', on_delete=models.CASCADE, related_name='delivery_infos')
+    submitted_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=100)
+    address = models.TextField()
+    phone = models.CharField(max_length=20)
+    note = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('trade_offer', 'submitted_by')  # един запис на потребител за дадена размяна

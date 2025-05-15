@@ -35,7 +35,14 @@ urlpatterns = [
     path('wishlist/remove/<int:perfume_id>/', views.remove_from_wishlist, name='remove_from_wishlist'),
     path('wishlist/toggle/<int:perfume_id>/', views.toggle_wishlist, name='toggle_wishlist'),
     path('perfumes/category/<str:category>/', views.perfume_category, name='perfume_category'),
-
-
+    path('exchange/request/<int:perfume_id>/', views.exchange_request, name='exchange_request'),
+    path('exchange/incoming/', views.incoming_requests, name='incoming_requests'),
+    path('exchange/outgoing/', views.my_sent_offers, name='outgoing_requests'),
+    path('exchange/respond/<int:request_id>/', views.respond_exchange, name='respond_exchange'),
+    path('trade/sent/', views.my_sent_offers, name='my_sent_offers'),
+    path('trade/received/', views.my_received_offers, name='my_received_offers'),
+    path('trade/respond/<int:request_id>/', views.respond_exchange, name='respond_trade_offer'),
+    path('exchange/delivery/<int:trade_id>/', views.provide_delivery_info, name='provide_delivery_info'),
+    path('exchange/summary/<int:trade_id>/', views.trade_summary, name='trade_summary'),
 
 ]

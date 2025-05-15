@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Trade Summary{% endblock %}
+{% block content %}
+<div class="container text-light mt-5">
+    <h2 class="mb-4">Trade Summary</h2>
+
+    <h5>Status: {{ offer.status|capfirst }}</h5>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h4>Sender ({{ offer.user_from.username }})</h4>
+            <p><strong>Perfume:</strong> {{ offer.offered_perfume.name }}</p>
+            <p><strong>Full Name:</strong> {{ from_info.full_name }}</p>
+            <p><strong>Phone:</strong> {{ from_info.phone }}</p>
+            <p><strong>Address:</strong> {{ from_info.address }}</p>
+        </div>
+        <div class="col-md-6">
+            <h4>Receiver ({{ offer.user_to.username }})</h4>
+            <p><strong>Perfume:</strong> {{ offer.requested_perfume.name }}</p>
+            <p><strong>Full Name:</strong> {{ to_info.full_name }}</p>
+            <p><strong>Phone:</strong> {{ to_info.phone }}</p>
+            <p><strong>Address:</strong> {{ to_info.address }}</p>
+        </div>
+    </div>
+
+    {% if offer.additional_payment %}
+        <div class="alert alert-warning">
+            <strong>Additional Payment:</strong> ${{ offer.additional_payment }}
+        </div>
+    {% endif %}
+
+    <a href="{% url 'my_sent_offers' %}" class="btn btn-outline-light">← Back to My Offers</a>
+</div>
+{% endblock %}

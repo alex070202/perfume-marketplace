@@ -1,16 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Perfume, PerfumeImage, Cart, CartItem
+from .models import Perfume, PerfumeImage, Cart, CartItem,TradeOffer
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.decorators.http import require_POST
 from .models import Order, OrderItem, ORDER_STATUS_CHOICES
-from .models import Review
+from .models import Review,TradeDeliveryInfo
 from django.db.models import Avg
 from django.http import JsonResponse
 from .models import WishlistItem
 from django.db.models import Q
+
 
 def home(request):
     latest_perfumes = Perfume.objects.order_by('-id')[:6]  # последните 6
@@ -214,9 +215,6 @@ def add_to_cart(request, perfume_id):
 
     messages.success(request, f"{perfume.name} added to cart.")
     return redirect('perfume_detail', perfume_id=perfume.id)
-
-
-
 
 @login_required
 def cart_detail(request):
@@ -429,4 +427,118 @@ def about_us(request):
 def perfume_category(request, category):
     perfumes = Perfume.objects.filter(category=category)
     return render(request, 'perfumes/perfume_list.html', {'perfumes': perfumes})
+
+@login_required
+def exchange_request(request, perfume_id):
+    requested_perfume = get_object_or_404(Perfume, id=perfume_id)
+
+    if requested_perfume.owner == request.user:
+        return redirect('perfume_detail', perfume_id=perfume_id)
+
+    if request.method == 'POST':
+        offered_id = request.POST.get('offered_perfume')
+        extra_payment = request.POST.get('extra_payment') or None
+        offered_perfume = get_object_or_404(Perfume, id=offered_id, owner=request.user)
+
+        offer = TradeOffer.objects.create(
+            user_from=request.user,
+            user_to=requested_perfume.owner,
+            offered_perfume=offered_perfume,
+            requested_perfume=requested_perfume,
+            additional_payment=extra_payment if extra_payment else None
+        )
+
+        return redirect('provide_delivery_info', trade_id=offer.id)
+
+    user_perfumes = Perfume.objects.filter(owner=request.user, is_for_trade=True)
+
+    return render(request, 'perfumes/exchange_request.html', {
+        'requested_perfume': requested_perfume,
+        'user_perfumes': user_perfumes
+    })
+@require_POST
+@login_required
+def respond_exchange(request, request_id):
+    exchange = get_object_or_404(TradeOffer, id=request_id, user_to=request.user)
+
+    action = request.POST.get('action')
+    if action == 'accept':
+        exchange.status = 'accepted'
+        exchange.save()
+        return redirect('provide_delivery_info', trade_id=exchange.id)
+
+    elif action == 'reject':
+        exchange.status = 'rejected'
+        exchange.save()
+
+    messages.success(request, f'Trade offer {action}ed.')
+    return redirect('my_received_offers')
+
+@login_required
+def incoming_requests(request):
+    offers = TradeOffer.objects.filter(user_to=request.user).select_related('offered_perfume', 'requested_perfume', 'user_from')
+    return render(request, 'perfumes/my_received_offers.html', {'received_offers': offers})
+@login_required
+def my_sent_offers(request):
+    sent_offers = request.user.sent_trades.select_related('offered_perfume', 'requested_perfume', 'user_to')
+    return render(request, 'perfumes/my_sent_offers.html', {'sent_offers': sent_offers})
+
+@login_required
+def my_received_offers(request):
+    received_offers = request.user.received_trades.select_related('offered_perfume', 'requested_perfume', 'user_from')
+    return render(request, 'perfumes/my_received_offers.html', {'received_offers': received_offers})
+
+from .models import TradeOffer, TradeDeliveryInfo
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib import messages
+
+@login_required
+def provide_delivery_info(request, trade_id):
+    offer = get_object_or_404(TradeOffer, id=trade_id)
+
+    # Не позволявай повторно попълване
+    if TradeDeliveryInfo.objects.filter(trade_offer=offer, submitted_by=request.user).exists():
+        messages.info(request, "You have already submitted your delivery information for this trade.")
+        return redirect('my_sent_offers' if offer.user_from == request.user else 'my_received_offers')
+
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+        note = request.POST.get('note')
+
+        TradeDeliveryInfo.objects.create(
+            trade_offer=offer,
+            submitted_by=request.user,
+            full_name=full_name,
+            address=address,
+            phone=phone,
+            note=note
+        )
+
+        messages.success(request, "Your delivery info has been saved.")
+        return redirect('my_sent_offers' if offer.user_from == request.user else 'my_received_offers')
+
+    return render(request, 'perfumes/provide_delivery_info.html', {
+        'offer': offer
+    })
+@login_required
+def trade_summary(request, trade_id):
+    offer = get_object_or_404(TradeOffer, id=trade_id)
+
+    # Проверка дали потребителят е замесен
+    if request.user != offer.user_from and request.user != offer.user_to:
+        return redirect('home')
+
+    # Убедени сме, че и двете страни са попълнили информация
+    if not hasattr(offer, 'delivery_info_from') or not hasattr(offer, 'delivery_info_to'):
+        messages.error(request, "Delivery information is not yet complete.")
+        return redirect('my_sent_offers')
+
+    return render(request, 'perfumes/trade_summary.html', {
+        'offer': offer,
+        'from_info': offer.delivery_info_from,
+        'to_info': offer.delivery_info_to,
+    })
 
