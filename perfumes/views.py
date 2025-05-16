@@ -276,22 +276,24 @@ def remove_from_cart(request, item_id):
 @login_required
 def checkout(request):
     cart, _ = Cart.objects.get_or_create(user=request.user)
-    items = cart.cartitem_set.select_related('perfume').all()
-    total = sum(item.perfume.price * item.quantity for item in items)
 
-    # Проверка за надвишена наличност
-    overstocked_items = []
-    for item in items:
-        if item.quantity > item.perfume.stock:
-            overstocked_items.append((item.perfume.name, item.perfume.stock))
-
-    if overstocked_items:
-        for name, available in overstocked_items:
-            messages.error(request, f'Not enough stock for "{name}". Only {available} available.')
-        return redirect('cart_detail')
-
-    # Ако всичко е наред, продължаваме с поръчката
     if request.method == 'POST':
+        # 🟢 ВЗИМАМЕ АКТУАЛНИТЕ НЕЩА ПРЕДИ ПОКУПКА
+        items = cart.cartitem_set.select_related('perfume').all()
+        total = sum(item.perfume.price * item.quantity for item in items)
+
+        # Проверка за наличности
+        overstocked_items = []
+        for item in items:
+            if item.quantity > item.perfume.stock:
+                overstocked_items.append((item.perfume.name, item.perfume.stock))
+
+        if overstocked_items:
+            for name, available in overstocked_items:
+                messages.error(request, f'Not enough stock for "{name}". Only {available} available.')
+            return redirect('cart_detail')
+
+        # Данни от формата
         full_name = request.POST.get('full_name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
@@ -325,10 +327,15 @@ def checkout(request):
             'total': total
         })
 
+    # 🟡 GET заявка – визуализиране на checkout формата
+    items = cart.cartitem_set.select_related('perfume').all()
+    total = sum(item.perfume.price * item.quantity for item in items)
+
     return render(request, 'perfumes/checkout.html', {
         'cart_items': items,
         'total': total
     })
+
 
 
 @login_required
@@ -548,3 +555,41 @@ def cancel_trade_offer(request, offer_id):
     offer.delete()
     messages.success(request, "Trade offer canceled.")
     return redirect('my_sent_offers')
+
+@login_required
+def trade_history(request):
+    show_completed = request.GET.get('completed') == 'on'
+    show_rejected = request.GET.get('rejected') == 'on'
+
+
+    offers = TradeOffer.objects.filter(
+        Q(user_from=request.user) | Q(user_to=request.user),
+        status__in=['completed', 'rejected']
+    )
+
+    if show_completed and not show_rejected:
+        offers = offers.filter(status='completed')
+    elif show_rejected and not show_completed:
+        offers = offers.filter(status='rejected')
+
+    return render(request, 'perfumes/trade_history.html', {
+        'offers': offers,
+        'show_completed': show_completed,
+        'show_rejected': show_rejected
+    })
+@login_required
+@require_POST
+def update_trade_status(request, offer_id):
+    offer = get_object_or_404(TradeOffer, id=offer_id)
+
+    if request.user != offer.user_from and request.user != offer.user_to:
+        return redirect('home')
+
+    new_status = request.POST.get('new_status')
+    if new_status in ['in_transit', 'completed']:
+        offer.status = new_status
+        offer.save()
+        messages.success(request, f"Trade marked as {new_status.replace('_', ' ').title()}.")
+
+    return redirect('trade_summary', trade_id=offer.id)
+

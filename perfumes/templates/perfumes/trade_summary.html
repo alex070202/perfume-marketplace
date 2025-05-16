@@ -5,6 +5,21 @@
     <h2 class="mb-4">Trade Summary</h2>
 
     <h5>Status: {{ offer.status|capfirst }}</h5>
+    {% if request.user == offer.user_from or request.user == offer.user_to %}
+    {% if offer.status == 'accepted' %}
+        <form method="post" action="{% url 'update_trade_status' offer.id %}" class="mb-2">
+            {% csrf_token %}
+            <input type="hidden" name="new_status" value="in_transit">
+            <button type="submit" class="btn btn-info btn-sm">Mark as In Transit</button>
+        </form>
+    {% elif offer.status == 'in_transit' %}
+        <form method="post" action="{% url 'update_trade_status' offer.id %}" class="mb-2">
+            {% csrf_token %}
+            <input type="hidden" name="new_status" value="completed">
+            <button type="submit" class="btn btn-success btn-sm">Mark as Completed</button>
+        </form>
+    {% endif %}
+{% endif %}
 
     <div class="row mb-4">
         <div class="col-md-6">

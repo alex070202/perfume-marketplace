@@ -23,7 +23,11 @@
                     <tr>
                         <td>#{{ item.order.id }}</td>
                         <td>{{ item.order.buyer.username }}</td>
-                        <td>{{ item.perfume.name }}</td>
+                        <td>
+                            <a href="{% url 'perfume_detail' perfume_id=item.perfume.id %}" class="text-info text-decoration-none">
+                                {{ item.perfume.name }}
+                            </a>
+                        </td>
                         <td>{{ item.quantity }}</td>
                         <td>${{ item.price|floatformat:2 }}</td>
                         <td>{{ item.order.get_status_display }}</td>

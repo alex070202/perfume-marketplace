@@ -18,7 +18,7 @@ urlpatterns = [
     path('perfumes/<int:perfume_id>/', views.perfume_detail, name='perfume_detail'),
     path('cart/', views.cart_detail, name='cart_detail'),
     path('cart/add/<int:perfume_id>/', views.add_to_cart, name='add_to_cart'),
-    path('cart/update/<int:item_id>/', views.update_cart, name='update_cart'),
+    path('cart/update/', views.update_cart, name='update_cart'),
     path('cart/remove/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('checkout/', views.checkout, name='checkout'),
     path('my-orders/', views.my_orders, name='my_orders'),
@@ -45,5 +45,7 @@ urlpatterns = [
     path('exchange/delivery/<int:trade_id>/', views.provide_delivery_info, name='provide_delivery_info'),
     path('exchange/summary/<int:trade_id>/', views.trade_summary, name='trade_summary'),
     path('trade/cancel/<int:offer_id>/', views.cancel_trade_offer, name='cancel_trade_offer'),
+    path('trades/history/', views.trade_history, name='trade_history'),
+    path('trade/update-status/<int:offer_id>/', views.update_trade_status, name='update_trade_status'),
 
 ]

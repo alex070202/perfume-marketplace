@@ -11,7 +11,9 @@
       <p>Additional Payment: <strong>${{ offer.additional_payment }}</strong></p>
     {% endif %}
     <p>Status: <span class="badge bg-secondary">{{ offer.status|capfirst }}</span></p>
-
+    <a href="{% url 'trade_summary' trade_id=offer.id %}" class="btn btn-outline-primary btn-sm">
+    View Trade Details
+    </a>
     {% if offer.status == 'pending' %}
       <form method="post" action="{% url 'respond_trade_offer' offer.id %}">
         {% csrf_token %}

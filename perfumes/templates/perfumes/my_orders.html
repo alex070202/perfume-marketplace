@@ -17,7 +17,13 @@
                     <p><strong>Notes:</strong> {{ order.notes }}</p>
                     <ul>
                         {% for item in order.items.all %}
-                            <li>{{ item.perfume.name }} (x{{ item.quantity }}) - ${{ item.price }}</li>
+                            <li>
+                                <a href="{% url 'perfume_detail' perfume_id=item.perfume.id %}" class="text-info text-decoration-none">
+                                    {{ item.perfume.name }}
+                                </a>
+                                (x{{ item.quantity }}) - ${{ item.price }}
+                            </li>
+
                         {% endfor %}
                     </ul>
                 </div>

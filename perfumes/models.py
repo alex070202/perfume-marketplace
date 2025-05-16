@@ -105,10 +105,12 @@ class WishlistItem(models.Model):
 
 class TradeOffer(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('accepted', 'Accepted'),
-        ('rejected', 'Rejected'),
-    ]
+    ('pending', 'Pending'),
+    ('accepted', 'Accepted'),
+    ('rejected', 'Rejected'),
+    ('in_transit', 'In Transit'),
+    ('completed', 'Completed'),
+]
 
     user_from = models.ForeignKey(User, related_name='sent_trades', on_delete=models.CASCADE)
     user_to = models.ForeignKey(User, related_name='received_trades', on_delete=models.CASCADE)

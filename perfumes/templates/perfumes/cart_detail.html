@@ -16,7 +16,13 @@
           </div>
         </div>
         <div class="d-flex align-items-center gap-3">
-            <input type="number" min="1" value="{{ item.quantity }}" class="form-control quantity-input text-center" style="width: 70px;">
+            <input type="number"
+                   class="form-control quantity-input"
+                   value="{{ item.quantity }}"
+                   min="1"
+                   max="{{ item.perfume.stock }}"
+                   data-item-id="{{ item.id }}">
+
             <span class="text-warning fw-bold">$<span class="item-subtotal">{{ item.subtotal|floatformat:2 }}</span></span>
             <form method="POST" action="{% url 'remove_from_cart' item.id %}">
               {% csrf_token %}
@@ -42,34 +48,55 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const items = document.querySelectorAll('[data-id]');
-    const totalSpan = document.getElementById('cartTotal');
+    const csrfToken = '{{ csrf_token }}';
+    const totalSpan = document.getElementById("cartTotal");
 
-    function updateTotal() {
+    function recalculateTotal() {
       let total = 0;
-      items.forEach(row => {
+      document.querySelectorAll('.quantity-input').forEach(input => {
+        const row = input.closest('[data-id]');
         const price = parseFloat(row.dataset.price);
-        const quantity = parseInt(row.querySelector('.quantity-input').value);
+        const quantity = parseInt(input.value);
         const subtotal = price * quantity;
-        row.querySelector('.item-subtotal').textContent = subtotal.toFixed(2);
-        total += subtotal;
 
-        fetch(`/cart/update/`, {
-          method: 'POST',
-          headers: {
-            'X-CSRFToken': '{{ csrf_token }}',
-            'X-Requested-With': 'XMLHttpRequest',
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: new URLSearchParams({ [`quantity_${row.dataset.id}`]: quantity })
-        });
+        // Обнови визуалния subtotal
+        row.querySelector('.item-subtotal').textContent = subtotal.toFixed(2);
+
+        total += subtotal;
       });
+
+      // Обнови total сумата
       totalSpan.textContent = total.toFixed(2);
     }
 
     document.querySelectorAll('.quantity-input').forEach(input => {
-      input.addEventListener('input', updateTotal);
+      input.addEventListener('change', () => {
+        const itemId = input.dataset.itemId;
+        const quantity = input.value;
+
+        const data = new URLSearchParams();
+        data.append(`quantity_${itemId}`, quantity);
+
+        fetch("{% url 'update_cart' %}", {
+          method: "POST",
+          headers: {
+            "X-CSRFToken": csrfToken,
+            "X-Requested-With": "XMLHttpRequest",
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: data.toString()
+        }).then(res => {
+          if (!res.ok) {
+            console.error("Failed to update cart");
+          } else {
+            recalculateTotal();
+          }
+        });
+      });
     });
   });
 </script>
+
+
+
 {% endblock %}
