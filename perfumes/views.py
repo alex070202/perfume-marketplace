@@ -487,8 +487,22 @@ def incoming_requests(request):
     return render(request, 'perfumes/my_received_offers.html', {'received_offers': offers})
 @login_required
 def my_sent_offers(request):
-    sent_offers = request.user.sent_trades.select_related('offered_perfume', 'requested_perfume', 'user_to').order_by('-created_at')
-    return render(request, 'perfumes/my_sent_offers.html', {'sent_offers': sent_offers})
+    # Всички изпратени
+    sent_offers = request.user.sent_trades.select_related(
+        'offered_perfume', 'requested_perfume', 'user_to'
+    ).order_by('-created_at')
+
+    # Обнови is_seen_by_sender, само ако не е видяна и не е pending
+    TradeOffer.objects.filter(
+        Q(user_from=request.user) & ~Q(status='pending'),
+        is_seen_by_sender=False
+    ).update(is_seen_by_sender=True)
+
+
+    return render(request, 'perfumes/my_sent_offers.html', {
+        'sent_offers': sent_offers
+    })
+
 
 @login_required
 def my_received_offers(request):

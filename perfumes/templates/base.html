@@ -1,35 +1,32 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}PerfumeSwap{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">    
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}PerfumeSwap{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 
 <body class="bg-black text-white">
-
   <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary sticky-top">
-
     <div class="container">
       <a class="navbar-brand" href="/">
-          <img src="{% static 'img/final_logo1.png' %}" alt="PerfumeSwap Logo" height="140">
+        <img src="{% static 'img/final_logo1.png' %}" alt="PerfumeSwap Logo" height="140">
       </a>
-  
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-  
+
       <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-        <!-- 🧭 Навигация -->
         <ul class="navbar-nav align-items-center">
           <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-  
-          <!-- Категории dropdown -->
+
+          <!-- Perfume Categories -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="{% url 'perfume_list' %}" id="perfumeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="{% url 'perfume_list' %}" id="perfumeDropdown" role="button" data-bs-toggle="dropdown">
               Perfumes
             </a>
             <ul class="dropdown-menu bg-dark border-secondary mt-2" aria-labelledby="perfumeDropdown">
@@ -39,21 +36,22 @@
               <li><a class="dropdown-item text-white" href="{% url 'perfume_category' 'unisex' %}">Unisex</a></li>
             </ul>
           </li>
-          
-  
-          <!-- Икони (wishlist, cart) -->
+
+          <!-- Wishlist -->
           <li class="nav-item position-relative">
             <a class="nav-link" href="{% url 'wishlist' %}">
-              ❤️ Wish List
-              {% with user.wishlistitem_set.count as wish_count %}
-                <span id="wishlist-count" class="badge bg-danger position-absolute top-0 start-100 translate-middle {% if wish_count == 0 %}d-none{% endif %}">
-                  {{ wish_count }}
-                </span>
-              {% endwith %}
-
-            </a>
+            ❤️ Wish List
+            {% if user.is_authenticated %}
+              <span id="wishlist-count"
+                    class="badge bg-danger position-absolute top-0 start-100 translate-middle {% if user.wishlistitem_set.count == 0 %}d-none{% endif %}">
+                {{ user.wishlistitem_set.count }}
+              </span>
+            {% endif %}
+            </a
           </li>
-  
+
+
+          <!-- Cart -->
           <li class="nav-item position-relative">
             <a class="nav-link" href="{% url 'cart_detail' %}">
               🛒 Cart
@@ -66,22 +64,48 @@
               {% endif %}
             </a>
           </li>
+
+          <!-- My Trades -->
           {% if user.is_authenticated %}
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle position-relative" href="#" role="button" data-bs-toggle="dropdown">
                 My Trades
+                {% if new_received_offers_count > 0 %}
+                  <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+                    {{ new_received_offers_count }}
+                  </span>
+                {% endif %}
               </a>
               <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{% url 'my_sent_offers' %}">📤 Sent Offers</a></li>
-                  <li><a class="dropdown-item" href="{% url 'my_received_offers' %}">📥 Received Offers</a></li>
-                  <li><a class="dropdown-item" href="{% url 'trade_history' %}">🧾 Trade History</a></li>
+                <li>
+                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="{% url 'my_sent_offers' %}">
+                    📤 Sent Offers
+                    {% if updated_sent_offers_count > 0 %}
+                      <span class="badge bg-danger ms-2">{{ updated_sent_offers_count }}</span>
+                    {% endif %}
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="{% url 'my_received_offers' %}">
+                    📥 Received Offers
+                    <span>
+                      {% if new_received_offers_count > 0 %}
+                        <span class="badge bg-danger ms-1">{{ new_received_offers_count }}</span>
+                      {% endif %}
+                      {% if awaiting_address_info_count > 0 %}
+                        <span class="badge bg-warning text-dark ms-1">{{ awaiting_address_info_count }}</span>
+                      {% endif %}
+                    </span>
+                  </a>
+                </li>
+                <li><a class="dropdown-item" href="{% url 'trade_history' %}">🧾 Trade History</a></li>
               </ul>
-          </li>
+            </li>
           {% endif %}
 
-          <!-- Потребителско меню -->
+          <!-- User Menu -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
               <i class="bi bi-person fs-5"></i>
               {% if user.is_authenticated %}
                 <span class="ms-2">Hi, {{ user.username }} 👋</span>
@@ -89,13 +113,24 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary mt-2" aria-labelledby="userDropdown">
               {% if user.is_authenticated %}
-                <li><a class="dropdown-item text-white" href="{% url 'my_orders' %}">My Orders</a></li>
-                <li><a class="dropdown-item text-white" href="{% url 'sales_dashboard' %}">Sales dashboard</a></li>
+                <li>
+                  <a class="dropdown-item text-white d-flex justify-content-between align-items-center" href="{% url 'my_orders' %}">
+                    My Orders
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item text-white d-flex justify-content-between align-items-center" href="{% url 'sales_dashboard' %}">
+                    Sales dashboard
+                    {% if new_orders_count > 0 %}
+                      <span class="badge bg-danger ms-2">{{ new_orders_count }}</span>
+                    {% endif %}
+                  </a>
+                </li>
                 <li><a class="dropdown-item text-white" href="{% url 'add_perfume' %}">Add perfume</a></li>
                 <li><a class="dropdown-item text-white" href="{% url 'my_perfumes' %}">My perfumes</a></li>
                 <li><hr class="dropdown-divider bg-secondary"></li>
                 <li>
-                  <form method="post" action="{% url 'logout' %}">
+                  <form method="POST" action="{% url 'logout' %}">
                     {% csrf_token %}
                     <button type="submit" class="dropdown-item text-white">Logout</button>
                   </form>
@@ -109,8 +144,8 @@
             </ul>
           </li>
         </ul>
-  
-        <!-- 🔍 Търсачка извън UL -->
+
+        <!-- Search -->
         <form class="d-flex" method="get" action="{% url 'perfume_list' %}">
           <input class="form-control me-2" type="search" name="q" placeholder="Search perfumes..." value="{{ request.GET.q }}">
           <button class="btn btn-outline-light" type="submit">Search</button>
@@ -118,131 +153,123 @@
       </div>
     </div>
   </nav>
-  
-<div class="container mt-5 pt-5">
-  {% block content %}
-  {% endblock %}
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="container mt-5 pt-5">
+    {% block content %}{% endblock %}
+  </div>
 
-<!-- Cart Toast Notification -->
-<div id="cart-toast" class="toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 m-4" role="alert" style="display: none; z-index: 9999; min-width: 300px;">
+  {% include 'partials/footer.html' %}
+
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Cart Toast -->
+  <div id="cart-toast" class="toast align-items-center text-white bg-success border-0 position-fixed bottom-0 end-0 m-4" style="display: none; z-index: 9999; min-width: 300px;">
     <div class="d-flex">
-      <div class="toast-body" id="cart-toast-body">
-        <!-- Will be filled by JS -->
-      </div>
+      <div class="toast-body" id="cart-toast-body"></div>
       <button type="button" class="btn-close btn-close-white me-2 m-auto" onclick="hideCartToast()"></button>
     </div>
   </div>
-  
+
   <script>
-  function showCartToast(name, imageUrl, price) {
-    const toast = document.getElementById('cart-toast');
-    const body = document.getElementById('cart-toast-body');
-    
-    // Съобщението
-    body.innerHTML = `
-      <div class="d-flex align-items-center">
-        <img src="${imageUrl}" alt="Image" class="me-2 rounded" style="width: 50px; height: 50px; object-fit: cover;">
-        <div>
-          <strong>${name}</strong><br>
-          <span>Added to cart - $${price}</span>
+    function showCartToast(name, imageUrl, price) {
+      const toast = document.getElementById('cart-toast');
+      const body = document.getElementById('cart-toast-body');
+      body.innerHTML = `
+        <div class="d-flex align-items-center">
+          <img src="${imageUrl}" alt="Image" class="me-2 rounded" style="width: 50px; height: 50px; object-fit: cover;">
+          <div><strong>${name}</strong><br><span>Added to cart - $${price}</span></div>
         </div>
-      </div>
-      <div class="mt-2 d-flex justify-content-between">
-        <a href="/cart/" class="btn btn-light btn-sm me-2">View Cart</a>
-        <a href="/checkout/" class="btn btn-dark btn-sm">Checkout</a>
-      </div>
-    `;
+        <div class="mt-2 d-flex justify-content-between">
+          <a href="/cart/" class="btn btn-light btn-sm me-2">View Cart</a>
+          <a href="/checkout/" class="btn btn-dark btn-sm">Checkout</a>
+        </div>
+      `;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.display = 'none'; }, 3000);
 
-    toast.style.display = 'block';
-    setTimeout(() => {
-      toast.style.display = 'none';
-    }, 3000);
-
-    // 🔧 Обновяване на cart брояча
-    const cartCount = document.getElementById("cart-count");
-    if (cartCount) {
-      let count = parseInt(cartCount.textContent) || 0;
-      count += 1;
-      cartCount.textContent = count;
-      cartCount.classList.remove("d-none");
+      const cartCount = document.getElementById("cart-count");
+      if (cartCount) {
+        let count = parseInt(cartCount.textContent) || 0;
+        count += 1;
+        cartCount.textContent = count;
+        cartCount.classList.remove("d-none");
+      }
     }
-  }
 
-  function hideCartToast() {
-    document.getElementById('cart-toast').style.display = 'none';
-  }
-</script>
-
-  {% if messages %}
-  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
-    {% for message in messages %}
-      <div class="toast align-items-center text-white bg-{{ message.tags|default:"success" }} border-0 mb-2" role="alert">
-        <div class="d-flex">
-          <div class="toast-body">
-            {{ message }}
-          </div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const toasts = document.querySelectorAll('.toast');
-      toasts.forEach(t => new bootstrap.Toast(t, { delay: 3000 }).show());
-    });
+    function hideCartToast() {
+      document.getElementById('cart-toast').style.display = 'none';
+    }
   </script>
-{% endif %}
-{% include 'partials/footer.html' %}
 
-<script>
+  <!-- Django messages -->
+  {% if messages %}
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+      {% for message in messages %}
+        <div class="toast align-items-center text-white bg-{{ message.tags|default:'success' }} border-0 mb-2">
+          <div class="d-flex">
+            <div class="toast-body">{{ message }}</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        const toasts = document.querySelectorAll('.toast');
+        toasts.forEach(t => new bootstrap.Toast(t, { delay: 3000 }).show());
+      });
+    </script>
+  {% endif %}
+
+  <!-- Wishlist JS -->
+  <script>
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.wishlist-icon-btn').forEach(btn => {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        const isAuthenticated = {{ user.is_authenticated|yesno:"true,false" }};
-        const perfumeId = btn.dataset.id;
+  document.querySelectorAll('.wishlist-icon-btn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
 
-        if (!isAuthenticated) {
-          window.location.href = "{% url 'login' %}?next=" + window.location.pathname;
-          return;
+      const isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}" === "true";
+      const perfumeId = btn.dataset.id;
+
+      if (!isAuthenticated) {
+        window.location.href = "{% url 'login' %}?next=" + window.location.pathname;
+        return;
+      }
+
+      fetch(`/wishlist/toggle/${perfumeId}/`, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}',
+          'X-Requested-With': 'XMLHttpRequest'
         }
+      })
+      .then(res => res.json())
+      .then(data => {
+        // Промяна на иконата
+        btn.innerHTML = data.status === 'added'
+          ? '<i class="bi bi-heart-fill text-danger"></i>'
+          : '<i class="bi bi-heart text-white"></i>';
 
-        fetch(`/wishlist/toggle/${perfumeId}/`, {
-          method: 'POST',
-          headers: {
-            'X-CSRFToken': '{{ csrf_token }}',
-            'X-Requested-With': 'XMLHttpRequest'
+        // Промяна на брояча
+        const countSpan = document.getElementById("wishlist-count");
+        if (countSpan) {
+          let current = parseInt(countSpan.textContent) || 0;
+          const newCount = data.status === 'added' ? current + 1 : Math.max(current - 1, 0);
+          countSpan.textContent = newCount;
+
+          if (newCount > 0) {
+            countSpan.classList.remove("d-none");
+          } else {
+            countSpan.classList.add("d-none");
           }
-        })
-        .then(res => res.json())
-        .then(data => {
-          btn.innerHTML = data.status === 'added'
-            ? '<i class="bi bi-heart-fill text-danger"></i>'
-            : '<i class="bi bi-heart text-white"></i>';
-
-          const wishCount = document.getElementById("wishlist-count");
-          if (wishCount) {
-            let count = parseInt(wishCount.textContent) || 0;
-            count = data.status === 'added' ? count + 1 : Math.max(count - 1, 0);
-            wishCount.textContent = count;
-
-            if (count > 0) {
-              wishCount.classList.remove("d-none");
-            }else {
-              wishCount.classList.add("d-none");
-            }
-          }
-
-        });
+        }
       });
     });
   });
+});
+
 </script>
 
-    
 </body>
 </html>

@@ -119,6 +119,7 @@ class TradeOffer(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
     additional_payment = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    is_seen_by_sender = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user_from} offers {self.offered_perfume} for {self.requested_perfume}"

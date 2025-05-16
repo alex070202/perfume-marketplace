@@ -11,21 +11,21 @@
         <img src="{{ item.perfume.image.url }}" alt="{{ item.perfume.name }}" class="me-3 rounded"
              style="width: 60px; height: 60px; object-fit: cover;">
         <div>
-          <h6 class="mb-0">{{ item.perfume.name }}</h6>
+          <h6 class="mb-0">
+            <a href="{% url 'perfume_detail' item.perfume.id %}" class="text-info text-decoration-none">
+              {{ item.perfume.name }}
+            </a>
+          </h6>
           <small class="text-light">${{ item.perfume.price }}</small>
         </div>
       </div>
 
-      <div class="d-flex align-items-center gap-2">
-        <a href="{% url 'perfume_detail' item.perfume.id %}" class="btn btn-sm btn-outline-light">View</a>
-
-        <form method="POST" action="{% url 'remove_from_wishlist' item.perfume.id %}">
-          {% csrf_token %}
-          <button class="btn btn-sm btn-outline-danger" title="Remove from Wishlist">
-            <i class="bi bi-x-lg"></i>
-          </button>
-        </form>
-      </div>
+      <form method="POST" action="{% url 'remove_from_wishlist' item.perfume.id %}">
+        {% csrf_token %}
+        <button class="btn btn-sm btn-outline-danger" title="Remove from Wishlist">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </form>
     </div>
   {% empty %}
     <p class="text-light">Your wishlist is empty.</p>
