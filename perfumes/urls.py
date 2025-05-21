@@ -3,7 +3,7 @@ from . import views
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from . import views
-
+from perfumes import views as perfume_views
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -47,5 +47,6 @@ urlpatterns = [
     path('trade/cancel/<int:offer_id>/', views.cancel_trade_offer, name='cancel_trade_offer'),
     path('trades/history/', views.trade_history, name='trade_history'),
     path('trade/update-status/<int:offer_id>/', views.update_trade_status, name='update_trade_status'),
+    path('perfumes/for-trade/', views.perfumes_for_trade, name='perfumes_for_trade'),
 
 ]

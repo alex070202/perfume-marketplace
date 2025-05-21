@@ -11,7 +11,7 @@ from django.db.models import Avg
 from django.http import JsonResponse
 from .models import WishlistItem
 from django.db.models import Q
-
+from .forms import CustomUserCreationForm
 
 def home(request):
     latest_perfumes = Perfume.objects.order_by('-id')[:6]  # последните 6
@@ -84,34 +84,33 @@ def add_perfume(request):
 
 def register_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             messages.success(request, 'Registration successful!')
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'perfumes/register.html', {'form': form})
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        messages.success(request, "You have been logged out.")
+        return redirect('home')
+    else:
+        return redirect('home')
 
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            messages.success(request, 'Logged in successfully!')
-            next_url = request.GET.get('next', 'home')
-            return redirect(next_url)
+            login(request, form.get_user())
+            return redirect('home')
     else:
         form = AuthenticationForm()
-    return render(request, 'perfumes/login.html', {'form': form})
-
-def logout_view(request):
-    if request.method == 'POST':
-        logout(request)
-        messages.success(request, 'Logged out successfully!')
-        return redirect('home')
+    return render(request, 'registration/login.html', {'form': form})
 
 @login_required
 def wishlist(request):
@@ -607,3 +606,9 @@ def update_trade_status(request, offer_id):
 
     return redirect('trade_summary', trade_id=offer.id)
 
+def perfumes_for_trade(request):
+    perfumes = Perfume.objects.filter(is_for_trade=True)
+    return render(request, 'perfumes/perfume_list.html', {
+        'perfumes': perfumes,
+        'filter_for_trade': True
+    })
