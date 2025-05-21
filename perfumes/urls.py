@@ -48,5 +48,4 @@ urlpatterns = [
     path('trades/history/', views.trade_history, name='trade_history'),
     path('trade/update-status/<int:offer_id>/', views.update_trade_status, name='update_trade_status'),
     path('perfumes/for-trade/', views.perfumes_for_trade, name='perfumes_for_trade'),
-
 ]

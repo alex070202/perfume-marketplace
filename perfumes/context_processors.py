@@ -18,7 +18,7 @@ def global_notification_counts(request):
         ).count()
 
         # Приети размени, чакащи адрес от текущия потребител
-        # Приети размени, чакащи адрес от текущия потребител
+        
         context['awaiting_address_info_count'] = TradeOffer.objects.filter(
             status='accepted'
         ).exclude(

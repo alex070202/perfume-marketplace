@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
-
 {% block title %}Delete Perfume{% endblock %}
-
 {% block content %}
+
 <h1>Confirm Delete</h1>
 <p>Are you sure you want to delete "{{ perfume.name }}"?</p>
-
 <form method="post">
     {% csrf_token %}
     <button type="submit" class="btn btn-danger">Yes, delete</button>

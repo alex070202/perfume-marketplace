@@ -21,7 +21,6 @@ class Perfume(models.Model):
     
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='unisex')
 
-
     def __str__(self):
         return f"{self.name} by {self.brand}"
 
@@ -145,4 +144,4 @@ class TradeDeliveryInfo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('trade_offer', 'submitted_by')  # един запис на потребител за дадена размяна
+        unique_together = ('trade_offer', 'submitted_by') 

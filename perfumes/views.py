@@ -14,9 +14,8 @@ from django.db.models import Q
 from .forms import CustomUserCreationForm
 
 def home(request):
-    latest_perfumes = Perfume.objects.order_by('-id')[:6]  # последните 6
+    latest_perfumes = Perfume.objects.order_by('-id')[:6]
     return render(request, 'perfumes/home.html', {'latest_perfumes': latest_perfumes})
-
 
 def perfume_list(request):
     query = request.GET.get('q', '')
@@ -80,7 +79,6 @@ def add_perfume(request):
         return redirect('perfume_list')
 
     return render(request, 'perfumes/add_perfume.html')
-
 
 def register_view(request):
     if request.method == 'POST':
@@ -177,9 +175,6 @@ def edit_perfume(request, perfume_id):
 
     return render(request, 'perfumes/edit_perfume.html', {'perfume': perfume})
 
-
-
-
 @login_required(login_url='/login/')
 def add_to_cart(request, perfume_id):
     perfume = get_object_or_404(Perfume, id=perfume_id)
@@ -227,7 +222,6 @@ def cart_detail(request):
         'total': total
     })
 
-
 @require_POST
 @login_required
 def update_cart(request):
@@ -255,8 +249,6 @@ def update_cart(request):
 
     messages.success(request, 'Cart updated successfully!')
     return redirect('cart_detail')
-
-
 
 def perfumes_by_brand(request, brand_name):
     perfumes = Perfume.objects.filter(brand__iexact=brand_name)
@@ -335,8 +327,6 @@ def checkout(request):
         'total': total
     })
 
-
-
 @login_required
 def my_orders(request):
     orders = request.user.orders.prefetch_related('items__perfume', 'items__seller').order_by('-created_at')
@@ -382,12 +372,10 @@ def order_detail(request, item_id):
         'status_choices': ORDER_STATUS_CHOICES
     })
 
-
 def perfume_detail(request, perfume_id):
     perfume = get_object_or_404(Perfume, id=perfume_id)
     reviews = perfume.reviews.all()
     additional_images = perfume.additional_images.all()
-    
     average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
     review_count = reviews.count()
     filled_stars = range(int(round(average_rating)))
@@ -396,8 +384,6 @@ def perfume_detail(request, perfume_id):
     in_wishlist = False
     if request.user.is_authenticated:
         in_wishlist = perfume.wishlistitem_set.filter(user=request.user).exists()
-
-
     return render(request, 'perfumes/perfume_detail.html', {
         'perfume': perfume,
         'additional_images': additional_images,
@@ -415,7 +401,6 @@ def remove_from_wishlist(request, perfume_id):
     WishlistItem.objects.filter(user=request.user, perfume=perfume).delete()
     messages.success(request, f"{perfume.name} was removed from your wishlist.")
     return redirect('wishlist')
-
 
 @login_required
 def add_review(request, perfume_id):
@@ -453,20 +438,18 @@ def exchange_request(request, perfume_id):
             requested_perfume=requested_perfume,
             additional_payment=extra_payment if extra_payment else None
         )
-
         return redirect('provide_delivery_info', trade_id=offer.id)
 
     user_perfumes = Perfume.objects.filter(owner=request.user, is_for_trade=True)
-
     return render(request, 'perfumes/exchange_request.html', {
         'requested_perfume': requested_perfume,
         'user_perfumes': user_perfumes
     })
+
 @require_POST
 @login_required
 def respond_exchange(request, request_id):
     exchange = get_object_or_404(TradeOffer, id=request_id, user_to=request.user)
-
     action = request.POST.get('action')
     if action == 'accept':
         exchange.status = 'accepted'
@@ -491,33 +474,23 @@ def my_sent_offers(request):
         'offered_perfume', 'requested_perfume', 'user_to'
     ).order_by('-created_at')
 
-    # Обнови is_seen_by_sender, само ако не е видяна и не е pending
     TradeOffer.objects.filter(
         Q(user_from=request.user) & ~Q(status='pending'),
         is_seen_by_sender=False
     ).update(is_seen_by_sender=True)
-
-
     return render(request, 'perfumes/my_sent_offers.html', {
         'sent_offers': sent_offers
     })
-
 
 @login_required
 def my_received_offers(request):
     received_offers = request.user.received_trades.select_related('offered_perfume', 'requested_perfume', 'user_from').order_by('-created_at')
     return render(request, 'perfumes/my_received_offers.html', {'received_offers': received_offers})
 
-from .models import TradeOffer, TradeDeliveryInfo
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, render, redirect
-from django.contrib import messages
-
 @login_required
 def provide_delivery_info(request, trade_id):
     offer = get_object_or_404(TradeOffer, id=trade_id)
 
-    # Не позволявай повторно попълване
     if TradeDeliveryInfo.objects.filter(trade_offer=offer, submitted_by=request.user).exists():
         messages.info(request, "You have already submitted your delivery information for this trade.")
         return redirect('my_sent_offers' if offer.user_from == request.user else 'my_received_offers')
@@ -536,13 +509,13 @@ def provide_delivery_info(request, trade_id):
             phone=phone,
             note=note
         )
-
         messages.success(request, "Your delivery info has been saved.")
         return redirect('my_sent_offers' if offer.user_from == request.user else 'my_received_offers')
 
     return render(request, 'perfumes/provide_delivery_info.html', {
         'offer': offer
     })
+
 @login_required
 def trade_summary(request, trade_id):
     offer = get_object_or_404(TradeOffer, id=trade_id)
@@ -561,6 +534,7 @@ def trade_summary(request, trade_id):
         'from_info': offer.delivery_info_from,
         'to_info': offer.delivery_info_to,
     })
+
 @login_required
 @require_POST
 def cancel_trade_offer(request, offer_id):
@@ -573,23 +547,20 @@ def cancel_trade_offer(request, offer_id):
 def trade_history(request):
     show_completed = request.GET.get('completed') == 'on'
     show_rejected = request.GET.get('rejected') == 'on'
-
-
     offers = TradeOffer.objects.filter(
         Q(user_from=request.user) | Q(user_to=request.user),
         status__in=['completed', 'rejected']
     )
-
     if show_completed and not show_rejected:
         offers = offers.filter(status='completed')
     elif show_rejected and not show_completed:
         offers = offers.filter(status='rejected')
-
     return render(request, 'perfumes/trade_history.html', {
         'offers': offers,
         'show_completed': show_completed,
         'show_rejected': show_rejected
     })
+
 @login_required
 @require_POST
 def update_trade_status(request, offer_id):

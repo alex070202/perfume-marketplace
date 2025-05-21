@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}My Cart{% endblock %}
-
 {% block content %}
+
 <div class="container mt-5">
   <h2 class="text-light">My Cart</h2>
-
   {% if cart_items %}
     {% for item in cart_items %}
       <div class="d-flex align-items-center justify-content-between border-bottom py-3" data-id="{{ item.id }}" data-price="{{ item.perfume.price }}">
@@ -29,7 +28,6 @@
               <button class="btn btn-sm btn-outline-danger" title="Remove"><i class="bi bi-x-lg"></i></button>
             </form>
           </div>
-          
       </div>
     {% endfor %}
 
@@ -37,7 +35,6 @@
       <a href="{% url 'perfume_list' %}" class="btn btn-outline-light">← Continue Shopping</a>
       <h4 class="text-warning">Total: $<span id="cartTotal">{{ total|floatformat:2 }}</span></h4>
     </div>
-
     <div class="text-end mt-3">
       <a href="{% url 'checkout' %}" class="btn btn-success">Proceed to Checkout</a>
     </div>
@@ -68,15 +65,12 @@
       // Обнови total сумата
       totalSpan.textContent = total.toFixed(2);
     }
-
     document.querySelectorAll('.quantity-input').forEach(input => {
       input.addEventListener('change', () => {
         const itemId = input.dataset.itemId;
         const quantity = input.value;
-
         const data = new URLSearchParams();
         data.append(`quantity_${itemId}`, quantity);
-
         fetch("{% url 'update_cart' %}", {
           method: "POST",
           headers: {
@@ -96,7 +90,4 @@
     });
   });
 </script>
-
-
-
 {% endblock %}
