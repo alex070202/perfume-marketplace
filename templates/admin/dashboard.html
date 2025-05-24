@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5 text-light">
+    <h2 class="mb-4">⚙️ Admin Dashboard</h2>
+
+    <h4 class="text-danger">🚨 User Reports</h4>
+    {% if reports %}
+        <table class="table table-dark table-striped border">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Reported User</th>
+                    <th>Reporter</th>
+                    <th>Reason</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in reports %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ report.reported_user.username }}</td>
+                        <td>{{ report.reporter.username }}</td>
+                        <td>{{ report.reason }}</td>
+                        <td>{{ report.created_at|date:"Y-m-d H:i" }}</td>
+                        <td>
+                            {% if report.reported_user.is_active %}
+                                <a href="{% url 'ban_user' report.reported_user.id %}" 
+                                   class="btn btn-sm btn-danger"
+                                   onclick="return confirm('Ban {{ report.reported_user.username }}?');">
+                                    Ban
+                                </a>
+                            {% else %}
+                                <span class="text-muted">Already banned</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No reports submitted.</p>
+    {% endif %}
+
+    <hr class="my-4">
+
+    <h4 class="text-warning">🔒 Banned Users</h4>
+    {% if banned_users %}
+        <ul class="list-group bg-dark">
+            {% for user in banned_users %}
+                <li class="list-group-item bg-dark text-light">
+                    {{ user.username }} – {{ user.email }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No users are currently banned.</p>
+    {% endif %}
+</div>
+{% endblock %}

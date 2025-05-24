@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5 text-light">
+    <h2 class="mb-4">📝 Leave a Review for {{ reviewed_user.username }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="rating" class="form-label">Rating (1–5 stars)</label>
+            <select name="rating" id="rating" class="form-select" required>
+                <option value="">Select</option>
+                {% for i in "12345" %}
+                    <option value="{{ i }}">{{ i }} ★</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="comment" class="form-label">Your Review</label>
+            <textarea name="comment" id="comment" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit Review</button>
+        <a href="{% url 'user_profile' reviewed_user.id %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

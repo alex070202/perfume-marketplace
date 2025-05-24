@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5 text-light">
+    <h2 class="mb-4">🚨 Report {{ reported_user.username }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="reason" class="form-label">Reason for reporting</label>
+            <textarea name="reason" id="reason" class="form-control" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-danger">Submit Report</button>
+        <a href="{% url 'user_profile' reported_user.id %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

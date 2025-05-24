@@ -145,3 +145,20 @@ class TradeDeliveryInfo(models.Model):
 
     class Meta:
         unique_together = ('trade_offer', 'submitted_by') 
+
+class UserReview(models.Model):
+    reviewer = models.ForeignKey(User, related_name='given_user_reviews', on_delete=models.CASCADE)
+    reviewed_user = models.ForeignKey(User, related_name='received_user_reviews', on_delete=models.CASCADE)
+    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('reviewer', 'reviewed_user')
+
+class UserReport(models.Model):
+    reported_user = models.ForeignKey(User, related_name='reports_received', on_delete=models.CASCADE)
+    reporter = models.ForeignKey(User, related_name='reports_sent', on_delete=models.CASCADE)
+    reason = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_reviewed = models.BooleanField(default=False)

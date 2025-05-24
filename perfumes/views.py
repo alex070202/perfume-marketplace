@@ -12,6 +12,10 @@ from django.http import JsonResponse
 from .models import WishlistItem
 from django.db.models import Q
 from .forms import CustomUserCreationForm
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.models import User
+from .models import UserReview, UserReport
+from django.http import HttpResponseForbidden
 
 def home(request):
     latest_perfumes = Perfume.objects.order_by('-id')[:6]
@@ -582,4 +586,71 @@ def perfumes_for_trade(request):
     return render(request, 'perfumes/perfume_list.html', {
         'perfumes': perfumes,
         'filter_for_trade': True
+    })
+
+@staff_member_required
+def reports_dashboard(request):
+    reports = UserReport.objects.select_related('reported_user', 'reporter').order_by('-created_at')
+    return render(request, 'admin/reports_dashboard.html', {'reports': reports})
+
+@staff_member_required
+def ban_user(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    user.is_active = False
+    user.save()
+    messages.success(request, f'User {user.username} has been banned.')
+    return redirect('reports_dashboard')
+
+@login_required
+def user_profile(request, user_id):
+    seller = get_object_or_404(User, id=user_id)
+    perfumes = Perfume.objects.filter(owner=seller)
+    reviews = seller.received_user_reviews.select_related('reviewer')
+    avg_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
+    return render(request, 'users/profile.html', {
+        'seller': seller,
+        'perfumes': perfumes,
+        'reviews': reviews,
+        'avg_rating': round(avg_rating, 1)
+    })
+
+@login_required
+def leave_user_review(request, user_id):
+    reviewed_user = get_object_or_404(User, id=user_id)
+    if request.method == 'POST':
+        rating = int(request.POST.get('rating'))
+        comment = request.POST.get('comment')
+        UserReview.objects.update_or_create(
+            reviewer=request.user,
+            reviewed_user=reviewed_user,
+            defaults={'rating': rating, 'comment': comment}
+        )
+        messages.success(request, 'Your review has been submitted.')
+        return redirect('user_profile', user_id=user_id)
+    return render(request, 'users/leave_review.html', {'reviewed_user': reviewed_user})
+
+@login_required
+def report_user(request, user_id):
+    reported_user = get_object_or_404(User, id=user_id)
+    if request.method == 'POST':
+        reason = request.POST.get('reason')
+        UserReport.objects.create(
+            reported_user=reported_user,
+            reporter=request.user,
+            reason=reason
+        )
+        messages.success(request, 'User has been reported.')
+        return redirect('user_profile', user_id=user_id)
+    return render(request, 'users/report_user.html', {'reported_user': reported_user})
+@login_required
+def admin_dashboard(request):
+    if not request.user.is_staff:
+        return HttpResponseForbidden("You are not authorized to view this page.")
+
+    reports = UserReport.objects.select_related('reported_user', 'reporter').order_by('-created_at')
+    banned_users = User.objects.filter(is_active=False)
+    
+    return render(request, 'admin/dashboard.html', {
+        'reports': reports,
+        'banned_users': banned_users
     })

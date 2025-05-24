@@ -140,6 +140,41 @@
             <div class="mt-4">
                 <a href="{% url 'perfume_list' %}" class="btn btn-outline-light">&larr; Back to All Perfumes</a>
             </div>
+            <!-- 👤 Seller Info -->
+            <div class="mt-4 card bg-dark text-light border-light">
+                <div class="card-body">
+                    <h5 class="card-title mb-2">👤 Seller:
+                        <a href="{% url 'user_profile' perfume.owner.id %}" class="text-info">
+                            {{ perfume.owner.username }}
+                        </a>
+                    </h5>
+
+                    {% with perfume.owner.received_user_reviews.all as seller_reviews %}
+                        {% if seller_reviews %}
+                            <p class="mb-1">
+                                ⭐ Average Rating:
+                                {{ seller_reviews|length }} review{{ seller_reviews|length|pluralize }}
+                            </p>
+                        {% else %}
+                            <p class="text-muted mb-1">No seller reviews yet.</p>
+                        {% endif %}
+                    {% endwith %}
+
+                    {% if request.user.is_authenticated and request.user != perfume.owner %}
+                        <a href="{% url 'leave_user_review' perfume.owner.id %}" class="btn btn-sm btn-outline-primary me-2 mb-2">
+                            ✍️ Leave a Review
+                        </a>
+                        <a href="{% url 'report_user' perfume.owner.id %}" class="btn btn-sm btn-outline-danger mb-2">
+                            🚨 Report Seller
+                        </a>
+                    {% endif %}
+
+                    <a href="{% url 'user_profile' perfume.owner.id %}" class="btn btn-sm btn-outline-light">
+                        View Seller Profile
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 
