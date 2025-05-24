@@ -12,7 +12,7 @@ class Perfume(models.Model):
     image = models.ImageField(upload_to='perfume_images/', blank=True, null=True)
     stock = models.PositiveIntegerField(default=0)
     notes = models.TextField(blank=True, null=True)
-
+    is_active = models.BooleanField(default=True)
     CATEGORY_CHOICES = [
     ('men', 'Men'),
     ('women', 'Women'),

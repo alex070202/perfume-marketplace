@@ -36,6 +36,10 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(
         template_name='registration/password_reset_complete.html'
     ), name='password_reset_complete'),
+
+    path('dashboard/ban/<int:user_id>/', perfume_views.ban_user, name='ban_user'),
+    path('dashboard/unban/<int:user_id>/', perfume_views.unban_user, name='unban_user'),
+
 ]
 
 # static/media

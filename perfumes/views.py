@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Perfume, PerfumeImage, Cart, CartItem,TradeOffer
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login, logout
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.decorators.http import require_POST
@@ -18,12 +18,12 @@ from .models import UserReview, UserReport
 from django.http import HttpResponseForbidden
 
 def home(request):
-    latest_perfumes = Perfume.objects.order_by('-id')[:6]
+    latest_perfumes = Perfume.objects.filter(is_active=True).order_by('-id')[:6]
     return render(request, 'perfumes/home.html', {'latest_perfumes': latest_perfumes})
 
 def perfume_list(request):
     query = request.GET.get('q', '')
-    perfumes = Perfume.objects.all()
+    perfumes = Perfume.objects.filter(is_active=True)
 
     if query:
         perfumes = perfumes.filter(
@@ -106,13 +106,28 @@ def logout_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
-        if form.is_valid():
-            login(request, form.get_user())
-            return redirect('home')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            user = None
+
+        if user and user.check_password(password):
+            if user.is_active:
+                login(request, user)
+                return redirect('home')
+            else:
+                return render(request, 'users/banned.html')
+        else:
+            messages.error(request, "Invalid username or password.")
+            form = AuthenticationForm(request)
+            return render(request, 'registration/login.html', {'form': form})
+
     else:
         form = AuthenticationForm()
-    return render(request, 'registration/login.html', {'form': form})
+        return render(request, 'registration/login.html', {'form': form})
 
 @login_required
 def wishlist(request):
@@ -255,7 +270,7 @@ def update_cart(request):
     return redirect('cart_detail')
 
 def perfumes_by_brand(request, brand_name):
-    perfumes = Perfume.objects.filter(brand__iexact=brand_name)
+    perfumes = Perfume.objects.filter(brand__iexact=brand_name, is_active=True)
     return render(request, 'perfumes/perfume_list.html', {
         'perfumes': perfumes,
         'filter_brand': brand_name
@@ -420,7 +435,7 @@ def about_us(request):
     return render(request, 'perfumes/about_us.html')
 
 def perfume_category(request, category):
-    perfumes = Perfume.objects.filter(category=category)
+    perfumes = Perfume.objects.filter(category=category, is_active=True)
     return render(request, 'perfumes/perfume_list.html', {'perfumes': perfumes})
 
 @login_required
@@ -444,7 +459,7 @@ def exchange_request(request, perfume_id):
         )
         return redirect('provide_delivery_info', trade_id=offer.id)
 
-    user_perfumes = Perfume.objects.filter(owner=request.user, is_for_trade=True)
+    user_perfumes = Perfume.objects.filter(owner=request.user, is_for_trade=True, is_active=True)
     return render(request, 'perfumes/exchange_request.html', {
         'requested_perfume': requested_perfume,
         'user_perfumes': user_perfumes
@@ -582,7 +597,7 @@ def update_trade_status(request, offer_id):
     return redirect('trade_summary', trade_id=offer.id)
 
 def perfumes_for_trade(request):
-    perfumes = Perfume.objects.filter(is_for_trade=True)
+    perfumes = Perfume.objects.filter(is_for_trade=True, is_active=True)
     return render(request, 'perfumes/perfume_list.html', {
         'perfumes': perfumes,
         'filter_for_trade': True
@@ -593,18 +608,26 @@ def reports_dashboard(request):
     reports = UserReport.objects.select_related('reported_user', 'reporter').order_by('-created_at')
     return render(request, 'admin/reports_dashboard.html', {'reports': reports})
 
-@staff_member_required
+
+@login_required
 def ban_user(request, user_id):
+    if not request.user.is_staff:
+        return HttpResponseForbidden("You are not allowed to perform this action.")
+
     user = get_object_or_404(User, id=user_id)
     user.is_active = False
     user.save()
-    messages.success(request, f'User {user.username} has been banned.')
-    return redirect('reports_dashboard')
+
+    # ❗ Скриваме обявите на потребителя, вместо да ги трием
+    Perfume.objects.filter(owner=user).update(is_active=False)
+
+    messages.success(request, f'User {user.username} has been banned and their perfumes have been hidden.')
+    return redirect('admin_dashboard')
 
 @login_required
 def user_profile(request, user_id):
     seller = get_object_or_404(User, id=user_id)
-    perfumes = Perfume.objects.filter(owner=seller)
+    perfumes = Perfume.objects.filter(owner=seller, is_active=True)
     reviews = seller.received_user_reviews.select_related('reviewer')
     avg_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
     return render(request, 'users/profile.html', {
@@ -654,3 +677,18 @@ def admin_dashboard(request):
         'reports': reports,
         'banned_users': banned_users
     })
+
+@login_required
+def unban_user(request, user_id):
+    if not request.user.is_staff:
+        return HttpResponseForbidden("You are not allowed to perform this action.")
+
+    user = get_object_or_404(User, id=user_id)
+    user.is_active = True
+    user.save()
+
+    # Връщаме обявите му като активни (ако искаш)
+    Perfume.objects.filter(owner=user).update(is_active=True)
+
+    messages.success(request, f'User {user.username} has been unbanned and their perfumes are now visible again.')
+    return redirect('admin_dashboard')

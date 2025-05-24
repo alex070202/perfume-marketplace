@@ -3,15 +3,26 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Login</button>
-    <p class="mt-3">
-    <a href="{% url 'password_reset' %}">Forgot your password?</a>
-</p>
+<div class="container py-5 text-light">
+    <h2 class="mb-4">Login</h2>
 
-</form>
+    <!-- 🟡 Показване на съобщения (напр. за бан) -->
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
 
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Login</button>
+        <p class="mt-3">
+            <a href="{% url 'password_reset' %}">Forgot your password?</a>
+        </p>
+    </form>
+</div>
 {% endblock %}

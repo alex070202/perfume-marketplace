@@ -51,7 +51,6 @@ urlpatterns = [
     path('user/<int:user_id>/', views.user_profile, name='user_profile'),
     path('user/<int:user_id>/review/', views.leave_user_review, name='leave_user_review'),
     path('user/<int:user_id>/report/', views.report_user, name='report_user'),
-    path('admin/reports/', views.reports_dashboard, name='reports_dashboard'),
     path('admin/ban/<int:user_id>/', views.ban_user, name='ban_user'),
     path('admin/dashboard/', views.admin_dashboard, name='admin_dashboard'),
 
