@@ -148,13 +148,17 @@
         </ul>
         {% if request.user.is_staff %}
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link text-warning" href="{% url 'admin_dashboard' %}">
+            <li class="nav-item position-relative">
+              <a class="nav-link text-warning d-flex align-items-center" href="{% url 'admin_dashboard' %}">
                 ⚠ Admin Dashboard
+                {% if admin_report_count > 0 %}
+                  <span class="badge bg-danger ms-2">{{ admin_report_count }}</span>
+                {% endif %}
               </a>
             </li>
           </ul>
         {% endif %}
+
 
         <!-- Search -->
         <form class="d-flex" method="get" action="{% url 'perfume_list' %}">

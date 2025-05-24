@@ -16,6 +16,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from .models import UserReview, UserReport
 from django.http import HttpResponseForbidden
+from collections import defaultdict, OrderedDict
 
 def home(request):
     latest_perfumes = Perfume.objects.filter(is_active=True).order_by('-id')[:6]
@@ -668,13 +669,23 @@ def report_user(request, user_id):
 @login_required
 def admin_dashboard(request):
     if not request.user.is_staff:
-        return HttpResponseForbidden("You are not authorized to view this page.")
-
-    reports = UserReport.objects.select_related('reported_user', 'reporter').order_by('-created_at')
-    banned_users = User.objects.filter(is_active=False)
+        return HttpResponseForbidden()
     
+    UserReport.objects.filter(is_reviewed=False).update(is_reviewed=True)
+    
+    all_reports = UserReport.objects.select_related('reported_user', 'reporter').order_by('-created_at')
+    grouped_reports = defaultdict(list)
+
+    for report in all_reports:
+        grouped_reports[report.reported_user].append(report)
+
+    # Преобразуваме в обикновен речник, сортиран по брой репорти
+    grouped_reports = dict(sorted(grouped_reports.items(), key=lambda x: len(x[1]), reverse=True))
+
+    banned_users = User.objects.filter(is_active=False)
+
     return render(request, 'admin/dashboard.html', {
-        'reports': reports,
+        'grouped_reports': grouped_reports,
         'banned_users': banned_users
     })
 

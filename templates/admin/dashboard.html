@@ -1,67 +1,122 @@
 {% extends "base.html" %}
 
+{% block title %}Admin Dashboard{% endblock %}
+
 {% block content %}
 <div class="container py-5 text-light">
     <h2 class="mb-4">⚙️ Admin Dashboard</h2>
 
-    <h4 class="text-danger">🚨 User Reports</h4>
-    {% if reports %}
-        <table class="table table-dark table-striped border">
-            <thead>
+    <!-- Dropdown menu -->
+    <div class="dropdown mb-4">
+        <button class="btn btn-outline-light dropdown-toggle" type="button" id="adminSectionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Section
+        </button>
+        <ul class="dropdown-menu bg-dark border-secondary" aria-labelledby="adminSectionDropdown">
+            <li><a class="dropdown-item text-white" href="#" onclick="showSection('reports')">🚨 User Reports</a></li>
+            <li><a class="dropdown-item text-white" href="#" onclick="showSection('banned')">🔒 Banned Users</a></li>
+        </ul>
+    </div>
+
+    <!-- 🚨 Reports Section -->
+    <div id="reports-section">
+        <h4 class="text-danger">🚨 User Reports</h4>
+
+        <input type="text" id="reportSearchInput" class="form-control mb-3 bg-dark text-light border-light" placeholder="🔍 Search reported usernames..." onkeyup="filterReports()">
+
+        {% if grouped_reports.items %}
+    <table class="table table-dark table-striped border">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Reported User</th>
+                <th>Reports</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user, reports in grouped_reports.items %}
                 <tr>
-                    <th>#</th>
-                    <th>Reported User</th>
-                    <th>Reporter</th>
-                    <th>Reason</th>
-                    <th>Date</th>
-                    <th>Actions</th>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ user.username }} <span class="badge bg-danger">{{ reports|length }} reports</span></td>
+                    <td>
+                        <ul class="mb-0">
+                            {% for report in reports %}
+                                <li>
+                                    <strong>{{ report.reporter.username }}</strong> ({{ report.created_at|date:"Y-m-d H:i" }}): 
+                                    {{ report.reason }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        {% if user.is_active %}
+                            <a href="{% url 'ban_user' user.id %}" class="btn btn-sm btn-danger">
+                                ❌ Ban {{ user.username }}
+                            </a>
+                        {% else %}
+                            <span class="text-light">Already banned</span>
+                        {% endif %}
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                {% for report in reports %}
-                    <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{ report.reported_user.username }}</td>
-                        <td>{{ report.reporter.username }}</td>
-                        <td>{{ report.reason }}</td>
-                        <td>{{ report.created_at|date:"Y-m-d H:i" }}</td>
-                        <td>
-                            {% if report.reported_user.is_active %}
-                                <a href="{% url 'ban_user' report.reported_user.id %}" class="btn btn-sm btn-danger">
-                                    ❌ Ban User
-                                </a>
-
-                                </a>
-                            {% else %}
-                                <span class="text-light">Already banned</span>
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No reports submitted.</p>
-    {% endif %}
-
-    <hr class="my-4">
-
-    <h4 class="text-warning">🔒 Banned Users</h4>
-{% if banned_users %}
-    <ul class="list-group bg-dark">
-        {% for user in banned_users %}
-            <li class="list-group-item bg-dark text-light d-flex justify-content-between align-items-center">
-                {{ user.username }} – {{ user.email }}
-                <a href="{% url 'unban_user' user.id %}" 
-                   class="btn btn-sm btn-outline-success"
-                   onclick="return confirm('Unban {{ user.username }}?');">
-                   🔓 Unban
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </tbody>
+    </table>
 {% else %}
-    <p>No users are currently banned.</p>
+    <p>No reports submitted.</p>
 {% endif %}
 
+    </div>
+
+    <!-- 🔒 Banned Users Section -->
+    <div id="banned-section" style="display: none;">
+        <h4 class="text-warning">🔒 Banned Users</h4>
+
+        <input type="text" id="bannedSearchInput" class="form-control mb-3 bg-dark text-light border-light" placeholder="🔍 Search banned usernames..." onkeyup="filterBannedUsers()">
+
+        {% if banned_users %}
+            <ul class="list-group bg-dark">
+                {% for user in banned_users %}
+                    <li class="list-group-item bg-dark text-light d-flex justify-content-between align-items-center">
+                        {{ user.username }} – {{ user.email }}
+                        <a href="{% url 'unban_user' user.id %}" 
+                           class="btn btn-sm btn-outline-success"
+                           onclick="return confirm('Unban {{ user.username }}?');">
+                           🔓 Unban
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No users are currently banned.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+function showSection(section) {
+    document.getElementById('reports-section').style.display = section === 'reports' ? 'block' : 'none';
+    document.getElementById('banned-section').style.display = section === 'banned' ? 'block' : 'none';
+}
+
+function filterReports() {
+    const input = document.getElementById('reportSearchInput').value.toLowerCase();
+    const rows = document.querySelectorAll('#reports-section tbody tr');
+
+    rows.forEach(row => {
+        const username = row.children[1]?.textContent.toLowerCase() || '';
+        row.style.display = username.includes(input) ? '' : 'none';
+    });
+}
+
+function filterBannedUsers() {
+    const input = document.getElementById('bannedSearchInput').value.toLowerCase();
+    const items = document.querySelectorAll('#banned-section .list-group-item');
+
+    items.forEach(item => {
+        const username = item.textContent.toLowerCase();
+        item.style.display = username.includes(input) ? '' : 'none';
+    });
+}
+</script>
 {% endblock %}

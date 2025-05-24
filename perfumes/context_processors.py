@@ -1,4 +1,4 @@
-from .models import OrderItem, TradeOffer, TradeDeliveryInfo
+from .models import OrderItem, TradeOffer, TradeDeliveryInfo, UserReport
 from django.db.models import Q
 
 def global_notification_counts(request):
@@ -18,7 +18,6 @@ def global_notification_counts(request):
         ).count()
 
         # Приети размени, чакащи адрес от текущия потребител
-        
         context['awaiting_address_info_count'] = TradeOffer.objects.filter(
             status='accepted'
         ).exclude(
@@ -27,11 +26,14 @@ def global_notification_counts(request):
             Q(user_from=request.user) | Q(user_to=request.user)
         ).count()
 
-
+        # Обновени размени
         context['updated_sent_offers_count'] = TradeOffer.objects.filter(
             user_from=request.user,
             is_seen_by_sender=False
         ).exclude(status='pending').count()
 
+        # Брой сигнали към админ
+        if request.user.is_staff:
+            context['admin_report_count'] = UserReport.objects.filter(is_reviewed=False).count()
 
     return context
