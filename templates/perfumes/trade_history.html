@@ -21,8 +21,11 @@
         {% for trade in offers %}
             <div class="card mb-3 {% if trade.status == 'completed' %}border-success{% else %}border-danger{% endif %} bg-dark text-light">
                 <div class="card-body">
-                    <p><strong>{{ trade.user_from.username }}</strong> offered <strong>{{ trade.offered_perfume }}</strong>
-                       for <strong>{{ trade.user_to.username }}</strong></p>
+                    <p>
+                        <strong>{{ trade.user_from.username }}</strong> offered 
+                        <strong>{{ trade.offered_perfume }}</strong>
+                        for <strong>{{ trade.user_to.username }}</strong>
+                    </p>
 
                     {% if trade.status == 'completed' %}
                         <span class="badge bg-success">Completed</span>
@@ -30,9 +33,13 @@
                         <span class="badge bg-danger">Rejected</span>
                     {% endif %}
 
-                    <a href="{% url 'trade_summary' trade_id=trade.id %}" class="btn btn-outline-info btn-sm mt-2">
-                        View Trade Details
-                    </a>
+                    {% if trade.status == 'completed' and trade.both_delivery_infos_submitted %}
+                        <a href="{% url 'trade_summary' trade_id=trade.id %}" class="btn btn-outline-info btn-sm mt-2">
+                            View Trade Details
+                        </a>
+                    {% else %}
+                        <p class="text-muted mt-2">Details unavailable for this trade.</p>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
