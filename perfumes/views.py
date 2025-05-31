@@ -17,6 +17,9 @@ from django.contrib.auth.models import User
 from .models import UserReview, UserReport
 from django.http import HttpResponseForbidden
 from collections import defaultdict, OrderedDict
+from django.utils.formats import sanitize_separators
+from django.utils.translation import gettext as _
+
 
 def home(request):
     latest_perfumes = Perfume.objects.filter(is_active=True).order_by('-id')[:6]
@@ -51,7 +54,8 @@ def add_perfume(request):
         name = request.POST['name']
         brand = request.POST['brand']
         description = request.POST['description']
-        price = request.POST['price']
+        raw_price = request.POST['price']
+        price = sanitize_separators(raw_price)  # Тук пазим в отделна променлива!
         stock = request.POST['stock']
         category = request.POST.get('category')
         notes = request.POST.get('notes')
@@ -62,12 +66,13 @@ def add_perfume(request):
         extra_image2 = request.FILES.get('extra_image2')
         extra_image3 = request.FILES.get('extra_image3')
 
+        # Сега вече създаваме perfume, използвайки коригираната цена
         perfume = Perfume(
             name=name,
             brand=brand,
             description=description,
             price=price,
-            stock=stock,  
+            stock=stock,
             is_for_trade=is_for_trade,
             owner=request.user,
             image=main_image,
@@ -80,7 +85,7 @@ def add_perfume(request):
             if img:
                 PerfumeImage.objects.create(perfume=perfume, image=img)
 
-        messages.success(request, 'Perfume added successfully!')
+        messages.success(request, _('Perfume added successfully!'))
         return redirect('perfume_list')
 
     return render(request, 'perfumes/add_perfume.html')
@@ -91,7 +96,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, 'Registration successful!')
+            messages.success(request,_('Registration successful!'))
             return redirect('home')
     else:
         form = CustomUserCreationForm()
@@ -100,7 +105,7 @@ def register_view(request):
 def logout_view(request):
     if request.method == 'POST':
         logout(request)
-        messages.success(request, "You have been logged out.")
+        messages.success(request,_("You have been logged out."))
         return redirect('home')
     else:
         return redirect('home')
@@ -122,7 +127,7 @@ def login_view(request):
             else:
                 return render(request, 'users/banned.html')
         else:
-            messages.error(request, "Invalid username or password.")
+            messages.error(request,_("Invalid username or password."))
             form = AuthenticationForm(request)
             return render(request, 'registration/login.html', {'form': form})
 
@@ -155,7 +160,7 @@ def delete_perfume(request, perfume_id):
     perfume = get_object_or_404(Perfume, id=perfume_id, owner=request.user)
     if request.method == 'POST':
         perfume.delete()
-        messages.success(request, 'Perfume deleted successfully!')
+        messages.success(request,_('Perfume deleted successfully!'))
         return redirect('my_perfumes')
     return render(request, 'perfumes/confirm_delete.html', {'perfume': perfume})
 
@@ -167,7 +172,8 @@ def edit_perfume(request, perfume_id):
         perfume.name = request.POST['name']
         perfume.brand = request.POST['brand']
         perfume.description = request.POST['description']
-        perfume.price = request.POST['price']
+        raw_price = request.POST['price']
+        perfume.price = sanitize_separators(raw_price)
         perfume.stock = request.POST['stock']
         perfume.category = request.POST['category']
         perfume.is_for_trade = 'is_for_trade' in request.POST
@@ -190,29 +196,34 @@ def edit_perfume(request, perfume_id):
         perfume.notes = request.POST.get('notes')
 
         perfume.save()
-        messages.success(request, 'Perfume updated successfully!')
+        messages.success(request,_('Perfume updated successfully!'))
         return redirect('my_perfumes')
 
     return render(request, 'perfumes/edit_perfume.html', {'perfume': perfume})
+
+
 
 @login_required(login_url='/login/')
 def add_to_cart(request, perfume_id):
     perfume = get_object_or_404(Perfume, id=perfume_id)
     quantity = int(request.POST.get('quantity', 1))
 
-    cart, _ = Cart.objects.get_or_create(user=request.user)
-    cart_item = CartItem.objects.filter(cart=cart, perfume=perfume).first()
+    cart, created = Cart.objects.get_or_create(user=request.user)
 
+    cart_item = CartItem.objects.filter(cart=cart, perfume=perfume).first()
     current_quantity = cart_item.quantity if cart_item else 0
     requested_total = current_quantity + quantity
 
     if requested_total > perfume.stock:
-        error_message = f"Only {perfume.stock} units of {perfume.name} are available in stock."
-        
+        error_message = _("Only %(stock)s units of %(name)s are available in stock.") % {
+            'stock': perfume.stock,
+            'name': perfume.name,
+        }
+
         # AJAX response
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
             return JsonResponse({'error': error_message}, status=400)
-        
+
         messages.error(request, error_message)
         return redirect('perfume_detail', perfume_id=perfume.id)
 
@@ -223,12 +234,16 @@ def add_to_cart(request, perfume_id):
 
     cart_item.save()
 
+    success_message = _("%(name)s added to cart.") % {'name': perfume.name}
+
     # AJAX response
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return JsonResponse({'message': 'Item added to cart successfully'})
+        return JsonResponse({'message': success_message})
 
-    messages.success(request, f"{perfume.name} added to cart.")
+    messages.success(request, success_message)
     return redirect('perfume_detail', perfume_id=perfume.id)
+
+
 
 @login_required
 def cart_detail(request):
@@ -255,10 +270,15 @@ def update_cart(request):
             continue
 
         if quantity > item.perfume.stock:
-            messages.error(request, f"Not enough stock for '{item.perfume.name}'. Only {item.perfume.stock} left.")
+            messages.error(request, _("Not enough stock for '%(name)s'. Only %(stock)s left.") % {
+                'name': item.perfume.name,
+                'stock': item.perfume.stock
+            })
             has_error = True
         elif quantity < 1:
-            messages.error(request, f"Invalid quantity for '{item.perfume.name}'.")
+            messages.error(request, _("Invalid quantity for '%(name)s'.") % {
+                'name': item.perfume.name
+            })
             has_error = True
         else:
             item.quantity = quantity
@@ -267,7 +287,7 @@ def update_cart(request):
     if has_error:
         return redirect('cart_detail')
 
-    messages.success(request, 'Cart updated successfully!')
+    messages.success(request, _('Cart updated successfully!'))
     return redirect('cart_detail')
 
 def perfumes_by_brand(request, brand_name):
@@ -281,7 +301,7 @@ def perfumes_by_brand(request, brand_name):
 def remove_from_cart(request, item_id):
     item = get_object_or_404(CartItem, id=item_id, cart__user=request.user)
     item.delete()
-    messages.success(request, 'Item removed from your cart!')
+    messages.success(request,_('Item removed from your cart!'))
     return redirect('cart_detail')
 
 @login_required
@@ -301,7 +321,10 @@ def checkout(request):
 
         if overstocked_items:
             for name, available in overstocked_items:
-                messages.error(request, f'Not enough stock for "{name}". Only {available} available.')
+                messages.error(request, _('Not enough stock for "%(name)s". Only %(available)s available.') % {
+                    'name': name,
+                    'available': available
+                })
             return redirect('cart_detail')
 
         # Данни от формата
@@ -366,7 +389,7 @@ def update_order_status(request, item_id):
         if status in dict(ORDER_STATUS_CHOICES):
             item.order.status = status
             item.order.save()
-            messages.success(request, 'Order status updated.')
+            messages.success(request,_('Order status updated.'))
 
     return redirect('sales_dashboard')
 
@@ -381,9 +404,9 @@ def order_detail(request, item_id):
             if status != order.status:
                 order.status = status
                 order.save()
-                messages.success(request, 'Order status updated.')
+                messages.success(request,_('Order status updated.'))
             else:
-                messages.info(request, 'Status was not changed.')
+                messages.info(request,_('Status was not changed.'))
             return redirect('order_detail', item_id=item_id)
 
     return render(request, 'perfumes/order_detail.html', {
@@ -419,7 +442,9 @@ def perfume_detail(request, perfume_id):
 def remove_from_wishlist(request, perfume_id):
     perfume = get_object_or_404(Perfume, id=perfume_id)
     WishlistItem.objects.filter(user=request.user, perfume=perfume).delete()
-    messages.success(request, f"{perfume.name} was removed from your wishlist.")
+    messages.success(request, _('%(name)s was removed from your wishlist.') % {
+        'name': perfume.name
+    })
     return redirect('wishlist')
 
 @login_required
@@ -429,7 +454,7 @@ def add_review(request, perfume_id):
         rating = int(request.POST.get('rating', 5))
         comment = request.POST.get('comment')
         Review.objects.create(perfume=perfume, user=request.user, rating=rating, comment=comment)
-        messages.success(request, 'Review submitted successfully!')
+        messages.success(request,_('Review submitted successfully!'))
     return redirect('perfume_detail', perfume_id=perfume.id)
 
 def about_us(request):
@@ -512,7 +537,7 @@ def provide_delivery_info(request, trade_id):
     offer = get_object_or_404(TradeOffer, id=trade_id)
 
     if TradeDeliveryInfo.objects.filter(trade_offer=offer, submitted_by=request.user).exists():
-        messages.info(request, "You have already submitted your delivery information for this trade.")
+        messages.info(request,_("You have already submitted your delivery information for this trade."))
         return redirect('my_sent_offers' if offer.user_from == request.user else 'my_received_offers')
 
     if request.method == 'POST':
@@ -529,7 +554,7 @@ def provide_delivery_info(request, trade_id):
             phone=phone,
             note=note
         )
-        messages.success(request, "Your delivery info has been saved.")
+        messages.success(request,_("Your delivery info has been saved."))
         return redirect('my_sent_offers' if offer.user_from == request.user else 'my_received_offers')
 
     return render(request, 'perfumes/provide_delivery_info.html', {
@@ -546,7 +571,7 @@ def trade_summary(request, trade_id):
 
     # Убедени сме, че и двете страни са попълнили информация
     if not hasattr(offer, 'delivery_info_from') or not hasattr(offer, 'delivery_info_to'):
-        messages.error(request, "Delivery information is not yet complete.")
+        messages.error(request,_("Delivery information is not yet complete."))
         return redirect('my_sent_offers')
 
     return render(request, 'perfumes/trade_summary.html', {
@@ -560,7 +585,7 @@ def trade_summary(request, trade_id):
 def cancel_trade_offer(request, offer_id):
     offer = get_object_or_404(TradeOffer, id=offer_id, user_from=request.user, status='pending')
     offer.delete()
-    messages.success(request, "Trade offer canceled.")
+    messages.success(request,_("Trade offer canceled."))
     return redirect('my_sent_offers')
 
 @login_required
@@ -622,7 +647,9 @@ def ban_user(request, user_id):
     # ❗ Скриваме обявите на потребителя, вместо да ги трием
     Perfume.objects.filter(owner=user).update(is_active=False)
 
-    messages.success(request, f'User {user.username} has been banned and their perfumes have been hidden.')
+    messages.success(request, _('User %(username)s has been banned and their perfumes have been hidden.') % {
+        'username': user.username
+    })
     return redirect('admin_dashboard')
 
 @login_required
@@ -649,7 +676,7 @@ def leave_user_review(request, user_id):
             reviewed_user=reviewed_user,
             defaults={'rating': rating, 'comment': comment}
         )
-        messages.success(request, 'Your review has been submitted.')
+        messages.success(request,_('Your review has been submitted.'))
         return redirect('user_profile', user_id=user_id)
     return render(request, 'users/leave_review.html', {'reviewed_user': reviewed_user})
 
@@ -663,7 +690,7 @@ def report_user(request, user_id):
             reporter=request.user,
             reason=reason
         )
-        messages.success(request, 'User has been reported.')
+        messages.success(request,_('User has been reported.'))
         return redirect('user_profile', user_id=user_id)
     return render(request, 'users/report_user.html', {'reported_user': reported_user})
 @login_required
@@ -700,6 +727,8 @@ def unban_user(request, user_id):
 
     # Връщаме обявите му като активни (ако искаш)
     Perfume.objects.filter(owner=user).update(is_active=True)
-
-    messages.success(request, f'User {user.username} has been unbanned and their perfumes are now visible again.')
+    
+    messages.success(request, _('User %(username)s has been unbanned and their perfumes are now visible again.') % {
+        'username': user.username
+    })
     return redirect('admin_dashboard')

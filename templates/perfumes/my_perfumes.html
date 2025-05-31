@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}My Perfumes{% endblock %}
+{% block title %}{% trans "My Perfumes" %}{% endblock %}
 
 {% block content %}
-<h1>My Perfumes</h1>
+<h1>{% trans "My Perfumes" %}</h1>
 <div class="row">
     {% for perfume in perfumes %}
         {% if perfume.name %}
@@ -23,18 +24,18 @@
                     {% endif %}
 
                     {% if perfume.is_for_trade %}
-                        <span class="badge bg-success">Available for Trade</span>
+                        <span class="badge bg-success">{% trans "Available for Trade" %}</span>
                     {% endif %}
 
-                    <a href="{% url 'delete_perfume' perfume.id %}" class="btn btn-danger mt-3">Delete</a>
-                    <a href="{% url 'edit_perfume' perfume.id %}" class="btn btn-warning mt-2">Edit</a>
+                    <a href="{% url 'delete_perfume' perfume.id %}" class="btn btn-danger mt-3">{% trans "Delete" %}</a>
+                    <a href="{% url 'edit_perfume' perfume.id %}" class="btn btn-warning mt-2">{% trans "Edit" %}</a>
 
                 </div>
             </div>
         </div>
         {% endif %}
     {% empty %}
-        <p>You haven't added any perfumes yet.</p>
+        <p>{% trans "You haven't added any perfumes yet." %}</p>
     {% endfor %}
 </div>
 {% endblock %}

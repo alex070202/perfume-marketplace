@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{% trans "Register" %}{% endblock %}
 
 {% block content %}
 <div class="container py-5" style="max-width: 500px;">
-  <h2 class="text-light mb-4">👤 Create Your Account</h2>
+  <h2 class="text-light mb-4">{% trans "👤 Create Your Account" %}</h2>
 
   <form method="post" class="bg-dark p-4 rounded border border-secondary">
     {% csrf_token %}
@@ -19,11 +20,11 @@
         {% endif %}
       </div>
     {% endfor %}
-    <button type="submit" class="btn btn-success w-100">Register</button>
+    <button type="submit" class="btn btn-success w-100">{% trans "Register" %}</button>
   </form>
 
-  <p class="text-light mt-3">Already have an account?
-    <a href="{% url 'login' %}" class="text-warning">Login</a>
+  <p class="text-light mt-3">{% trans "Already have an account?" %}
+    <a href="{% url 'login' %}" class="text-warning">{% trans "Login" %}</a>
   </p>
 </div>
 {% endblock %}

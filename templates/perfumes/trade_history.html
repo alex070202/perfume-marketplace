@@ -1,20 +1,22 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 {% load static %}
 
 {% block content %}
 <div class="container mt-5 text-light">
-    <h2 class="mb-4"><i class="bi bi-clock-history"></i> Trade History</h2>
+    <h2 class="mb-4"><i class="bi bi-clock-history"></i>{% trans "Trade History" %} </h2>
 
     <form method="get" class="mb-4 d-flex align-items-center gap-3">
         <div class="form-check text-light">
             <input class="form-check-input" type="checkbox" name="completed" id="completed" {% if request.GET.completed %}checked{% endif %}>
-            <label class="form-check-label" for="completed">Completed</label>
+            <label class="form-check-label" for="completed">{% trans "Completed" %}</label>
         </div>
         <div class="form-check text-light">
             <input class="form-check-input" type="checkbox" name="rejected" id="rejected" {% if request.GET.rejected %}checked{% endif %}>
-            <label class="form-check-label" for="rejected">Rejected</label>
+            <label class="form-check-label" for="rejected">{% trans "Rejected" %}</label>
         </div>
-        <button type="submit" class="btn btn-outline-light btn-sm">Filter</button>
+        <button type="submit" class="btn btn-outline-light btn-sm">{% trans "Filter" %}</button>
     </form>
 
     {% if offers %}
@@ -22,29 +24,29 @@
             <div class="card mb-3 {% if trade.status == 'completed' %}border-success{% else %}border-danger{% endif %} bg-dark text-light">
                 <div class="card-body">
                     <p>
-                        <strong>{{ trade.user_from.username }}</strong> offered 
+                        <strong>{{ trade.user_from.username }}</strong> {% trans "offered" %}  
                         <strong>{{ trade.offered_perfume }}</strong>
-                        for <strong>{{ trade.user_to.username }}</strong>
+                        {% trans "to" %} <strong>{{ trade.user_to.username }}</strong>
                     </p>
 
                     {% if trade.status == 'completed' %}
-                        <span class="badge bg-success">Completed</span>
+                        <span class="badge bg-success">{% trans "Completed" %}</span>
                     {% else %}
-                        <span class="badge bg-danger">Rejected</span>
+                        <span class="badge bg-danger">{% trans "Rejected" %}</span>
                     {% endif %}
 
                     {% if trade.status == 'completed' and trade.both_delivery_infos_submitted %}
                         <a href="{% url 'trade_summary' trade_id=trade.id %}" class="btn btn-outline-info btn-sm mt-2">
-                            View Trade Details
+                            {% trans "View Trade Details" %}
                         </a>
                     {% else %}
-                        <p class="text-muted mt-2">Details unavailable for this trade.</p>
+                        <p class="text-light mt-2">{% trans "Details unavailable for this trade." %}</p>
                     {% endif %}
                 </div>
             </div>
         {% endfor %}
     {% else %}
-        <p class="text-muted">No trade history found. Try adjusting your filter.</p>
+        <p class="text-light">{% trans "No trade history found. Try adjusting your filter." %}</p>
     {% endif %}
 </div>
 {% endblock %}

@@ -1,30 +1,32 @@
 {% extends 'base.html' %}
-{% block title %}Shipping & Returns{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Shipping & Returns" %}{% endblock %}
 
 {% block content %}
 <div class="container text-light py-5">
-    <h1 class="mb-4">Shipping & Returns</h1>
+    <h1 class="mb-4">{% trans "Shipping & Returns" %}</h1>
     <div class="bg-dark p-4 rounded">
-        <h4>Shipping</h4>
-        <p>We offer free shipping on orders over 200 BGN in Bulgaria. Orders are processed within 1–2 business days and shipped via reliable couriers.</p>
+        <h4>{% trans "Shipping" %}</h4>
+        <p>{% trans "We offer free shipping on orders over 200 BGN in Bulgaria.Orders are processed within 1–2 business days and shipped via reliable couriers." %} </p>
 
-        <h4>Estimated Delivery Times</h4>
+        <h4>{% trans "Estimated Delivery Times" %}</h4>
         <ul>
-            <li>Bulgaria: 1–3 business days</li>
-            <li>EU countries: 4–7 business days</li>
+            <li>{% trans "Bulgaria: 1–3 business days" %}</li>
+            <li>{% trans "EU countries: 4–7 business days" %}</li>
         </ul>
 
-        <h4>Returns</h4>
-        <p>If you are not satisfied with your purchase, you can return the product within 14 days of delivery. The product must be unused, in its original packaging, and with the receipt.</p>
+        <h4>{% trans "Returns" %}</h4>
+        <p>{% trans "If you are not satisfied with your purchase, you can return the product within 14 days of delivery. The product must be unused, in its original packaging, and with the receipt." %}</p>
 
-        <h4>How to Return</h4>
+        <h4>{% trans "How to Return" %}</h4>
         <ol>
-            <li>Contact us at <a href="mailto:perfumeswap@gmail.com">perfumeswap@gmail.com</a></li>
-            <li>Provide your order number and reason for return</li>
-            <li>We'll provide return instructions</li>
+            <li>{% trans "Contact us at " %}<a href="mailto:perfumeswap@gmail.com">perfumeswap@gmail.com</a></li>
+            <li>{% trans "Provide your order number and reason for return" %}</li>
+            <li>{% trans "We'll provide return instructions" %}</li>
         </ol>
 
-        <p>Return shipping costs are the responsibility of the customer, unless the return is due to a defect or error on our part.</p>
+        <p>{% trans "Return shipping costs are the responsibility of the customer, unless the return is due to a defect or error on our part." %}</p>
     </div>
 </div>
 {% endblock %}

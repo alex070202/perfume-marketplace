@@ -1,18 +1,19 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container py-5 text-light">
-    <h2 class="mb-3">👤 {{ seller.username }}'s Profile</h2>
-    <p>Average Rating: {{ avg_rating }} ⭐ ({{ reviews.count }} reviews)</p>
+    <h2 class="mb-3">👤 {{ seller.username }}{% trans "'s Profile" %}</h2>
+    <p>{% trans "Average Rating: " %}{{ avg_rating }} ⭐ ({{ reviews.count }} {% trans "reviews" %})</p>
 
     {% if request.user != seller %}
-        <a href="{% url 'leave_user_review' seller.id %}" class="btn btn-outline-primary btn-sm me-2">Write Review</a>
-        <a href="{% url 'report_user' seller.id %}" class="btn btn-outline-danger btn-sm">Report Seller</a>
+        <a href="{% url 'leave_user_review' seller.id %}" class="btn btn-outline-primary btn-sm me-2">{% trans "Write Review" %}</a>
+        <a href="{% url 'report_user' seller.id %}" class="btn btn-outline-danger btn-sm">{% trans "Report Seller" %}</a>
     {% endif %}
 
     <hr>
 
-    <h4 class="text-white">🧴 Listed Perfumes:</h4>
+    <h4 class="text-white">{% trans "🧴 Listed Perfumes:" %}</h4>
     <div class="row">
         {% for perfume in perfumes %}
             <div class="col-md-4 mb-4">
@@ -21,17 +22,17 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ perfume.name }}</h5>
                         <p class="card-text">{{ perfume.brand }}</p>
-                        <a href="{% url 'perfume_detail' perfume.id %}" class="btn btn-outline-light btn-sm">View</a>
+                        <a href="{% url 'perfume_detail' perfume.id %}" class="btn btn-outline-light btn-sm">{% trans "View" %}</a>
                     </div>
                 </div>
             </div>
         {% empty %}
-            <p>This user has no perfumes listed.</p>
+            <p>{% trans "This user has no perfumes listed." %}</p>
         {% endfor %}
     </div>
 
     <hr>
-    <h4 class="text-white">📝 Reviews:</h4>
+    <h4 class="text-white">{% trans "📝 Reviews:" %}</h4>
     {% for review in reviews %}
         <div class="border p-3 mb-3 bg-secondary text-light rounded">
             <strong>{{ review.reviewer.username }}</strong> – {{ review.rating }}⭐<br>
@@ -39,7 +40,7 @@
             <p>{{ review.comment }}</p>
         </div>
     {% empty %}
-        <p>No reviews yet.</p>
+        <p>{% trans "No reviews yet." %}</p>
     {% endfor %}
 </div>
 {% endblock %}

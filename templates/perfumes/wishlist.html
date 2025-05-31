@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}My Wish List{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "My Wish List" %}{% endblock %}
 
 {% block content %}
 <div class="container py-4">
-  <h2 class="text-light mb-4">My Wish List</h2>
+  <h2 class="text-light mb-4">{% trans "My Wish List" %}</h2>
 
   {% for item in items %}
     <div class="d-flex align-items-center justify-content-between border-bottom py-2">
@@ -28,7 +30,7 @@
       </form>
     </div>
   {% empty %}
-    <p class="text-light">Your wishlist is empty.</p>
+    <p class="text-light">{% trans "Your wishlist is empty." %}</p>
   {% endfor %}
 </div>
 {% endblock %}

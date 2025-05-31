@@ -1,35 +1,37 @@
 {% extends 'base.html' %}
+{% load i18n %}
+
 {% load static %}
 
-{% block title %}Welcome to PerfumeSwap{% endblock %}
+{% block title %}{% trans "Welcome to PerfumeSwap" %}{% endblock %}
 
 {% block content %}
 
 <!-- Hero Section -->
 <div class="bg-dark text-light text-center py-5 rounded shadow">
-    <h1 class="display-4 fw-bold">Welcome to PerfumeSwap</h1>
-    <p class="lead mt-3">Buy, Sell, or Trade Perfumes Easily and Safely</p>
-    <a href="{% url 'perfume_list' %}" class="btn btn-warning btn-lg mt-3">Browse All Perfumes</a>
+    <h1 class="display-4 fw-bold">{% trans "Welcome to PerfumeSwap" %}</h1>
+    <p class="lead mt-3">{% trans "Buy, Sell, or Trade Perfumes Easily and Safely" %}</p>
+    <a href="{% url 'perfume_list' %}" class="btn btn-warning btn-lg mt-3">{% trans "Browse All Perfumes" %}</a>
 </div>
 
 <!-- Features -->
 <div class="row text-center my-5">
     <div class="col-md-4">
-        <h3>💨 Swap or Buy</h3>
-        <p>Choose from hundreds of fragrances. Trade or buy with a click.</p>
+        <h3>{% trans "💨 Swap or Buy" %}</h3>
+        <p>{% trans "Choose from hundreds of fragrances. Trade or buy with a click." %}</p>
     </div>
     <div class="col-md-4">
-        <h3>🚀 Fast Orders</h3>
-        <p>Quick checkout and order tracking. Hassle-free process.</p>
+        <h3>{% trans "🚀 Fast Orders" %}</h3>
+        <p>{% trans "Quick checkout and order tracking. Hassle-free process." %}</p>
     </div>
     <div class="col-md-4">
-        <h3>🔒 Secure & Reliable</h3>
-        <p>Trusted by perfume lovers. Safe and verified sellers.</p>
+        <h3>{% trans "🔒 Secure & Reliable" %}</h3>
+        <p>{% trans "Trusted by perfume lovers. Safe and verified sellers." %}</p>
     </div>
 </div>
 
 <!-- Latest Perfumes -->
-<h2 class="text-light text-center my-4">Latest Arrivals</h2>
+<h2 class="text-light text-center my-4">{% trans "Latest Arrivals" %}</h2>
 <div class="row">
     {% for perfume in latest_perfumes %}
     <div class="col-md-4 mb-4">
@@ -41,12 +43,12 @@
                 <h5 class="card-title">{{ perfume.name }}</h5>
                 <p class="card-text">{{ perfume.brand }}</p>
                 <p class="card-text text-warning">${{ perfume.price }}</p>
-                <a href="{% url 'perfume_detail' perfume.id %}" class="btn btn-outline-light">View</a>
+                <a href="{% url 'perfume_detail' perfume.id %}" class="btn btn-outline-light">{% trans "View" %}</a>
             </div>
         </div>
     </div>
     {% empty %}
-        <p class="text-center text-light">No perfumes available yet.</p>
+        <p class="text-center text-light">{% trans "No perfumes available yet." %}</p>
     {% endfor %}
 </div>
 {% endblock %}

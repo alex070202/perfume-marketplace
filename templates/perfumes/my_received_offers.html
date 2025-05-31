@@ -1,58 +1,60 @@
 {% extends 'base.html' %}
-{% block title %}Received Trade Offers{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Received Trade Offers" %}{% endblock %}
 {% block content %}
-<h2 class="text-light">Received Trade Offers</h2>
+<h2 class="text-light">{% trans "Received Trade Offers" %}</h2>
 
 {% for offer in received_offers %}
   <div class="card bg-dark text-light mb-3 p-3">
     <p>
-      <strong>{{ offer.user_from.username }}</strong> offered 
+      <strong>{{ offer.user_from.username }}</strong>{% trans " offered" %} 
       <strong>{{ offer.offered_perfume.name }}</strong> 
-      for your perfume 
+      {% trans "for your perfume" %} 
       <strong>{{ offer.requested_perfume.name }}</strong>
     </p>
-    <p class="text-info text-end m-0">Sent on: {{ offer.created_at|date:"F j, Y, H:i" }}</p>
+    <p class="text-info text-end m-0">{% trans "Sent on: " %}{{ offer.created_at|date:"F j, Y, H:i" }}</p>
 
     {% if offer.additional_payment %}
-      <p>Additional Payment: <strong>${{ offer.additional_payment }}</strong></p>
+      <p>{% trans "Additional Payment: " %}<strong>${{ offer.additional_payment }}</strong></p>
     {% endif %}
 
-    <p>Status: <span class="badge bg-secondary">{{ offer.status|capfirst }}</span></p>
+    <p>{% trans "Status: " %}<span class="badge bg-secondary">{{ offer.status|capfirst }}</span></p>
 
     {% if offer.status == 'pending' %}
       <form method="post" action="{% url 'respond_trade_offer' offer.id %}">
         {% csrf_token %}
-        <button name="action" value="accept" class="btn btn-success btn-sm">Accept</button>
-        <button name="action" value="reject" class="btn btn-danger btn-sm">Reject</button>
+        <button name="action" value="accept" class="btn btn-success btn-sm">{% trans "Accept" %}</button>
+        <button name="action" value="reject" class="btn btn-danger btn-sm">{% trans "Reject" %}</button>
       </form>
     {% elif offer.status == 'accepted' %}
       {% if not offer.delivery_info_to %}
         <a href="{% url 'provide_delivery_info' trade_id=offer.id %}" class="btn btn-outline-info btn-sm mt-2">
-          Provide Delivery Info
+          {% trans "Provide Delivery Info" %}
         </a>
       {% endif %}
 
       {% if offer.delivery_info_from and offer.delivery_info_to %}
         <div class="mt-3 border-top pt-2">
-          <h6>Sender Delivery Info</h6>
-          <p><strong>Name:</strong> {{ offer.delivery_info_from.full_name }}</p>
-          <p><strong>Address:</strong> {{ offer.delivery_info_from.address }}</p>
-          <p><strong>Phone:</strong> {{ offer.delivery_info_from.phone }}</p>
+          <h6>{% trans "Sender Delivery Info" %}</h6>
+          <p><strong>{% trans "Name:" %}</strong> {{ offer.delivery_info_from.full_name }}</p>
+          <p><strong>{% trans "Address:" %}</strong> {{ offer.delivery_info_from.address }}</p>
+          <p><strong>{% trans "Phone:" %}</strong> {{ offer.delivery_info_from.phone }}</p>
           {% if offer.delivery_info_from.note %}
-            <p><strong>Note:</strong> {{ offer.delivery_info_from.note }}</p>
+            <p><strong>{% trans "Note:" %}</strong> {{ offer.delivery_info_from.note }}</p>
           {% endif %}
         </div>
 
         {% if offer.both_delivery_infos_submitted %}
           <a href="{% url 'trade_summary' offer.id %}" class="btn btn-outline-info btn-sm mt-2">
-            View Trade Details
+            {% trans "View Trade Details" %}
           </a>
         {% endif %}
       {% endif %}
     {% endif %}
   </div>
 {% empty %}
-  <p class="text-light">No trade offers received.</p>
+  <p class="text-light">{% trans "No trade offers received." %}</p>
 {% endfor %}
 
 {% endblock %}

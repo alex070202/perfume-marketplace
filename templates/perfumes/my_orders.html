@@ -1,21 +1,23 @@
 {% extends 'base.html' %}
-{% block title %}My Orders{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "My Orders" %}{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-light">🧾 My Orders</h1>
+    <h1 class="text-light">{% trans "🧾 My Orders" %}</h1>
     {% if orders %}
         {% for order in orders %}
             <div class="card bg-dark text-white mb-4">
                 <div class="card-header">
-                    <p class="text-info text-end m-0">Ordered on: {{ order.created_at|date:"F j, Y, H:i" }}</p>
-                    Order #{{ order.id }} - Status: <strong>{{ order.get_status_display }}</strong>
+                    <p class="text-info text-end m-0">{% trans "Ordered on: " %}{{ order.created_at|date:"F j, Y, H:i" }}</p>
+                    {% trans "Order #" %}{{ order.id }} - {% trans "Status: " %}<strong>{{ order.get_status_display }}</strong>
                 </div>
                 <div class="card-body">
-                    <p><strong>Name:</strong> {{ order.full_name }}</p>
-                    <p><strong>Address:</strong> {{ order.address }}</p>
-                    <p><strong>Phone:</strong> {{ order.phone }}</p>
-                    <p><strong>Notes:</strong> {{ order.notes }}</p>
+                    <p><strong>{% trans "Name:" %}</strong> {{ order.full_name }}</p>
+                    <p><strong>{% trans "Address:" %}</strong> {{ order.address }}</p>
+                    <p><strong>{% trans "Phone:" %}</strong> {{ order.phone }}</p>
+                    <p><strong>{% trans "Notes:" %}</strong> {{ order.notes }}</p>
 
                     {% with order.items.all as items %}
                         {% for item in items %}
@@ -35,7 +37,7 @@
             </div>
         {% endfor %}
     {% else %}
-        <p class="text-light">You haven't placed any orders yet.</p>
+        <p class="text-light">{% trans "You haven't placed any orders yet." %}</p>
     {% endif %}
 </div>
 {% endblock %}

@@ -1,0 +1,3797 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: .\templates\registration\login.html:25
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-31 23:32+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\perfumes\views.py:88
+msgid "Perfume added successfully!"
+msgstr "Парфюмът беше успешно добавен!"
+
+#: .\perfumes\views.py:99
+msgid "Registration successful!"
+msgstr "Регистрацията е успешна!"
+
+#: .\perfumes\views.py:108
+msgid "You have been logged out."
+msgstr "Излязохте успешно от профила си."
+
+#: .\perfumes\views.py:130
+msgid "Invalid username or password."
+msgstr "Невалидно потребителско име или парола."
+
+#: .\perfumes\views.py:163
+msgid "Perfume deleted successfully!"
+msgstr "Парфюмът беше успешно премахнат!!"
+
+#: .\perfumes\views.py:199
+msgid "Perfume updated successfully!"
+msgstr "Парфюмът е актуализиран успешно!"
+
+#: .\perfumes\views.py:218
+#, python-format
+msgid "Only %(stock)s units of %(name)s are available in stock."
+msgstr "Само %(stock)s броя от %(name)s са налични на склад."
+
+#: .\perfumes\views.py:237
+#, python-format
+msgid "%(name)s added to cart."
+msgstr "%(name)s беше добавен в количката."
+
+#: .\perfumes\views.py:273
+#, python-format
+msgid "Not enough stock for '%(name)s'. Only %(stock)s left."
+msgstr "Недостатъчна наличност за '%(name)s'. Само %(stock)s са останали."
+
+#: .\perfumes\views.py:279
+#, python-format
+msgid "Invalid quantity for '%(name)s'."
+msgstr "Невалидно количество за '%(name)s'. "
+
+#: .\perfumes\views.py:290
+msgid "Cart updated successfully!"
+msgstr "Количката е актуализирана успешно!"
+
+#: .\perfumes\views.py:304
+msgid "Item removed from your cart!"
+msgstr "Парфюмът е премахнат успешно от количката!"
+
+#: .\perfumes\views.py:324
+#, python-format
+msgid "Not enough stock for \"%(name)s\". Only %(available)s available."
+msgstr ""
+"Недостатъчна наличност за „%(name)s“. Останали са само %(available)s броя."
+
+#: .\perfumes\views.py:392 .\perfumes\views.py:407
+msgid "Order status updated."
+msgstr "Успешно актулизиран статус на поръчка."
+
+#: .\perfumes\views.py:409
+msgid "Status was not changed."
+msgstr "Статусът не е променен"
+
+#: .\perfumes\views.py:445
+#, python-format
+msgid "%(name)s was removed from your wishlist."
+msgstr "%(name)s беше премахнат от списъка с любими."
+
+#: .\perfumes\views.py:457
+msgid "Review submitted successfully!"
+msgstr "Отзивът е изпратен успешно!"
+
+#: .\perfumes\views.py:540
+msgid "You have already submitted your delivery information for this trade."
+msgstr "Вече сте подали информацията си за доставка за тази размяна."
+
+#: .\perfumes\views.py:557
+msgid "Your delivery info has been saved."
+msgstr "Информацията ви за доставка е запазена."
+
+#: .\perfumes\views.py:574
+msgid "Delivery information is not yet complete."
+msgstr "Информацията за доставката все още не е пълна."
+
+#: .\perfumes\views.py:588
+msgid "Trade offer canceled."
+msgstr "Офертата за размяна е отменена."
+
+#: .\perfumes\views.py:650
+#, python-format
+msgid "User %(username)s has been banned and their perfumes have been hidden."
+msgstr ""
+"Потребител %(username)s е забранен успешно и парфюмите му стават скрити."
+
+#: .\perfumes\views.py:679
+msgid "Your review has been submitted."
+msgstr "Вашият отзив е изпратен"
+
+#: .\perfumes\views.py:693
+msgid "User has been reported."
+msgstr "Потребителят е докладван."
+
+#: .\perfumes\views.py:731
+#, python-format
+msgid ""
+"User %(username)s has been unbanned and their perfumes are now visible again."
+msgstr ""
+"Потребител %(username)s беше отблокиран и неговите парфюми вече са отново "
+"видими."
+
+#: .\templates\admin\dashboard.html:4
+msgid "Admin Dashboard"
+msgstr "Административно табло"
+
+#: .\templates\admin\dashboard.html:8
+msgid "⚙️ Admin Dashboard"
+msgstr "⚙️ Административно табло"
+
+#: .\templates\admin\dashboard.html:13
+msgid "Select Section"
+msgstr "Изберете секция"
+
+#: .\templates\admin\dashboard.html:16 .\templates\admin\dashboard.html:23
+msgid "🚨 User Reports"
+msgstr "🚨 Сигнали от потребители"
+
+#: .\templates\admin\dashboard.html:17 .\templates\admin\dashboard.html:73
+msgid "🔒 Banned Users"
+msgstr "🔒 Ограничени потребители"
+
+#: .\templates\admin\dashboard.html:32
+msgid "Reported User"
+msgstr "Докладван потребител"
+
+#: .\templates\admin\dashboard.html:33
+msgid "Reports"
+msgstr "Доклади"
+
+#: .\templates\admin\dashboard.html:34
+msgid "Actions"
+msgstr "Действия"
+
+#: .\templates\admin\dashboard.html:41
+msgid "reports"
+msgstr "доклади"
+
+#: .\templates\admin\dashboard.html:55
+msgid "❌ Ban "
+msgstr "❌ Забрани: "
+
+#: .\templates\admin\dashboard.html:58
+msgid "Already banned"
+msgstr "Вече забранен потребител"
+
+#: .\templates\admin\dashboard.html:66
+msgid "No reports submitted."
+msgstr "Няма подадени доклади"
+
+#: .\templates\admin\dashboard.html:85
+msgid "🔓 Unban"
+msgstr "🔓 Отмени забраната"
+
+#: .\templates\admin\dashboard.html:91
+msgid "No users are currently banned."
+msgstr "В момента няма забранени потребители"
+
+#: .\templates\base.html:26
+msgid "Home"
+msgstr "Начало"
+
+#: .\templates\base.html:31
+msgid "Perfumes"
+msgstr "Парфюми"
+
+#: .\templates\base.html:34
+msgid "All"
+msgstr "Всички"
+
+#: .\templates\base.html:35
+msgid "For Trade"
+msgstr "За размяна"
+
+#: .\templates\base.html:36 .\templates\perfumes\add_perfume.html:58
+#: .\templates\perfumes\edit_perfume.html:66
+#: .\templates\perfumes\perfume_detail.html:55
+msgid "Men"
+msgstr "Мъжки"
+
+#: .\templates\base.html:37 .\templates\perfumes\add_perfume.html:59
+#: .\templates\perfumes\edit_perfume.html:67
+#: .\templates\perfumes\perfume_detail.html:56
+msgid "Women"
+msgstr "Женски"
+
+#: .\templates\base.html:38 .\templates\perfumes\add_perfume.html:60
+#: .\templates\perfumes\edit_perfume.html:68
+#: .\templates\perfumes\perfume_detail.html:57
+msgid "Unisex"
+msgstr "Универсални"
+
+#: .\templates\base.html:46
+msgid "❤️ Wish List"
+msgstr "❤️ Любими"
+
+#: .\templates\base.html:60
+msgid "🛒 Cart"
+msgstr "🛒 Количка"
+
+#: .\templates\base.html:75
+msgid "My Trades"
+msgstr "Моите размени"
+
+#: .\templates\base.html:85
+msgid "📤 Sent Offers"
+msgstr "📤 Изпратени оферти"
+
+#: .\templates\base.html:93
+msgid "📥 Received Offers"
+msgstr "📥 Получени оферти"
+
+#: .\templates\base.html:104
+msgid "🧾 Trade History"
+msgstr "🧾 История на размените"
+
+#: .\templates\base.html:114
+msgid "Hi,"
+msgstr "Здравей,"
+
+#: .\templates\base.html:121 .\templates\perfumes\my_orders.html:4
+msgid "My Orders"
+msgstr "Моите поръчки"
+
+#: .\templates\base.html:126
+msgid "Sales dashboard"
+msgstr "Табло на продажби"
+
+#: .\templates\base.html:132
+msgid "Add perfume"
+msgstr "Добави парфюм"
+
+#: .\templates\base.html:133
+msgid "My perfumes"
+msgstr "Моите парфюми"
+
+#: .\templates\base.html:138
+msgid "Logout"
+msgstr "Изход"
+
+#: .\templates\base.html:142 .\templates\perfumes\register.html:4
+#: .\templates\perfumes\register.html:23
+msgid "Register"
+msgstr "Регистрaция"
+
+#: .\templates\base.html:143 .\templates\perfumes\register.html:27
+#: .\templates\registration\login.html:4 .\templates\registration\login.html:8
+#: .\templates\registration\login.html:23
+msgid "Login"
+msgstr "Вход"
+
+#: .\templates\base.html:144
+msgid "Shopping cart"
+msgstr "Количка"
+
+#: .\templates\base.html:145 .\templates\base.html:217
+#: .\templates\perfumes\checkout.html:4 .\templates\perfumes\checkout.html:8
+msgid "Checkout"
+msgstr "Плащане"
+
+#: .\templates\base.html:154
+msgid "⚠ Admin Dashboard"
+msgstr "⚠ Административно табло"
+
+#: .\templates\base.html:166
+msgid "Search perfumes..."
+msgstr "Търсене на парфюми..."
+
+#: .\templates\base.html:167
+msgid "Search"
+msgstr "Търсене"
+
+#: .\templates\base.html:216
+msgid "View Cart"
+msgstr "Виж количката"
+
+#: .\templates\partials\footer.html:7
+msgid "Store Information"
+msgstr "Информация за магазина"
+
+#: .\templates\partials\footer.html:14
+msgid "Information"
+msgstr "Информация"
+
+#: .\templates\partials\footer.html:16 .\templates\perfumes\about_us.html:4
+#: .\templates\perfumes\about_us.html:8
+msgid "About Us"
+msgstr "За нас"
+
+#: .\templates\partials\footer.html:17
+#: .\templates\perfumes\privacy_policy.html:3
+#: .\templates\perfumes\privacy_policy.html:7
+msgid "Privacy Policy"
+msgstr "Политика за поверителност"
+
+#: .\templates\partials\footer.html:18
+#: .\templates\perfumes\terms_and_conditions.html:4
+msgid "Terms & Conditions"
+msgstr "Общи условия"
+
+#: .\templates\partials\footer.html:19
+#: .\templates\perfumes\shipping_returns.html:4
+#: .\templates\perfumes\shipping_returns.html:8
+msgid "Shipping & Returns"
+msgstr "Доставка и връщане"
+
+#: .\templates\partials\footer.html:25
+msgid "Free Shipping"
+msgstr "Безплатна доставка"
+
+#: .\templates\partials\footer.html:26
+msgid "Free delivery for orders over 200 BGN in Bulgaria!"
+msgstr "Безплатна доставка за поръчки над 200лв в България!"
+
+#: .\templates\perfumes\about_us.html:14
+msgid " Fully Responsive"
+msgstr " Напълно отзивчиви"
+
+#: .\templates\perfumes\about_us.html:15
+msgid ""
+"These days mobile is the handiest device to access the internet. Hence our "
+"website must be mobile-accessible as compatibility."
+msgstr ""
+"В днешно време мобилният телефон е най-удобното средство за достъп до "
+"интернет. Затова нашият уебсайт е напълно съвместим с мобилни устройства."
+
+#: .\templates\perfumes\about_us.html:22
+msgid "Cross Browser Compatibility"
+msgstr "Съвместимост между браузърите"
+
+#: .\templates\perfumes\about_us.html:23
+msgid ""
+"Works with all versions of all major browsers. Our visitors get the same "
+"experience everywhere."
+msgstr ""
+"Работи с всички версии на всички основни браузъри. Нашите посетители "
+"получават едно и също изживяване навсякъде."
+
+#: .\templates\perfumes\about_us.html:30
+msgid "Dedicated Support Team"
+msgstr "Специализиран екип за поддръжка"
+
+#: .\templates\perfumes\about_us.html:31
+msgid ""
+"We respond within 24h and help you resolve issues quickly and effectively."
+msgstr ""
+"Отговаряме в рамките на 24 часа и ви помагаме да разрешите проблемите си "
+"бързо и ефективно."
+
+#: .\templates\perfumes\about_us.html:38
+msgid "High Quality Products"
+msgstr "Висококачествени продукти"
+
+#: .\templates\perfumes\about_us.html:39
+msgid ""
+"We offer only top-quality perfumes that are carefully selected and reviewed."
+msgstr ""
+"Предлагаме само висококачествени парфюми, които са внимателно подбрани и "
+"тествани."
+
+#: .\templates\perfumes\add_perfume.html:4
+#: .\templates\perfumes\add_perfume.html:78
+msgid "Add Perfume"
+msgstr "Добави парфюм"
+
+#: .\templates\perfumes\add_perfume.html:8
+msgid "Add a New Perfume"
+msgstr "Добави нов парфюм"
+
+#: .\templates\perfumes\add_perfume.html:14
+msgid "Main Image"
+msgstr "Основна снимка"
+
+#: .\templates\perfumes\add_perfume.html:19
+msgid "Additional Image 1"
+msgstr "Допълнителна снимка 1"
+
+#: .\templates\perfumes\add_perfume.html:23
+msgid "Additional Image 2"
+msgstr "Допълнителна снимка 2"
+
+#: .\templates\perfumes\add_perfume.html:27
+msgid "Additional Image 3"
+msgstr "Допълнителна снимка 3"
+
+#: .\templates\perfumes\add_perfume.html:34
+msgid "Perfume Name"
+msgstr "Име на парфюма"
+
+#: .\templates\perfumes\add_perfume.html:38
+msgid "Brand"
+msgstr "Марка"
+
+#: .\templates\perfumes\add_perfume.html:42
+#: .\templates\perfumes\perfume_detail.html:130
+msgid "Description"
+msgstr "Описание"
+
+#: .\templates\perfumes\add_perfume.html:46
+msgid "Price (USD)"
+msgstr "Цена (долари)"
+
+#: .\templates\perfumes\add_perfume.html:50
+#: .\templates\perfumes\edit_perfume.html:59
+msgid "Stock"
+msgstr "Количество"
+
+#: .\templates\perfumes\add_perfume.html:55
+#: .\templates\perfumes\edit_perfume.html:64
+msgid "Category"
+msgstr "Категория"
+
+#: .\templates\perfumes\add_perfume.html:57
+msgid "-- Select --"
+msgstr "-- Изберете --"
+
+#: .\templates\perfumes\add_perfume.html:65
+#: .\templates\perfumes\edit_perfume.html:73
+#: .\templates\perfumes\perfume_detail.html:149
+msgid "Fragrance Notes"
+msgstr "Ароматни нотки"
+
+#: .\templates\perfumes\add_perfume.html:73
+#: .\templates\perfumes\my_perfumes.html:27
+#: .\templates\perfumes\perfume_detail.html:72
+#: .\templates\perfumes\perfume_list_by_brand.html:19
+msgid "Available for Trade"
+msgstr "Предлага се за размяна"
+
+#: .\templates\perfumes\cart_detail.html:4
+#: .\templates\perfumes\cart_detail.html:8
+msgid "My Cart"
+msgstr "Моята количка"
+
+#: .\templates\perfumes\cart_detail.html:16
+msgid "Price: $"
+msgstr "Цена: $"
+
+#: .\templates\perfumes\cart_detail.html:37
+msgid "← Continue Shopping"
+msgstr "← Продължете пазаруването"
+
+#: .\templates\perfumes\cart_detail.html:38
+msgid "Total: $"
+msgstr "Общо: $"
+
+#: .\templates\perfumes\cart_detail.html:41
+msgid "Proceed to Checkout"
+msgstr "Продължете към плащане"
+
+#: .\templates\perfumes\cart_detail.html:44
+msgid "Your cart is empty. "
+msgstr "Вашата количка е празна."
+
+#: .\templates\perfumes\cart_detail.html:44
+msgid "Start shopping!"
+msgstr "Започнете пазаруването!"
+
+#: .\templates\perfumes\checkout.html:14
+msgid "Billing Details"
+msgstr "Адрес за доставка"
+
+#: .\templates\perfumes\checkout.html:16
+#: .\templates\perfumes\provide_delivery_info.html:14
+msgid "Full Name"
+msgstr "Пълно име"
+
+#: .\templates\perfumes\checkout.html:20
+msgid "Email"
+msgstr "Имейл"
+
+#: .\templates\perfumes\checkout.html:24
+msgid "Phone"
+msgstr "Телефонен номер"
+
+#: .\templates\perfumes\checkout.html:28
+msgid "Address"
+msgstr "Адрес"
+
+#: .\templates\perfumes\checkout.html:32
+msgid "Order Notes (optional)"
+msgstr "Допълнителна информация (по желание)"
+
+#: .\templates\perfumes\checkout.html:38
+msgid "Your Order"
+msgstr "Моята поръчка"
+
+#: .\templates\perfumes\checkout.html:42
+#: .\templates\perfumes\order_detail.html:24
+msgid "Perfume"
+msgstr "Парфюм"
+
+#: .\templates\perfumes\checkout.html:43
+msgid "Qty"
+msgstr "Количество"
+
+#: .\templates\perfumes\checkout.html:44
+msgid "Price"
+msgstr "Цена"
+
+#: .\templates\perfumes\checkout.html:45
+msgid "Subtotal"
+msgstr "Междинна сума"
+
+#: .\templates\perfumes\checkout.html:58
+msgid "Total:"
+msgstr "Общо:"
+
+#: .\templates\perfumes\checkout.html:63
+msgid "Place Order"
+msgstr "Завършете поръчката"
+
+#: .\templates\perfumes\checkout.html:64
+msgid "Back to Cart"
+msgstr "Връщане към кошницата"
+
+#: .\templates\perfumes\checkout_success.html:4
+msgid "Order Complete"
+msgstr "Поръчката е завършена"
+
+#: .\templates\perfumes\checkout_success.html:8
+msgid "✅ Order Confirmed!"
+msgstr "✅ Поръчката е потвърдена!"
+
+#: .\templates\perfumes\checkout_success.html:9
+msgid "Thank you for your order. Total: "
+msgstr "Благодарим Ви за поръчката. Общо:"
+
+#: .\templates\perfumes\checkout_success.html:10
+msgid "Continue Shopping"
+msgstr "Продължи пазаруването"
+
+#: .\templates\perfumes\confirm_delete.html:4
+msgid "Delete Perfume"
+msgstr "Изтрий парфюма"
+
+#: .\templates\perfumes\confirm_delete.html:7
+msgid "Confirm Delete"
+msgstr "Потвърждаване на изтриването"
+
+#: .\templates\perfumes\confirm_delete.html:8
+msgid "Are you sure you want to delete "
+msgstr "Сигурен ли сте, че искате да изтриете "
+
+#: .\templates\perfumes\confirm_delete.html:11
+msgid "Yes, delete"
+msgstr "Да, изтриване"
+
+#: .\templates\perfumes\confirm_delete.html:12
+#: .\templates\perfumes\edit_perfume.html:78
+#: .\templates\users\leave_review.html:27 .\templates\users\report_user.html:16
+msgid "Cancel"
+msgstr "Отказ"
+
+#: .\templates\perfumes\edit_perfume.html:4
+#: .\templates\perfumes\edit_perfume.html:7
+msgid "Edit Perfume"
+msgstr "Редактиране на парфюм"
+
+#: .\templates\perfumes\edit_perfume.html:13
+#: .\templates\perfumes\my_orders.html:17
+#: .\templates\perfumes\my_received_offers.html:40
+#: .\templates\perfumes\my_sent_offers.html:35
+msgid "Name:"
+msgstr "Име:"
+
+#: .\templates\perfumes\edit_perfume.html:18
+#: .\templates\perfumes\perfume_detail.html:49
+#: .\templates\perfumes\perfume_list.html:17
+msgid "Brand:"
+msgstr "Марка:"
+
+#: .\templates\perfumes\edit_perfume.html:23
+msgid "Description:"
+msgstr "Описание:"
+
+#: .\templates\perfumes\edit_perfume.html:28
+msgid "Price:"
+msgstr "Цена"
+
+#: .\templates\perfumes\edit_perfume.html:33
+msgid "Available for Trade:"
+msgstr "Предлага се за размяна:"
+
+#: .\templates\perfumes\edit_perfume.html:38
+msgid "Main Image:"
+msgstr "Основно изображение:"
+
+#: .\templates\perfumes\edit_perfume.html:41
+msgid "Current: "
+msgstr "Текущ: "
+
+#: .\templates\perfumes\edit_perfume.html:46
+msgid "Additional Image 1:"
+msgstr "Допълнително изображение 1:"
+
+#: .\templates\perfumes\edit_perfume.html:50
+msgid "Additional Image 2:"
+msgstr "Допълнително изображение 2:"
+
+#: .\templates\perfumes\edit_perfume.html:54
+msgid "Additional Image 3:"
+msgstr "Допълнително изображение 3:"
+
+#: .\templates\perfumes\edit_perfume.html:77
+msgid "Save Changes"
+msgstr "Запазване на промените"
+
+#: .\templates\perfumes\exchange_request.html:4
+#: .\templates\perfumes\exchange_request.html:8
+msgid "Propose Trade"
+msgstr "Предложете размяна"
+
+#: .\templates\perfumes\exchange_request.html:15
+msgid "You Want This"
+msgstr "Искате този парфюм"
+
+#: .\templates\perfumes\exchange_request.html:30
+msgid "Offer One of Yours"
+msgstr "Предложете един от вашите парфюми"
+
+#: .\templates\perfumes\exchange_request.html:37
+msgid "Choose your perfume to offer:"
+msgstr "Изберете парфюм, който да предложите:"
+
+#: .\templates\perfumes\exchange_request.html:45
+msgid "Extra Payment (optional):"
+msgstr "Допълнително заплащане(опция):"
+
+#: .\templates\perfumes\exchange_request.html:49
+msgid "Send Trade Offer"
+msgstr " Изпратете предложение за размяна"
+
+#: .\templates\perfumes\exchange_request.html:52
+msgid "You don't have any perfumes available for trade."
+msgstr "Нямате налични парфюми за размяна. "
+
+#: .\templates\perfumes\home.html:6 .\templates\perfumes\home.html:12
+msgid "Welcome to PerfumeSwap"
+msgstr "Добре дошли в PerfumeSwap "
+
+#: .\templates\perfumes\home.html:13
+msgid "Buy, Sell, or Trade Perfumes Easily and Safely"
+msgstr "Купувайте,Продавайте или разменяйте парфюми лесно и безопасно"
+
+#: .\templates\perfumes\home.html:14
+msgid "Browse All Perfumes"
+msgstr "Разгледайте всички парфюми"
+
+#: .\templates\perfumes\home.html:20
+msgid "💨 Swap or Buy"
+msgstr "💨 Разменете или купете"
+
+#: .\templates\perfumes\home.html:21
+msgid "Choose from hundreds of fragrances. Trade or buy with a click."
+msgstr "Изберете от стотици аромати. Разменете или купете с едно кликване."
+
+#: .\templates\perfumes\home.html:24
+msgid "🚀 Fast Orders"
+msgstr "🚀 Бързи поръчки"
+
+#: .\templates\perfumes\home.html:25
+msgid "Quick checkout and order tracking. Hassle-free process."
+msgstr "Бързо плащане и проследяване на поръчката. Безпроблемен процес."
+
+#: .\templates\perfumes\home.html:28
+msgid "🔒 Secure & Reliable"
+msgstr "🔒 Сигурно и надеждно"
+
+#: .\templates\perfumes\home.html:29
+msgid "Trusted by perfume lovers. Safe and verified sellers."
+msgstr "Доверено от любителите на парфюми. Безопасни и проверени продавачи."
+
+#: .\templates\perfumes\home.html:34
+msgid "Latest Arrivals"
+msgstr "Последни пристигания"
+
+#: .\templates\perfumes\home.html:46 .\templates\users\profile.html:25
+msgid "View"
+msgstr "Преглед"
+
+#: .\templates\perfumes\home.html:51
+msgid "No perfumes available yet."
+msgstr "Все още няма налични парфюми"
+
+#: .\templates\perfumes\my_orders.html:8
+msgid "🧾 My Orders"
+msgstr "🧾 Моите поръчки"
+
+#: .\templates\perfumes\my_orders.html:13
+msgid "Ordered on: "
+msgstr "Поръчано на: "
+
+#: .\templates\perfumes\my_orders.html:14
+#: .\templates\perfumes\order_detail.html:8
+msgid "Order #"
+msgstr "Номер на поръчка #"
+
+#: .\templates\perfumes\my_orders.html:14
+#: .\templates\perfumes\my_received_offers.html:22
+#: .\templates\perfumes\my_sent_offers.html:13
+msgid "Status: "
+msgstr "Статус: "
+
+#: .\templates\perfumes\my_orders.html:18
+#: .\templates\perfumes\my_received_offers.html:41
+#: .\templates\perfumes\my_sent_offers.html:36
+#: .\templates\perfumes\order_detail.html:15
+#: .\templates\perfumes\trade_summary.html:32
+#: .\templates\perfumes\trade_summary.html:39
+msgid "Address:"
+msgstr "Адрес:"
+
+#: .\templates\perfumes\my_orders.html:19
+#: .\templates\perfumes\my_received_offers.html:42
+#: .\templates\perfumes\my_sent_offers.html:37
+#: .\templates\perfumes\order_detail.html:14
+#: .\templates\perfumes\trade_summary.html:31
+#: .\templates\perfumes\trade_summary.html:38
+msgid "Phone:"
+msgstr "Телефонен номер:"
+
+#: .\templates\perfumes\my_orders.html:20
+#: .\templates\perfumes\order_detail.html:17
+msgid "Notes:"
+msgstr "Допълнителна информация:"
+
+#: .\templates\perfumes\my_orders.html:40
+msgid "You haven't placed any orders yet."
+msgstr "Все още не сте направили никакви поръчки."
+
+#: .\templates\perfumes\my_perfumes.html:4
+#: .\templates\perfumes\my_perfumes.html:7
+msgid "My Perfumes"
+msgstr "Моите парфюми"
+
+#: .\templates\perfumes\my_perfumes.html:30
+#: .\venv\Lib\site-packages\django\forms\formsets.py:499
+msgid "Delete"
+msgstr "Изтриване"
+
+#: .\templates\perfumes\my_perfumes.html:31
+msgid "Edit"
+msgstr "Редактиране"
+
+#: .\templates\perfumes\my_perfumes.html:38
+msgid "You haven't added any perfumes yet."
+msgstr "Все още не сте добавили никакви парфюми."
+
+#: .\templates\perfumes\my_received_offers.html:4
+#: .\templates\perfumes\my_received_offers.html:6
+msgid "Received Trade Offers"
+msgstr "Получени оферти за размяна"
+
+#: .\templates\perfumes\my_received_offers.html:11
+msgid " offered"
+msgstr " предлага"
+
+#: .\templates\perfumes\my_received_offers.html:13
+msgid "for your perfume"
+msgstr "за вашия парфюм"
+
+#: .\templates\perfumes\my_received_offers.html:16
+msgid "Sent on: "
+msgstr "Изпратено на: "
+
+#: .\templates\perfumes\my_received_offers.html:19
+msgid "Additional Payment: "
+msgstr "Допълнително плащане: "
+
+#: .\templates\perfumes\my_received_offers.html:27
+msgid "Accept"
+msgstr "Приеми"
+
+#: .\templates\perfumes\my_received_offers.html:28
+msgid "Reject"
+msgstr "Откажи"
+
+#: .\templates\perfumes\my_received_offers.html:33
+#: .\templates\perfumes\my_sent_offers.html:29
+msgid "Provide Delivery Info"
+msgstr "Предоставете информация за доставка"
+
+#: .\templates\perfumes\my_received_offers.html:39
+msgid "Sender Delivery Info"
+msgstr "Информация за доставката на подателя"
+
+#: .\templates\perfumes\my_received_offers.html:44
+#: .\templates\perfumes\my_sent_offers.html:39
+msgid "Note:"
+msgstr "Допълнителна информация:"
+
+#: .\templates\perfumes\my_received_offers.html:50
+#: .\templates\perfumes\my_sent_offers.html:24
+#: .\templates\perfumes\trade_history.html:40
+msgid "View Trade Details"
+msgstr "Вижте детайли за размяната"
+
+#: .\templates\perfumes\my_received_offers.html:57
+msgid "No trade offers received."
+msgstr "Не са получени оферти за размяна."
+
+#: .\templates\perfumes\my_sent_offers.html:4
+#: .\templates\perfumes\my_sent_offers.html:6
+msgid "Sent Trade Offers"
+msgstr "Изпратени оферти за размяна"
+
+#: .\templates\perfumes\my_sent_offers.html:9
+msgid "You offered "
+msgstr "Вие предложихте "
+
+#: .\templates\perfumes\my_sent_offers.html:9
+msgid " for"
+msgstr " за"
+
+#: .\templates\perfumes\my_sent_offers.html:10
+msgid " owned by "
+msgstr " собственост на "
+
+#: .\templates\perfumes\my_sent_offers.html:18
+msgid "Cancel Offer"
+msgstr "Откажи оферта"
+
+#: .\templates\perfumes\my_sent_offers.html:34
+msgid "Receiver Delivery Info"
+msgstr "Информация за доставката на получателя"
+
+#: .\templates\perfumes\my_sent_offers.html:45
+msgid "No sent trade offers."
+msgstr "Няма изпратени оферти за размяна."
+
+#: .\templates\perfumes\order_detail.html:4
+msgid "Order Detail"
+msgstr "Детайли за поръчката"
+
+#: .\templates\perfumes\order_detail.html:9
+msgid "Placed by: "
+msgstr "Поръчано от: "
+
+#: .\templates\perfumes\order_detail.html:12
+#: .\templates\perfumes\trade_summary.html:30
+#: .\templates\perfumes\trade_summary.html:37
+msgid "Full Name:"
+msgstr "Пълно име:"
+
+#: .\templates\perfumes\order_detail.html:13
+msgid "Email:"
+msgstr "Имейл:"
+
+#: .\templates\perfumes\order_detail.html:25
+#: .\templates\perfumes\sales_dashboard.html:17
+msgid "Quantity"
+msgstr "Количество"
+
+#: .\templates\perfumes\order_detail.html:26
+msgid "Unit Price"
+msgstr "Единична цена"
+
+#: .\templates\perfumes\order_detail.html:27
+#: .\templates\perfumes\sales_dashboard.html:18
+msgid "Total"
+msgstr "Общо"
+
+#: .\templates\perfumes\order_detail.html:43
+msgid "Update Status:"
+msgstr "Обнови статуса:"
+
+#: .\templates\perfumes\order_detail.html:50
+msgid "Update"
+msgstr "Обнови"
+
+#: .\templates\perfumes\order_detail.html:51
+msgid "Back"
+msgstr "Обратно"
+
+#: .\templates\perfumes\perfume_detail.html:46
+msgid "(No reviews yet)"
+msgstr "(Няма ревюта все още)"
+
+#: .\templates\perfumes\perfume_detail.html:54
+msgid "Category:"
+msgstr "Категория:"
+
+#: .\templates\perfumes\perfume_detail.html:63
+msgid "Availability"
+msgstr "Наличност"
+
+#: .\templates\perfumes\perfume_detail.html:65
+msgid "In Stock "
+msgstr "На склад"
+
+#: .\templates\perfumes\perfume_detail.html:67
+msgid "Out of Stock"
+msgstr "Няма наличност"
+
+#: .\templates\perfumes\perfume_detail.html:80
+msgid "Add to cart"
+msgstr "Добави в количката"
+
+#: .\templates\perfumes\perfume_detail.html:84
+msgid " Trade"
+msgstr "Разменете"
+
+#: .\templates\perfumes\perfume_detail.html:101
+msgid "👤 Seller:"
+msgstr "👤 Продавач:"
+
+#: .\templates\perfumes\perfume_detail.html:109
+msgid "⭐ Average Rating: "
+msgstr "⭐ Среден рейтинг: "
+
+#: .\templates\perfumes\perfume_detail.html:111
+msgid "No seller reviews yet."
+msgstr "Все още няма отзиви за продавача."
+
+#: .\templates\perfumes\perfume_detail.html:116
+msgid "✍️ Leave a Review"
+msgstr "✍️ Оставете отзив"
+
+#: .\templates\perfumes\perfume_detail.html:117
+msgid "🚨 Report Seller"
+msgstr "🚨 Докладвай продавача"
+
+#: .\templates\perfumes\perfume_detail.html:120
+msgid "View Seller Profile"
+msgstr "Преглед на профила на продавача"
+
+#: .\templates\perfumes\perfume_detail.html:133
+msgid "Notes"
+msgstr "Нотки"
+
+#: .\templates\perfumes\perfume_detail.html:136
+#: .\templates\perfumes\perfume_detail.html:158
+msgid "Reviews"
+msgstr "Отзиви"
+
+#: .\templates\perfumes\perfume_detail.html:152
+msgid "No notes available for this perfume."
+msgstr "Няма налични нотки за този парфюм."
+
+#: .\templates\perfumes\perfume_detail.html:167
+#: .\templates\users\profile.html:43
+msgid "No reviews yet."
+msgstr "Все още няма отзиви."
+
+#: .\templates\perfumes\perfume_detail.html:174
+msgid "Rating:"
+msgstr "Оценка:"
+
+#: .\templates\perfumes\perfume_detail.html:182
+msgid "Your Review:"
+msgstr "Вашият отзив:"
+
+#: .\templates\perfumes\perfume_detail.html:185
+#: .\templates\users\leave_review.html:26
+msgid "Submit Review"
+msgstr "Изпращане на отзив"
+
+#: .\templates\perfumes\perfume_detail.html:188
+msgid "Please"
+msgstr "Моля "
+
+#: .\templates\perfumes\perfume_detail.html:188
+#: .\templates\perfumes\perfume_list.html:12
+#: .\templates\registration\password_reset_complete.html:7
+msgid "log in"
+msgstr "влезте"
+
+#: .\templates\perfumes\perfume_detail.html:188
+msgid " to leave a review."
+msgstr " за да оставите отзив."
+
+#: .\templates\perfumes\perfume_list.html:4
+#: .\templates\perfumes\perfume_list.html:19
+msgid "All Perfumes"
+msgstr "Всички парфюми"
+
+#: .\templates\perfumes\perfume_list.html:8
+msgid "Perfumes Available for Trade"
+msgstr "Парфюми, предлагани за размяна"
+
+#: .\templates\perfumes\perfume_list.html:12
+msgid "To trade perfumes, please "
+msgstr "За да разменяте парфюми, моля "
+
+#: .\templates\perfumes\perfume_list.html:12
+msgid " or "
+msgstr " или "
+
+#: .\templates\perfumes\perfume_list.html:12
+msgid "register"
+msgstr "регистрирайте се"
+
+#: .\templates\perfumes\perfume_list.html:30
+#: .\templates\perfumes\perfume_list_by_brand.html:22
+#: .\templates\perfumes\sales_dashboard.html:38
+msgid "View Details"
+msgstr "Вижте Детайли"
+
+#: .\templates\perfumes\perfume_list_by_brand.html:4
+#: .\templates\perfumes\perfume_list_by_brand.html:7
+msgid "Perfumes by "
+msgstr "Парфюми от"
+
+#: .\templates\perfumes\privacy_policy.html:9
+msgid "This policy is effective as of May 08, 2011. (GDPR Update Mar 2018)"
+msgstr ""
+"Тази политика е в сила от 08 май 2011 г. (Актуализация на GDPR март 2018 г.)"
+
+#: .\templates\perfumes\privacy_policy.html:11
+msgid "Perfumeswap Principles"
+msgstr "Условия за ползване на Perfumeswap"
+
+#: .\templates\perfumes\privacy_policy.html:12
+msgid ""
+"We built Perfumeswap to make it easy to share information and express "
+"yourself to your friends and people around you. We understand you may not "
+"want everyone in the world to have the information you share on Perfumeswap; "
+"that is why we give you control of your information. Our default privacy "
+"settings limit the information displayed in your profile and you can use "
+"board (then click the profile link) also perfume wardrobe to adjust settings "
+"or edit/remove information about you displayed on this site."
+msgstr ""
+"Създадохме Perfumeswap, за да улесним споделянето на информация и "
+"изразяването пред приятелите ви и хората около вас. Разбираме, че може да не "
+"желаете всички в света да имат достъп до информацията, която споделяте; "
+"затова ви даваме контрол върху нея. Настройките по подразбиране ограничават "
+"видимостта на профила ви и можете да използвате таблото (след като кликнете "
+"върху връзката към профила), както и гардероба с парфюми, за да редактирате "
+"или премахвате информация."
+
+#: .\templates\perfumes\privacy_policy.html:14
+msgid "1. You should have control over your personal information."
+msgstr "1. Трябва да имате контрол върху личната си информация."
+
+#: .\templates\perfumes\privacy_policy.html:15
+msgid ""
+"Perfumeswap helps you share information with your friends and people around "
+"you. You choose what information you put in your profile, including contact "
+"and personal information, pictures, interests and groups you join. And you "
+"control the users with whom you share that information through the privacy "
+"settings on the Privacy page."
+msgstr ""
+"Perfumeswap ви помага да споделяте информация с вашите приятели и хората "
+"около вас. Вие избирате каква информация да добавите в профила си, "
+"включително контактна и лична информация, снимки, интереси и групи, към "
+"които се присъединявате. Също така вие контролирате потребителите, с които "
+"споделяте тази информация, чрез настройките за поверителност на страницата "
+"за поверителност."
+
+#: .\templates\perfumes\privacy_policy.html:17
+msgid "2. You should have access to the information others want to share."
+msgstr ""
+"2. Трябва да имате достъп до информацията, която другите искат да споделят."
+
+#: .\templates\perfumes\privacy_policy.html:18
+msgid ""
+"There is an increasing amount of information available out there.and you may "
+"want to know what relates to you, your friends, and people around you. We "
+"want to help you easily get that information. Sharing information should be "
+"easy. And we want to provide you with the privacy tools necessary to control "
+"how and with whom you share that information. If you have questions or "
+"ideas, please send them to perfumeswap@gmail.com"
+msgstr ""
+"Онлайн има все повече налична информация и е възможно да искате да знаете "
+"какво се отнася до вас, вашите приятели и хората около вас. Ние искаме да ви "
+"помогнем лесно да достигнете до тази информация. Споделянето на информация "
+"трябва да бъде лесно. Също така ви предоставяме необходимите инструменти за "
+"поверителност, за да контролирате как и с кого споделяте тази информация. "
+"Ако имате въпроси или идеи, моля, изпратете ги на perfumeswap@gmail.com."
+
+#: .\templates\perfumes\privacy_policy.html:20
+msgid "Perfumeswap's Privacy Policy"
+msgstr "Политика за поверителност"
+
+#: .\templates\perfumes\privacy_policy.html:21
+msgid ""
+"Perfumeswap's Privacy Policy is designed to help you understand how we "
+"collect and use the personal information you decide to share, and help you "
+"make informed decisions when using Perfumeswap, located at "
+"www.perfumeswap.bg and its directly associated domains (collectively, "
+"'Perfumeswap' or 'Website'). By using or accessing Perfumeswap, you are "
+"accepting the practices described in this Privacy Policy."
+msgstr ""
+"Политиката за поверителност на Perfumeswap е предназначена да ви помогне да "
+"разберете как събираме и използваме личната информация, която решите да "
+"споделите, и да ви помогне да вземате информирани решения, когато използвате "
+"Perfumeswap, разположен на www.perfumeswap.bg и неговите пряко свързани "
+"домейни (наричани общо 'Perfumeswap' или 'Уебсайт'). С използването или "
+"достъпа до Perfumeswap, вие приемате практиките, описани в тази Политика за "
+"поверителност."
+
+#: .\templates\perfumes\privacy_policy.html:23
+msgid "The Information We Collect"
+msgstr "Информацията, която събираме"
+
+#: .\templates\perfumes\privacy_policy.html:24
+msgid ""
+"When you visit Perfumeswap you provide us with two types of information: "
+"personal information you knowingly choose to disclose that is collected by "
+"us and Web Site use information collected by us as you interact with our Web "
+"Site. Perfumeswap.bg respects your privacy. We take precautions to safeguard "
+"your personally identifiable information."
+msgstr ""
+"Когато посещавате Perfumeswap, ни предоставяте два вида информация: лична "
+"информация, която съзнателно решавате да споделите и която ние събираме, и "
+"информация за използването на уебсайта, която се събира автоматично, докато "
+"взаимодействате с него. Perfumeswap.bg уважава вашата поверителност и "
+"предприема мерки за защитана личната ви информация."
+
+#: .\templates\perfumes\privacy_policy.html:26
+msgid "Data that you voluntarily provide"
+msgstr "Данни, които доброволно предоставяте"
+
+#: .\templates\perfumes\privacy_policy.html:27
+msgid ""
+"The individual must provide the Data requested during registration to "
+"Perfumeswap.bg or registration to any Service at Perfumeswap.bg in the "
+"required fields of the questionnaire, indicated by an asterisk(*), in order "
+"to benefit from the service or the desired offer. Without this information, "
+"the person's registration for the Service or offer will not be effective and "
+"the person will not be able to benefit from this Service or offer. Answers "
+"to the fields that are not indicated with an asterisk (*) are optional. If "
+"you want to take part in quizzes and surveys you are asked to provide "
+"personal data like your name, address, telephone number, age and similar. "
+"Some of them are requested and indicated by an asterisk(*), in order to "
+"receive shipment with prize. If indicated on the form, we will share the "
+"winner's information with a 3rd party, for example the sponsor who will send "
+"you shipment. If you do not want to share that information with a 3rd party "
+"you should not take a part in the quiz or survey. We may display statistical "
+"results of quiz or survey but we will not display it on the site, give, sell "
+"or share with 3rd party. We use the information that you voluntarily provide "
+"for such purposes as responding to your requests, statistical purposes, "
+"awarding prizes for contests we organize on Perfumeswap.bg, improving our "
+"service and communicating more effectively with you."
+msgstr ""
+"Потребителят трябва да предостави данните, изисквани по време на "
+"регистрацията в Perfumeswap.bg или за която и да е услуга на Perfumeswap.bg, "
+"в задължителните полета, отбелязани със звездичка (*), за да се възползва от "
+"съответната услуга или оферта. Без тази информация регистрацията няма да "
+"бъде успешна и потребителят няма да може да използва желаната услуга. "
+"Отговорите в полета, които не са отбелязани със звездичка (*), са по избор. "
+"Ако желаете да участвате в анкети или викторини, ще трябва да предоставите "
+"лични данни, като име, адрес, телефонен номер, възраст и други. Някои от "
+"тези данни ще бъдат задължителни и също отбелязани със звездичка (*), ако е "
+"необходимо за получаване на награда. Ако формата указва, че ще се споделят "
+"данни с трета страна (например спонсор, който изпраща наградата), те ще "
+"бъдат предоставени. Ако не желаете това, не трябва да участвате в анкетата "
+"или викторината. Възможно е да публикуваме статистически резултати от "
+"анкетите или викторините, но няма да показваме данни на сайта, нито да ги "
+"продаваме, предоставяме или споделяме с трети страни. Използваме "
+"информацията, която доброволно сте предоставили, за да отговаряме на "
+"запитвания, за статистика, за награждаване при организирани конкурси, за "
+"подобряване на услугите ни и за по-ефективна комуникация с вас."
+
+#: .\templates\perfumes\privacy_policy.html:29
+msgid "Automatic Information"
+msgstr "Автоматична информация"
+
+#: .\templates\perfumes\privacy_policy.html:30
+msgid ""
+"Perfumeswap.bg receives and stores certain types of information "
+"automatically whenever you interact with us. For example, like many Web "
+"sites, we use 'cookies'. In that way, we obtain certain types of information "
+"when your Web browser accesses our site..."
+msgstr ""
+"Perfumeswap.bg автоматично събира определени видове информацияпри всяко "
+"взаимодействие, например чрез 'бисквитки'. Това ни позволява дави "
+"предоставим персонализирани услуги."
+
+#: .\templates\perfumes\privacy_policy.html:32
+msgid "Children Under Age 13"
+msgstr "Деца под 13 години"
+
+#: .\templates\perfumes\privacy_policy.html:33
+msgid ""
+"Perfumeswap does not knowingly collect or solicit personal information from "
+"anyone under the age of 13..."
+msgstr ""
+"Perfumeswap не събира умишлено лична информация от деца под 13 години. Ако "
+"разберем, че сме събрали такава информация, ще я изтрием незабавно."
+
+#: .\templates\perfumes\privacy_policy.html:35
+msgid "Children Between the Ages of 13 and 18"
+msgstr "Деца между 13 и 18 години"
+
+#: .\templates\perfumes\privacy_policy.html:36
+msgid ""
+"We recommend that minors over the age of 13 ask their parents for permission "
+"before sending any information about themselves to anyone over the Internet."
+msgstr ""
+"Препоръчваме на непълнолетните над 13 години да поискат разрешение от "
+"родителите си, преди да изпращат каквато и да е информация за себе си на "
+"когото и да било в интернет."
+
+#: .\templates\perfumes\privacy_policy.html:38
+msgid "Links"
+msgstr "Връзки"
+
+#: .\templates\perfumes\privacy_policy.html:39
+msgid "Perfumeswap may contain links to other websites..."
+msgstr ""
+"Perfumeswap може да съдържа връзки към други уебсайтове. Не носим "
+"отговорност за тяхната политика за поверителност."
+
+#: .\templates\perfumes\privacy_policy.html:41
+msgid "Third Party Advertising"
+msgstr "Реклама от трети страни"
+
+#: .\templates\perfumes\privacy_policy.html:42
+msgid ""
+"Advertisements that appear on Perfumeswap are sometimes delivered directly "
+"to users by third party advertisers..."
+msgstr ""
+"Рекламите, които се появяват на Perfumeswap, понякога се предоставят "
+"директно от трети страни, които може да използват бисквитки или уеб маяци за "
+"събиране на информация."
+
+#: .\templates\perfumes\privacy_policy.html:44
+msgid "E-mail Privacy Policy"
+msgstr "Политика за поверителност на електронната поща"
+
+#: .\templates\perfumes\privacy_policy.html:45
+msgid ""
+"We have created this email privacy policy to demonstrate our firm commitment "
+"to your privacy..."
+msgstr ""
+"Създадохме тази политика, за да покажем нашия ангажименткъм поверителността "
+"ви."
+
+#: .\templates\perfumes\privacy_policy.html:47
+msgid "Changing or Removing Information"
+msgstr "Промяна или премахване на информация"
+
+#: .\templates\perfumes\privacy_policy.html:48
+msgid ""
+"Access and control over most personal information on Perfumeswap is readily "
+"available through the profile editing tools..."
+msgstr ""
+"Достъпът и контролът върху личната ви информация в Perfumeswap са налични "
+"чрез настройките в профила. Можете да я редактирате или изтривате по всяко "
+"време."
+
+#: .\templates\perfumes\privacy_policy.html:50
+msgid "Contacting the Website"
+msgstr "Свързване със сайта"
+
+#: .\templates\perfumes\privacy_policy.html:51
+msgid ""
+"If you have any questions about this privacy policy, please contact us at "
+"perfumeswap@gmail.com"
+msgstr ""
+"Ако имате въпроси относно тази политика, моля, свържете се с нас "
+"наperfumeswap@gmail.com"
+
+#: .\templates\perfumes\privacy_policy.html:53
+msgid ""
+"Addition to Privacy Policy for Perfumeswap Inc in respect to GDPR "
+"requirements"
+msgstr ""
+"Допълнение към Политиката за поверителност относно изискванията на GDPR"
+
+#: .\templates\perfumes\privacy_policy.html:54
+msgid "GDPR Designated Representative:"
+msgstr "Представител по GDPR:"
+
+#: .\templates\perfumes\privacy_policy.html:63
+msgid "General Data Protection Regulation (GDPR)"
+msgstr "Общ регламент за защита на данните (GDPR)"
+
+#: .\templates\perfumes\privacy_policy.html:64
+msgid ""
+"If you are a resident of the EEA, you have certain data protection rights:"
+msgstr "Ако сте жител на ЕИП, имате определени права за защита на данните:"
+
+#: .\templates\perfumes\privacy_policy.html:66
+msgid "The right to access, update or delete the information we have on you"
+msgstr ""
+"Право на достъп, актуализация или изтриване на информацията, която имаме за "
+"вас"
+
+#: .\templates\perfumes\privacy_policy.html:67
+msgid "The right of rectification"
+msgstr "Право на коригиране"
+
+#: .\templates\perfumes\privacy_policy.html:68
+msgid "The right to object"
+msgstr "Право на възражение"
+
+#: .\templates\perfumes\privacy_policy.html:69
+msgid "The right of restriction"
+msgstr "Право на ограничаване"
+
+#: .\templates\perfumes\privacy_policy.html:70
+msgid "The right to data portability"
+msgstr "Право на преносимост на данните"
+
+#: .\templates\perfumes\privacy_policy.html:71
+msgid "The right to withdraw consent"
+msgstr "Право на оттегляне на съгласие"
+
+#: .\templates\perfumes\privacy_policy.html:74
+msgid "Log Files"
+msgstr "Лог файлове"
+
+#: .\templates\perfumes\privacy_policy.html:75
+msgid "Perfumeswap follows a standard procedure of using log files..."
+msgstr ""
+"Perfumeswap използва стандартна процедура за запис на лог файлове с цел "
+"анализ на трафика и поведението на потребителите."
+
+#: .\templates\perfumes\privacy_policy.html:77
+msgid "Cookies and Web Beacons"
+msgstr "Бисквитки и уеб маяци"
+
+#: .\templates\perfumes\privacy_policy.html:78
+msgid "Like any other website, Perfumeswap uses 'cookies'..."
+msgstr ""
+"Както повечето уебсайтове, Perfumeswap използва 'бисквитки' за подобряване "
+"на потребителското преживяване."
+
+#: .\templates\perfumes\privacy_policy.html:80
+msgid "Google DoubleClick DART Cookie"
+msgstr "Бисквитка DART на Google DoubleClick"
+
+#: .\templates\perfumes\privacy_policy.html:81
+msgid "Google is one of a third-party vendor on our site..."
+msgstr ""
+"Google е една от трети страни, използващи 'бисквитки' за показване на "
+"реклами въз основа на посещения на сайта."
+
+#: .\templates\perfumes\privacy_policy.html:83
+msgid "Advertising Partners"
+msgstr "Рекламни партньори"
+
+#: .\templates\perfumes\privacy_policy.html:84
+msgid "Some of advertisers on our site may use cookies and web beacons..."
+msgstr ""
+"Някои рекламодатели може да използват бисквитки и уеб маяци. Ние не носим "
+"отговорност за тяхната употреба."
+
+#: .\templates\perfumes\privacy_policy.html:86
+msgid "Children’s Information"
+msgstr "Информация за деца"
+
+#: .\templates\perfumes\privacy_policy.html:87
+msgid ""
+"Another part of our priority is adding protection for children while using "
+"the internet..."
+msgstr ""
+"Друго наше приоритетно задължение е да защитаваме децата в интернет. "
+"Призоваваме родителите да следят дейностите на своите деца онлайн."
+
+#: .\templates\perfumes\privacy_policy.html:89
+msgid "Consent"
+msgstr "Съгласие"
+
+#: .\templates\perfumes\privacy_policy.html:90
+msgid ""
+"By using our website, you hereby consent to our Privacy Policy and agree to "
+"its terms."
+msgstr ""
+"Използвайки нашия сайт, вие се съгласявате с настоящата Политика за "
+"поверителност и приемате нейните условия."
+
+#: .\templates\perfumes\provide_delivery_info.html:4
+msgid "Delivery Information"
+msgstr "Информация за доставка"
+
+#: .\templates\perfumes\provide_delivery_info.html:8
+msgid "Enter Your Delivery Details"
+msgstr "Въведете данните си за доставка"
+
+#: .\templates\perfumes\provide_delivery_info.html:9
+msgid ""
+"These details will only be visible to the other party once both sides have "
+"submitted them."
+msgstr ""
+"Тези данни ще бъдат видими за другата страна само след като и двете страни "
+"ги подадат."
+
+#: .\templates\perfumes\provide_delivery_info.html:19
+msgid "Phone Number"
+msgstr "Телефонен номер"
+
+#: .\templates\perfumes\provide_delivery_info.html:24
+msgid "Shipping Address"
+msgstr "Адрес за доставка"
+
+#: .\templates\perfumes\provide_delivery_info.html:28
+msgid "Submit Delivery Info"
+msgstr "Изпращане на информация за доставка"
+
+#: .\templates\perfumes\register.html:8
+msgid "👤 Create Your Account"
+msgstr "👤 Създаване на профил "
+
+#: .\templates\perfumes\register.html:26
+msgid "Already have an account?"
+msgstr "Вече имате профил?"
+
+#: .\templates\perfumes\sales_dashboard.html:4
+msgid "Sales Dashboard"
+msgstr "Табло за продажби"
+
+#: .\templates\perfumes\sales_dashboard.html:8
+msgid "📦 Orders For Your Products"
+msgstr "📦 Поръчки за вашите продукти "
+
+#: .\templates\perfumes\sales_dashboard.html:14
+msgid "Order ID"
+msgstr "Номер на поръчката"
+
+#: .\templates\perfumes\sales_dashboard.html:15
+msgid "Buyer"
+msgstr "Купувач"
+
+#: .\templates\perfumes\sales_dashboard.html:16
+msgid "Product"
+msgstr "Продукт"
+
+#: .\templates\perfumes\sales_dashboard.html:19
+#: .\templates\perfumes\trade_summary.html:9
+msgid "Status"
+msgstr "Статус"
+
+#: .\templates\perfumes\sales_dashboard.html:20
+msgid "Details"
+msgstr "Детайли"
+
+#: .\templates\perfumes\sales_dashboard.html:44
+msgid "Ordered on:"
+msgstr "Поръчана на:"
+
+#: .\templates\perfumes\sales_dashboard.html:51
+msgid "No orders for your products yet."
+msgstr "Все още няма поръчки за вашите продукти."
+
+#: .\templates\perfumes\shipping_returns.html:10
+msgid "Shipping"
+msgstr "Доставка"
+
+#: .\templates\perfumes\shipping_returns.html:11
+msgid ""
+"We offer free shipping on orders over 200 BGN in Bulgaria.Orders are "
+"processed within 1–2 business days and shipped via reliable couriers."
+msgstr ""
+"Предлагаме безплатна доставка за поръчки над 200 лева в България. Поръчките "
+"се обработват в рамките на 1–2 работни дни и се изпращат чрез надеждни "
+"куриери."
+
+#: .\templates\perfumes\shipping_returns.html:13
+msgid "Estimated Delivery Times"
+msgstr "Очаквани срокове за доставка"
+
+#: .\templates\perfumes\shipping_returns.html:15
+msgid "Bulgaria: 1–3 business days"
+msgstr "България: 1–3 работни дни"
+
+#: .\templates\perfumes\shipping_returns.html:16
+msgid "EU countries: 4–7 business days"
+msgstr "Държави от ЕС: 4–7 работни дни"
+
+#: .\templates\perfumes\shipping_returns.html:19
+msgid "Returns"
+msgstr "Връщане"
+
+#: .\templates\perfumes\shipping_returns.html:20
+msgid ""
+"If you are not satisfied with your purchase, you can return the product "
+"within 14 days of delivery. The product must be unused, in its original "
+"packaging, and with the receipt."
+msgstr ""
+"Ако не сте доволни от покупката си, можете да върнете продукта в рамките на "
+"14 дни от доставката. Продуктът трябва да е неизползван, в оригиналната си "
+"опаковка и с касова бележка."
+
+#: .\templates\perfumes\shipping_returns.html:22
+msgid "How to Return"
+msgstr "Как да върнете?"
+
+#: .\templates\perfumes\shipping_returns.html:24
+msgid "Contact us at "
+msgstr "Свържете се с нас на"
+
+#: .\templates\perfumes\shipping_returns.html:25
+msgid "Provide your order number and reason for return"
+msgstr "Посочете номера на поръчката си и причината за връщането"
+
+#: .\templates\perfumes\shipping_returns.html:26
+msgid "We'll provide return instructions"
+msgstr "Ще предоставим инструкции за връщане"
+
+#: .\templates\perfumes\shipping_returns.html:29
+msgid ""
+"Return shipping costs are the responsibility of the customer, unless the "
+"return is due to a defect or error on our part."
+msgstr ""
+"Разходите за връщане на стоката са за сметка на клиента, освен ако връщането "
+"не се дължи на дефект или грешка от наша страна."
+
+#: .\templates\perfumes\terms_and_conditions.html:8
+msgid "Perfumeswap Terms of Service"
+msgstr "Условия за ползване на Perfumeswap"
+
+#: .\templates\perfumes\terms_and_conditions.html:10
+msgid "Perfumeswap Terms of Service Welcome to Perfumeswap!"
+msgstr "Условия за ползване на Perfumeswap"
+
+#: .\templates\perfumes\terms_and_conditions.html:14
+msgid "1. Your relationship with Perfumeswap Inc"
+msgstr "1. Вашите отношения с Perfumeswap Inc"
+
+#: .\templates\perfumes\terms_and_conditions.html:18
+msgid ""
+"1.1 Your use of Perfumeswap’s products, software, services and web sites "
+"(referred to collectively as the “Services” in this document and excluding "
+"any services provided to you by Perfumeswap under a separate written "
+"agreement) is subject to the terms of a legal agreement between you and "
+"Perfumeswap. “Perfumeswap” means Perfumeswap inc, whose principal place of "
+"business is at 3651 Lindell Road, Suite D1201, Las Vegas, NV, US 89103, "
+"United States. This document explains how the agreement is made up, and sets "
+"out some of the terms of that agreement."
+msgstr ""
+"1.1 Използването от ваша страна на продуктите, софтуера, услугите и уебсайтовете "
+"на „Perfumeswap“ (наричани заедно по-нататък в този документ „Услугите“ и с изключение "
+"на всякакви услуги, предоставяни ви от „Perfumeswap“ по отделно писмено споразумение) "
+"се регулира от условията на правно споразумение между вас и „Perfumeswap“. "
+"„Perfumeswap“ означава Perfumeswap Inc., чийто основен адрес на управление е "
+"3651 Lindell Road, Suite D1201, Las Vegas, NV, US 89103, Съединени американски щати. "
+"Този документ обяснява как се формира споразумението и излага някои от неговите условия."
+
+#: .\templates\perfumes\terms_and_conditions.html:27
+msgid ""
+"1.2 Unless otherwise agreed in writing with Perfumeswap, your agreement with "
+"Perfumeswap will always include, at a minimum, the terms and conditions set "
+"out in this document. These are referred to below as the “Universal Terms”."
+msgstr ""
+"1.2 Освен ако не е договорено друго в писмен вид с „Perfumeswap“, вашето "
+"споразумение с „Perfumeswap“ винаги ще включва най-малкото условията и "
+"правилата, изложени в този документ. По-долу те са наричани „Универсални условия“."
+
+#: .\templates\perfumes\terms_and_conditions.html:34
+msgid "Universal Terms"
+msgstr "Универсални условия"
+
+#: .\templates\perfumes\terms_and_conditions.html:36
+#: .\templates\perfumes\terms_and_conditions.html:137
+msgid ""
+"Unless otherwise agreed in writing with Perfumeswap, your agreement with "
+"Perfumeswap will always include, at a minimum, the terms and conditions set "
+"out in this document. These are referred to below as the “Universal Terms”."
+msgstr ""
+"Освен ако не е договорено друго в писмен вид с „Perfumeswap“, вашето "
+"споразумение с „Perfumeswap“ винаги ще включва най-малкото условията и "
+"правилата, изложени в този документ. По-долу те са наричани „Универсални условия“."
+
+#: .\templates\perfumes\terms_and_conditions.html:40
+#: .\templates\perfumes\terms_and_conditions.html:141
+msgid ""
+"Your agreement with Perfumeswap will also include the terms of any Legal "
+"Notices applicable to the Services, in addition to the Universal Terms. All "
+"of these are referred to below as the “Additional Terms”. Where Additional "
+"Terms apply to a Service, these will be accessible for you to read either "
+"within, or through your use of, that Service."
+msgstr ""
+"Вашето споразумение с „Perfumeswap“ ще включва също и условията на всички "
+"правни уведомления, приложими към Услугите, в допълнение към Универсалните условия. "
+"Всички тези условия по-долу са наричани „Допълнителни условия“. Когато към дадена "
+"Услуга се прилагат Допълнителни условия, те ще бъдат достъпни за вас за преглед, "
+"или в самата Услуга, или чрез използването ѝ."
+
+#: .\templates\perfumes\terms_and_conditions.html:44
+#: .\templates\perfumes\terms_and_conditions.html:145
+msgid ""
+"The Universal Terms, together with the Additional Terms, form a legally "
+"binding agreement between you and Perfumeswap in relation to your use of the "
+"Services. It is important that you take the time to read them carefully. "
+"Collectively, this legal agreement is referred to below as the “Terms”."
+msgstr ""
+"Универсалните условия, заедно с Допълнителните условия, съставляват правно "
+"обвързващо споразумение между вас и „Perfumeswap“ във връзка с използването "
+"на Услугите. Важно е да отделите време, за да ги прочетете внимателно. "
+"Това правно споразумение по-долу е наричано обобщено „Условия“."
+
+#: .\templates\perfumes\terms_and_conditions.html:48
+#: .\templates\perfumes\terms_and_conditions.html:149
+msgid ""
+"If there is any contradiction between what the Additional Terms say and what "
+"the Universal Terms say, then the Additional Terms shall take precedence in "
+"relation to that Service."
+msgstr ""
+"Ако има противоречие между това, което казват Допълнителните условия, и "
+"това, което казват Универсалните условия, тогава за съответната Услуга "
+"предимство ще имат Допълнителните условия."
+
+#: .\templates\perfumes\terms_and_conditions.html:52
+msgid "Accepting the Terms"
+msgstr "Приемане на Условията"
+
+#: .\templates\perfumes\terms_and_conditions.html:54
+#: .\templates\perfumes\terms_and_conditions.html:153
+msgid ""
+"In order to use the Services, you must first agree to the Terms. You may not "
+"use the Services if you do not accept the Terms."
+msgstr ""
+"За да използвате Услугите, първо трябва да приемете Условията. Нямате право "
+"да използвате Услугите, ако не приемате Условията."
+
+#: .\templates\perfumes\terms_and_conditions.html:58
+msgid "You can accept the Terms by:"
+msgstr "Можете да приемете Условията, като:"
+
+#: .\templates\perfumes\terms_and_conditions.html:63
+msgid ""
+"Clicking to accept or agree to the Terms, where this option is made "
+"available to you by Perfumeswap in the user interface for any Service."
+msgstr ""
+"Кликване върху бутон за приемане или съгласие с Условията, когато тази опция "
+"е предоставена от „Perfumeswap“ в потребителския интерфейс на която и да е Услуга."
+
+#: .\templates\perfumes\terms_and_conditions.html:66
+msgid ""
+"By actually using the Services. In this case, you understand and agree that "
+"Perfumeswap will treat your use of the Services as acceptance of the Terms "
+"from that point onwards."
+msgstr ""
+"Чрез фактическо използване на Услугите. В този случай вие разбирате и се съгласявате, "
+"че „Perfumeswap“ ще счита използването на Услугите от ваша страна като приемане на Условията "
+"от този момент нататък."
+
+#: .\templates\perfumes\terms_and_conditions.html:71
+#: .\templates\perfumes\terms_and_conditions.html:161
+msgid ""
+"You may not use the Services and may not accept the Terms if (a) you are not "
+"of legal age to form a binding contract with Perfumeswap, or (b) you are a "
+"person barred from receiving the Services under the laws of the United "
+"States or other countries including the country in which you are resident or "
+"from which you use the Services."
+msgstr ""
+"Нямате право да използвате Услугите и не можете да приемете Условията, ако "
+"(а) не сте навършили пълнолетие и не можете да сключите обвързващ договор с "
+"„Perfumeswap“, или (б) сте лице, на което е забранено да получава Услугите "
+"съгласно законите на Съединените американски щати или други държави, включително "
+"държавата, в която живеете или от която използвате Услугите."
+
+#: .\templates\perfumes\terms_and_conditions.html:75
+#: .\templates\perfumes\terms_and_conditions.html:165
+msgid ""
+"Before you continue, you should print off or save a local copy of the "
+"Universal Terms for your records."
+msgstr ""
+"Преди да продължите, трябва да разпечатате или запазите локално копие на "
+"Универсалните условия за вашите лични архиви."
+
+#: .\templates\perfumes\terms_and_conditions.html:79
+msgid "Language of the Terms"
+msgstr "Език на Общите условия"
+
+#: .\templates\perfumes\terms_and_conditions.html:81
+#: .\templates\perfumes\terms_and_conditions.html:169
+msgid ""
+"Where Perfumeswap has provided you with a translation of the English "
+"language version of the Terms, then you agree that the translation is "
+"provided for your convenience only and that the English language versions of "
+"the Terms will govern your relationship with Perfumeswap."
+msgstr ""
+"Ако „Perfumeswap“ ви е предоставил превод на Условията от английски език, вие "
+"се съгласявате, че преводът е предоставен единствено за ваше удобство и че "
+"английската версия на Условията ще урежда вашите отношения с „Perfumeswap“."
+
+#: .\templates\perfumes\terms_and_conditions.html:85
+#: .\templates\perfumes\terms_and_conditions.html:173
+msgid ""
+"If there is any contradiction between what the English language version of "
+"the Terms says and what a translation says, then the English language "
+"version shall take precedence."
+msgstr ""
+"Ако има противоречие между английската версия на Условията и превода, тогава "
+"предимство ще има английската версия."
+
+#: .\templates\perfumes\terms_and_conditions.html:89
+msgid "Provision of the Services by Perfumeswap"
+msgstr "Предоставяне на услугите от Perfumeswap"
+
+#: .\templates\perfumes\terms_and_conditions.html:91
+#: .\templates\perfumes\terms_and_conditions.html:177
+msgid ""
+"Perfumeswap has subsidiaries and affiliated legal entities around the world "
+"(“Subsidiaries and Affiliates”). Sometimes, these people or companies will "
+"be providing the Services to you on behalf of Perfumeswap itself. You "
+"acknowledge and agree that Subsidiaries and Affiliates will be entitled to "
+"provide the Services to you."
+msgstr ""
+"„Perfumeswap“ има дъщерни и свързани юридически лица по целия свят "
+"(„Дъщерни дружества и Партньори“). Понякога тези лица или компании ще "
+"предоставят Услугите от името на самия „Perfumeswap“. Вие потвърждавате и "
+"се съгласявате, че Дъщерните дружества и Партньорите имат право да ви "
+"предоставят Услугите."
+
+#: .\templates\perfumes\terms_and_conditions.html:95
+#: .\templates\perfumes\terms_and_conditions.html:181
+msgid ""
+"Perfumeswap is constantly innovating in order to provide the best possible "
+"experience for its users. You acknowledge and agree that the form and nature "
+"of the Services which Perfumeswap provides may change from time to time "
+"without prior notice to you."
+msgstr ""
+"„Perfumeswap“ непрекъснато иновира, за да осигури най-доброто възможно "
+"изживяване за своите потребители. Вие потвърждавате и се съгласявате, че "
+"формата и естеството на Услугите, които „Perfumeswap“ предоставя, могат да "
+"се променят от време на време без предварително уведомление."
+
+#: .\templates\perfumes\terms_and_conditions.html:99
+#: .\templates\perfumes\terms_and_conditions.html:185
+msgid ""
+"As part of this continuing innovation, you acknowledge and agree that "
+"Perfumeswap may stop (permanently or temporarily) providing the Services (or "
+"any features within the Services) to you or to users generally at "
+"Perfumeswap’s sole discretion, without prior notice to you. You may stop "
+"using the Services at any time. You do not need to specifically inform "
+"Perfumeswap when you stop using the Services."
+msgstr ""
+"Като част от тази непрекъсната иновация, вие потвърждавате и се съгласявате, че "
+"„Perfumeswap“ може да спре (временно или постоянно) предоставянето на Услугите "
+"(или на някои функции в тях) както за вас, така и за други потребители, по свое "
+"усмотрение и без предварително уведомление. Вие можете да спрете използването "
+"на Услугите по всяко време. Не е необходимо изрично да уведомите „Perfumeswap“, "
+"когато прекратите използването на Услугите."
+
+#: .\templates\perfumes\terms_and_conditions.html:103
+#: .\templates\perfumes\terms_and_conditions.html:189
+msgid ""
+"You acknowledge and agree that if Perfumeswap disables access to your "
+"account, you may be prevented from accessing the Services, your account "
+"details or any files or other content which is contained in your account."
+msgstr ""
+"Вие потвърждавате и се съгласявате, че ако „Perfumeswap“ деактивира достъпа до "
+"вашия акаунт, е възможно да бъдете възпрепятствани да достъпвате Услугите, "
+"детайли по акаунта си или файлове и друго съдържание, съдържащо се в акаунта ви."
+
+#: .\templates\perfumes\terms_and_conditions.html:107
+#: .\templates\perfumes\terms_and_conditions.html:193
+msgid ""
+"You acknowledge and agree that while Perfumeswap may not currently have set "
+"a fixed upper limit on the number of transmissions you may send or receive "
+"through the Services or on the amount of storage space used for the "
+"provision of any Service, such fixed upper limits may be set by Perfumeswap "
+"at any time, at Perfumeswap’s discretion."
+msgstr ""
+"Вие потвърждавате и се съгласявате, че въпреки че към момента „Perfumeswap“ може "
+"да не е определил конкретен горен лимит за броя предавания, които можете да изпращате "
+"или получавате чрез Услугите, или за количеството използвано дисково пространство, "
+"такъв лимит може да бъде въведен по всяко време, по преценка на „Perfumeswap“."
+
+#: .\templates\perfumes\terms_and_conditions.html:111
+msgid "Use of the Services by you"
+msgstr "Използване на Услугите от Ваша страна"
+
+#: .\templates\perfumes\terms_and_conditions.html:113
+msgid ""
+"In order to access certain Services, you may be required to provide "
+"information about yourself (such as identification or contact details) as "
+"part of the registration process for the Service, or as part of your "
+"continued use of the Services. You agree that any registration information "
+"you give to Perfumeswap will always be accurate, correct and up to date."
+msgstr ""
+"За да получите достъп до определени Услуги, може да се изисква да предоставите "
+"информация за себе си (като самоличност или данни за контакт) като част от "
+"процеса на регистрация за Услугата или при продължителното ѝ използване. Вие се "
+"съгласявате, че всяка регистрационна информация, която предоставите на "
+"„Perfumeswap“, винаги ще бъде точна, вярна и актуална."
+
+#: .\templates\perfumes\terms_and_conditions.html:117
+msgid ""
+"You agree to use the Services only for purposes that are permitted by (a) "
+"the Terms and (b) any applicable law, regulation or generally accepted "
+"practices or guidelines in the relevant jurisdictions (including any laws "
+"regarding the export of data or software to and from the United States or "
+"other relevant countries)."
+msgstr ""
+"Вие се съгласявате да използвате Услугите само за цели, които са позволени съгласно "
+"(а) Условията и (б) приложимото законодателство, разпоредби или общоприети практики "
+"и насоки в съответните юрисдикции (включително закони относно износа на данни или "
+"софтуер към и от Съединените щати или други приложими държави)."
+
+#: .\templates\perfumes\terms_and_conditions.html:121
+msgid ""
+"You agree not to access (or attempt to access) any of the Services by any "
+"means other than through the interface that is provided by Perfumeswap, "
+"unless you have been specifically allowed to do so in a separate agreement "
+"with Perfumeswap. You specifically agree not to access (or attempt to "
+"access) any of the Services through any automated means (including use of "
+"scripts or web crawlers) and shall ensure that you comply with the "
+"instructions set out in any robots.txt file present on the Services."
+msgstr ""
+"Вие се съгласявате да не осъществявате достъп (или да не се опитвате да осъществите достъп) "
+"до която и да е от Услугите по друг начин освен чрез интерфейса, предоставен от "
+"„Perfumeswap“, освен ако нямате изрично разрешение да го правите чрез отделно "
+"споразумение с „Perfumeswap“. Вие изрично се съгласявате да не осъществявате достъп "
+"(или да не се опитвате да осъществите достъп) до която и да е от Услугите чрез автоматизирани средства "
+"(включително чрез използване на скриптове или уеб ботове) и ще гарантирате, че спазвате "
+"инструкциите, изложени във всеки robots.txt файл, наличен в Услугите."
+
+#: .\templates\perfumes\terms_and_conditions.html:125
+msgid ""
+"You agree that you will not engage in any activity that interferes with or "
+"disrupts the Services (or the servers and networks which are connected to "
+"the Services)."
+msgstr ""
+"Вие се съгласявате да не извършвате дейности, които пречат или нарушават работата "
+"на Услугите (или на сървърите и мрежите, свързани с Услугите)."
+
+#: .\templates\perfumes\terms_and_conditions.html:129
+msgid ""
+"Unless you have been specifically permitted to do so in a separate agreement "
+"with Perfumeswap, you agree that you will not reproduce, duplicate, copy, "
+"sell, trade or resell the Services for any purpose."
+msgstr ""
+"Освен ако не сте изрично упълномощени да го правите с отделно споразумение с „Perfumeswap“, "
+"вие се съгласявате да не възпроизвеждате, дублирате, копирате, продавате, търгувате или "
+"препродавате Услугите за каквато и да е цел."
+
+#: .\templates\perfumes\terms_and_conditions.html:133
+msgid ""
+"You agree that you are solely responsible for (and that Perfumeswap has no "
+"responsibility to you or to any third party for) any breach of your "
+"obligations under the Terms and for the consequences (including any loss or "
+"damage which Perfumeswap may suffer) of any such breach."
+msgstr ""
+"Вие се съгласявате, че носите изцяло отговорност (и че „Perfumeswap“ не носи "
+"никаква отговорност към вас или към трета страна) за всяко нарушение на вашите "
+"задължения по Условията и за последиците от такова нарушение "
+"(включително всяка загуба или щета, която „Perfumeswap“ може да понесе)."
+
+#: .\templates\perfumes\terms_and_conditions.html:157
+msgid ""
+"You can accept the Terms by: (A) clicking to accept or agree to the Terms, "
+"where this option is made available to you by Perfumeswap in the user "
+"interface for any Service; or (B) by actually using the Services. In this "
+"case, you understand and agree that Perfumeswap will treat your use of the "
+"Services as acceptance of the Terms from that point onwards."
+msgstr ""
+"Можете да приемете Условията, като: (А) кликнете, за да приемете или да се съгласите "
+"с тях, когато тази опция е предоставена от „Perfumeswap“ в потребителския интерфейс "
+"на някоя от Услугите; или (Б) чрез фактическо използване на Услугите. В този случай "
+"вие разбирате и се съгласявате, че „Perfumeswap“ ще счита използването на Услугите "
+"от ваша страна като приемане на Условията от този момент нататък."
+
+#: .\templates\perfumes\terms_and_conditions.html:197
+msgid ""
+"Unless you have agreed otherwise in writing with Perfumeswap, nothing in the "
+"Terms gives you a right to use any of Perfumeswap’s trade names, trade "
+"marks, service marks, logos, domain names, and other distinctive brand "
+"features. This includes but not limited to use Perfumeswap as a username, "
+"name or part of name, title, or any other form of the identification on "
+"Perfumeswap websites or anywhere else online or offline."
+msgstr ""
+"Освен ако не сте се договорили писмено друго с „Perfumeswap“, нищо в тези Условия "
+"не ви дава право да използвате търговски наименования, търговски марки, марки на услуги, "
+"логотипи, домейн имена или други отличителни елементи на марката на „Perfumeswap“. "
+"Това включва, но не се ограничава до използване на „Perfumeswap“ като потребителско име, "
+"име или част от име, заглавие или каквато и да е друга форма на идентификация в уебсайтовете "
+"на „Perfumeswap“ или навсякъде другаде онлайн или офлайн."
+
+#: .\templates\perfumes\terms_and_conditions.html:201
+msgid ""
+"If you have been given an explicit right to use any of these brand features "
+"in a separate written agreement with Perfumeswap, then you agree that your "
+"use of such features shall be in compliance with that agreement, any "
+"applicable provisions of the Terms."
+msgstr ""
+"Ако сте получили изрично право да използвате някой от тези елементи на марката "
+"в отделно писмено споразумение с „Perfumeswap“, вие се съгласявате, че тяхното "
+"използване ще бъде в съответствие с това споразумение и с всички приложими "
+"разпоредби на Условията."
+
+#: .\templates\perfumes\terms_and_conditions.html:205
+msgid ""
+"Other than the limited license set forth in Section 11, Perfumeswap "
+"acknowledges and agrees that it obtains no right, title or interest from you "
+"(or your licensors) under these Terms in or to any Content that you submit, "
+"post, transmit or display on, or through, the Services, including any "
+"intellectual property rights which subsist in that Content. Unless you have "
+"agreed otherwise in writing with Perfumeswap, you agree that you are "
+"responsible for protecting and enforcing those rights and that Perfumeswap "
+"has no obligation to do so on your behalf."
+msgstr ""
+"С изключение на ограничения лиценз, изложен в раздел 11, „Perfumeswap“ признава и "
+"се съгласява, че не придобива никакви права, собственост или интерес от ваша страна "
+"(или от ваши лицензодатели) съгласно тези Условия върху каквото и да е Съдържание, "
+"което вие подавате, публикувате, предавате или показвате в или чрез Услугите, "
+"включително върху каквито и да било права на интелектуална собственост, които съществуват "
+"в това Съдържание. Освен ако не сте се договорили писмено друго с „Perfumeswap“, вие се "
+"съгласявате, че сте отговорни за защитата и прилагането на тези права и че „Perfumeswap“ "
+"няма задължение да го прави от ваше име."
+
+#: .\templates\perfumes\terms_and_conditions.html:209
+msgid ""
+"You agree that you shall not remove, obscure, or alter any proprietary "
+"rights notices (including copyright and trade mark notices) which may be "
+"affixed to or contained within the Services."
+msgstr ""
+"Вие се съгласявате да не премахвате, скривате или променяте каквито и да е уведомления "
+"за права на собственост (включително уведомления за авторски права и търговски марки), "
+"които могат да бъдат поставени върху или съдържащи се в Услугите."
+
+#: .\templates\perfumes\terms_and_conditions.html:213
+msgid ""
+"Unless you have been expressly authorized to do so in writing by "
+"Perfumeswap, you agree that in using the Services, you will not use any "
+"trade mark, service mark, trade name, logo of any company or organization in "
+"a way that is likely or intended to cause confusion about the owner or "
+"authorized user of such marks, names or logos."
+msgstr ""
+"Освен ако не сте изрично упълномощени писмено от „Perfumeswap“, вие се съгласявате, че при "
+"използване на Услугите няма да използвате никакви търговски марки, марки на услуги, търговски "
+"наименования или лога на която и да е компания или организация по начин, който може да предизвика "
+"или е с намерение да предизвика объркване относно собственика или упълномощения потребител "
+"на такива марки, наименования или лога."
+
+#: .\templates\perfumes\terms_and_conditions.html:217
+msgid ""
+"Perfumeswap gives you a personal, worldwide, royalty-free, non-assignable "
+"and non-exclusive license to use the website and software provided to you by "
+"Perfumeswap as part of the Services. This license is for the sole purpose of "
+"enabling you to use and enjoy the benefit of the Services as provided by "
+"Perfumeswap, in the manner permitted by the Terms."
+msgstr ""
+"„Perfumeswap“ ви предоставя личен, световен, безвъзмезден, непрехвърляем и неексклузивен лиценз "
+"за използване на уебсайта и софтуера, предоставени ви от „Perfumeswap“ като част от Услугите. "
+"Този лиценз има за единствена цел да ви позволи да използвате и се възползвате от Услугите, "
+"както са предоставени от „Perfumeswap“ и по начин, позволен от Условията."
+
+#: .\templates\perfumes\terms_and_conditions.html:221
+msgid ""
+"You may not (and you may not permit anyone else to) copy, modify, create a "
+"derivative work of, reverse engineer, decompile or otherwise attempt to "
+"extract the source code of the Software or any part thereof, unless this is "
+"expressly permitted or required by law, or unless you have been specifically "
+"told that you may do so by Perfumeswap, in writing."
+msgstr ""
+"Нямате право (и не можете да позволявате на други лица) да копирате, променяте, създавате "
+"производни произведения, да извършвате обратно инженерство, декомпилирате или по друг начин да се "
+"опитвате да извлечете изходния код на Софтуера или на която и да е част от него, освен ако това "
+"не е изрично позволено или изисквано от закона или ако нямате изрично писмено разрешение от „Perfumeswap“."
+
+#: .\templates\perfumes\terms_and_conditions.html:225
+msgid ""
+"Unless Perfumeswap has given you specific written permission to do so, you "
+"may not assign (or grant a sub-license of) your rights to use the Software, "
+"grant a security interest in or over your rights to use the Software, or "
+"otherwise transfer any part of your rights to use the Software."
+msgstr ""
+"Освен ако не сте получили изрично писмено разрешение от „Perfumeswap“, нямате право "
+"да прехвърляте (или да предоставяте сублицензия върху) правата си за използване на "
+"Софтуера, да учредявате залог или друго обезпечение върху тези права, или по какъвто "
+"и да е начин да прехвърляте която и да е част от правата си за използване на Софтуера."
+
+#: .\templates\perfumes\terms_and_conditions.html:229
+msgid ""
+"You retain copyright and any other rights you already hold in Content which "
+"you submit, post or display on or through the Services. By submitting, "
+"posting or displaying the content you give Perfumeswap a perpetual, "
+"irrevocable, worldwide, royalty-free, and non-exclusive license to "
+"reproduce, adapt, modify, translate, publish, publicly perform, publicly "
+"display and distribute any Content. This license enables Perfumeswap to "
+"display, distribute and promote the Services and may be revoked for certain "
+"Services as defined in the Additional Terms."
+msgstr ""
+"Вие запазвате авторските права и всички други права, които вече притежавате върху "
+"Съдържанието, което подавате, публикувате или показвате в или чрез Услугите. "
+"С подаването, публикуването или показването на съдържанието вие предоставяте на "
+"„Perfumeswap“ безсрочен, неотменим, световен, безвъзмезден и неексклузивен лиценз "
+"за възпроизвеждане, адаптиране, модифициране, превеждане, публикуване, публично "
+"изпълнение, публично показване и разпространение на всяко такова Съдържание. "
+"Този лиценз дава възможност на „Perfumeswap“ да показва, разпространява и промотира "
+"Услугите и може да бъде отменен за определени Услуги, както е описано в Допълнителните условия."
+
+#: .\templates\perfumes\terms_and_conditions.html:233
+msgid ""
+"You agree that this license includes a right for Perfumeswap to make such "
+"Content available to other companies, organizations or individuals with whom "
+"Perfumeswap has relationships for the provision of syndicated services, and "
+"to use such Content in connection with those services."
+msgstr ""
+"Вие се съгласявате, че този лиценз включва правото „Perfumeswap“ да предоставя такова "
+"Съдържание на други компании, организации или лица, с които има партньорски отношения "
+"за предоставяне на обединени услуги, както и да използва това Съдържание във връзка с тези услуги."
+
+#: .\templates\perfumes\terms_and_conditions.html:237
+msgid ""
+"You understand that Perfumeswap, in performing the required technical steps "
+"to provide the Services, may (a) transmit or distribute your Content over "
+"various public networks and in various media; and (b) make changes to "
+"conform and adapt that Content to the technical requirements of networks, "
+"devices, services or media. You agree this license permits Perfumeswap to "
+"take these actions."
+msgstr ""
+"Вие разбирате, че при извършване на необходимите технически стъпки за предоставяне на Услугите, "
+"„Perfumeswap“ може (а) да предава или разпространява вашето Съдържание по различни обществени мрежи "
+"и чрез различни медии; и (б) да прави промени с цел съгласуване и адаптиране на това Съдържание "
+"към техническите изисквания на мрежи, устройства, услуги или медии. Вие се съгласявате, че този лиценз "
+"позволява на „Perfumeswap“ да извършва тези действия."
+
+#: .\templates\perfumes\terms_and_conditions.html:241
+msgid ""
+"You confirm and warrant to Perfumeswap that you have all the rights, power "
+"and authority necessary to grant the above license."
+msgstr ""
+"Вие потвърждавате и гарантирате на „Perfumeswap“, че притежавате всички необходими права, правомощия "
+"и упълномощаване, за да предоставите горепосочения лиценз."
+
+#: .\templates\perfumes\terms_and_conditions.html:245
+msgid ""
+"The website or any software which you use to access the Service may update "
+"without prior notice. These updates are designed to improve and further "
+"develop the Services and may include bug fixes, enhanced functions, new "
+"modules, or entirely new versions. Some modules and parts of the service may "
+"be discontinued. You agree to receive such updates as part of your use of "
+"the Services."
+msgstr ""
+"Уебсайтът или който и да е софтуер, който използвате за достъп до Услугата, може да се актуализира "
+"без предварително уведомление. Тези актуализации са предназначени да подобрят и допълнително да развият "
+"Услугите и могат да включват корекции на грешки, разширени функции, нови модули или изцяло нови версии. "
+"Някои модули и части от услугата може да бъдат преустановени. Вие се съгласявате да получавате такива "
+"актуализации като част от използването на Услугите."
+
+#: .\templates\perfumes\terms_and_conditions.html:249
+msgid ""
+"We are committed to making our products and services accessible to everyone, "
+"including people with disabilities. We follow the Web Content Accessibility "
+"Guidelines (WCAG) and use ARIA specifications. For assistance, contact us at "
+"Perfumeswap@gmail.com. Read more about accessibility at https://"
+"www.fragrantica.com/accessibility-commitment.phtml"
+msgstr ""
+"Ние се ангажираме да направим нашите продукти и услуги достъпни за всички, "
+"включително за хора с увреждания. Следваме Насоките за достъпност на уебсъдържание (WCAG) "
+"и използваме ARIA спецификации. За съдействие се свържете с нас на Perfumeswap@gmail.com. "
+"Научете повече за достъпността на https://www.fragrantica.com/accessibility-commitment.phtml"
+
+#: .\templates\perfumes\terms_and_conditions.html:253
+msgid ""
+"The Terms will continue to apply until terminated by either you or "
+"Perfumeswap."
+msgstr ""
+"Условията ще продължат да се прилагат, докато не бъдат прекратени от вас или от „Perfumeswap“."
+
+#: .\templates\perfumes\terms_and_conditions.html:257
+msgid ""
+"You may terminate your agreement with Perfumeswap at any time by notifying "
+"us and closing your account. Your notice must be sent in writing to the "
+"address provided in these Terms."
+msgstr ""
+"Вие можете да прекратите споразумението си с „Perfumeswap“ по всяко време, като ни уведомите "
+"и закриете своя акаунт. Уведомлението трябва да бъде изпратено писмено на адреса, посочен в тези Условия."
+
+#: .\templates\perfumes\terms_and_conditions.html:261
+msgid ""
+"Perfumeswap may terminate its agreement with you if: (a) you breach the "
+"Terms; (b) required by law; (c) a partner ends their relationship with "
+"Perfumeswap; (d) Perfumeswap stops offering Services in your country; (e) "
+"Services become commercially unviable."
+msgstr ""
+"„Perfumeswap“ може да прекрати споразумението си с вас, ако: (а) нарушите Условията; "
+"(б) това се изисква по закон; (в) партньор прекрати взаимоотношенията си с „Perfumeswap“; "
+"(г) „Perfumeswap“ прекрати предлагането на Услуги във вашата държава; (д) Услугите станат "
+"икономически неизгодни за предоставяне."
+
+#: .\templates\perfumes\terms_and_conditions.html:265
+msgid ""
+"Nothing in this Section affects Perfumeswap’s rights under Section 4 of the "
+"Terms."
+msgstr ""
+"Нищо в този раздел не засяга правата на „Perfumeswap“ по Раздел 4 от Условията."
+
+#: .\templates\perfumes\terms_and_conditions.html:269
+msgid ""
+"Upon termination, legal rights and obligations accrued during the Terms will "
+"survive. Paragraph 20.7 will continue to apply indefinitely."
+msgstr ""
+"След прекратяване на споразумението, всички натрупани по него права и задължения "
+"остават в сила. Параграф 20.7 ще продължи да се прилага за неопределено време."
+
+#: .\templates\perfumes\terms_and_conditions.html:273
+msgid ""
+"NOTHING IN THESE TERMS, INCLUDING SECTIONS 14 AND 15, SHALL EXCLUDE OR LIMIT "
+"PERFUMESWAP’S WARRANTY OR LIABILITY FOR LOSSES WHICH MAY NOT BE LAWFULLY "
+"EXCLUDED OR LIMITED BY APPLICABLE LAW."
+msgstr ""
+"НИЩО В ТЕЗИ УСЛОВИЯ, ВКЛЮЧИТЕЛНО РАЗДЕЛИ 14 И 15, НЕ ИЗКЛЮЧВА И НЕ ОГРАНИЧАВА "
+"ОТГОВОРНОСТТА ИЛИ ГАРАНЦИИТЕ НА „PERFUMESWAP“ ЗА ЗАГУБИ, КОИТО НЕ МОГАТ ДА БЪДАТ "
+"ЗАКОННО ИЗКЛЮЧЕНИ ИЛИ ОГРАНИЧЕНИ СПОРЕД ПРИЛОЖИМОТО ЗАКОНОДАТЕЛСТВО."
+
+#: .\templates\perfumes\terms_and_conditions.html:277
+msgid ""
+"YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SERVICES IS AT YOUR "
+"SOLE RISK AND THAT THE SERVICES ARE PROVIDED \"AS IS\" AND “AS AVAILABLE.”"
+msgstr ""
+"ВИЕ ИЗРИЧНО РАЗБИРАТЕ И СЕ СЪГЛАСЯВАТЕ, ЧЕ ИЗПОЛЗВАТЕ УСЛУГИТЕ НА СОБСТВЕН РИСК И ЧЕ "
+"УСЛУГИТЕ СЕ ПРЕДОСТАВЯТ „КАКТО СА“ И „СПОРЕД НАЛИЧНОСТТА“."
+
+#: .\templates\perfumes\terms_and_conditions.html:281
+msgid ""
+"Perfumeswap and its licensors do not represent or warrant that: (a) your use "
+"of the Services will meet your requirements; (b) your use will be "
+"uninterrupted, timely, secure, or error-free; (c) any information obtained "
+"is accurate or reliable; or (d) defects in operation or functionality will "
+"be corrected."
+msgstr ""
+"„Perfumeswap“ и неговите лицензодатели не гарантират, че: (а) използването на "
+"Услугите ще отговаря на вашите изисквания; (б) използването ще бъде непрекъснато, "
+"навременно, сигурно или без грешки; (в) получената информация е точна или надеждна; "
+"или (г) дефекти във функционалността ще бъдат отстранени."
+
+#: .\templates\perfumes\terms_and_conditions.html:285
+msgid ""
+"Any material downloaded or obtained through the Services is done at your own "
+"risk. You are solely responsible for any damage or data loss."
+msgstr ""
+"Всеки материал, изтеглен или получен чрез Услугите, е на ваш собствен риск. Вие носите "
+"пълна отговорност за евентуални щети или загуба на данни."
+
+#: .\templates\perfumes\terms_and_conditions.html:289
+msgid ""
+"No advice or information, whether oral or written, obtained by you from "
+"Perfumeswap shall create any warranty not stated in the Terms."
+msgstr ""
+"Нито един съвет или информация, независимо дали е устна или писмена, получена от вас "
+"от „Perfumeswap“, не създава гаранция, която не е изрично посочена в тези Условия."
+
+#: .\templates\perfumes\terms_and_conditions.html:293
+msgid ""
+"Perfumeswap disclaims all warranties and conditions, express or implied, "
+"including merchantability, fitness for a particular purpose and non-"
+"infringement."
+msgstr ""
+"„Perfumeswap“ не дава никакви изрични или подразбиращи се гаранции или условия, включително "
+"гаранции за търговска пригодност, пригодност за конкретна цел или ненарушаване на права."
+
+#: .\templates\perfumes\terms_and_conditions.html:297
+msgid ""
+"You understand and agree that Perfumeswap and its licensors shall not be "
+"liable for any direct, indirect, incidental, special or consequential "
+"damages, including but not limited to loss of profits, data, goodwill, "
+"procurement costs, or intangible losses."
+msgstr ""
+"Вие разбирате и се съгласявате, че „Perfumeswap“ и неговите лицензодатели не носят "
+"отговорност за каквито и да било преки, непреки, случайни, специални или последващи щети, "
+"включително, но не само, загуба на печалби, данни, репутация, разходи за заместващи услуги "
+"или нематериални загуби."
+
+#: .\templates\perfumes\terms_and_conditions.html:301
+msgid ""
+"Perfumeswap is not liable for losses resulting from (a) reliance on "
+"advertising; (b) changes or discontinuation of the Services; (c) deletion or "
+"failure to store content; (d) inaccurate account info; or (e) compromised "
+"account security."
+msgstr ""
+"„Perfumeswap“ не носи отговорност за загуби, произтичащи от: (а) разчитане на реклами; "
+"(б) промени или прекратяване на Услугите; (в) изтриване или невъзможност за съхранение на "
+"съдържание; (г) неточна информация в акаунта; или (д) компрометирана сигурност на акаунта."
+
+#: .\templates\perfumes\terms_and_conditions.html:305
+msgid ""
+"The above limitations apply even if Perfumeswap has been advised of the "
+"possibility of such losses."
+msgstr ""
+"„Perfumeswap“ не носи отговорност за загуби, произтичащи от: (а) разчитане на реклами; "
+"(б) промени или прекратяване на Услугите; (в) изтриване или невъзможност за съхранение на "
+"съдържание; (г) неточна информация в акаунта; или (д) компрометирана сигурност на акаунта."
+
+#: .\templates\perfumes\terms_and_conditions.html:309
+msgid ""
+"Perfumeswap responds to copyright infringement notices under relevant law "
+"and may terminate accounts of repeat infringers. See our DMCA policy at "
+"http://www.fragrantica.com/dmca.phtml."
+msgstr ""
+"„Perfumeswap“ отговаря на уведомления за нарушения на авторски права съгласно приложимото право "
+"и може да закрива акаунти на многократни нарушители. Вижте нашата DMCA политика на "
+"http://www.fragrantica.com/dmca.phtml."
+
+#: .\templates\perfumes\terms_and_conditions.html:313
+msgid ""
+"Perfumeswap may display third-party ads. Advertisers are responsible for "
+"their content. To report infringement, visit http://www.fragrantica.com/"
+"dmca.phtml."
+msgstr ""
+"„Perfumeswap“ може да показва реклами от трети страни. Рекламодателите носят отговорност за своето съдържание. "
+"За да подадете сигнал за нарушение, посетете http://www.fragrantica.com/dmca.phtml."
+
+#: .\templates\perfumes\terms_and_conditions.html:317
+msgid ""
+"Some Services are supported by ads. These may be targeted based on usage. Ad "
+"format and extent may change without notice."
+msgstr ""
+"Някои Услуги се поддържат от реклами. Те могат да бъдат насочени въз основа на вашето поведение. "
+"Форматът и обхватът на рекламите могат да се променят без предизвестие."
+
+#: .\templates\perfumes\terms_and_conditions.html:321
+msgid ""
+"By using the Services, you agree to the display of ads and acknowledge "
+"reading our compensation policy at http://www.fragrantica.com/"
+"disclaimer.phtml."
+msgstr ""
+"С използването на Услугите вие се съгласявате с показването на реклами и потвърждавате, че сте запознати "
+"с нашата политика за компенсации на http://www.fragrantica.com/disclaimer.phtml."
+
+#: .\templates\perfumes\terms_and_conditions.html:325
+msgid ""
+"The Services may include links to external websites. Perfumeswap has no "
+"control over them and is not responsible for their content or availability."
+msgstr ""
+"Услугите може да включват връзки към външни уебсайтове. „Perfumeswap“ няма контрол над тях и не носи "
+"отговорност за тяхното съдържание или наличност."
+
+#: .\templates\perfumes\terms_and_conditions.html:329
+msgid ""
+"Perfumeswap is not liable for loss or damage caused by reliance on external "
+"content or the unavailability of such resources."
+msgstr ""
+"„Perfumeswap“ не носи отговорност за загуби или щети, причинени от разчитане на външно съдържание "
+"или от недостъпността на такива ресурси."
+
+#: .\templates\perfumes\terms_and_conditions.html:333
+msgid ""
+"Perfumeswap may change these Terms. Updated Terms will be available at "
+"http://www.perfumeswap.bg/accounts/Terms-ofService.phtml"
+msgstr ""
+"„Perfumeswap“ може да променя тези Условия. Актуализираните Условия ще бъдат достъпни на "
+"http://www.perfumeswap.bg/accounts/Terms-ofService.phtml"
+
+#: .\templates\perfumes\terms_and_conditions.html:337
+msgid ""
+"If you use the Services after changes to the Terms, your use is deemed "
+"acceptance of the updated Terms."
+msgstr ""
+"Ако използвате Услугите след промени в Условията, това се счита за приемане на актуализираните Условия."
+
+#: .\templates\perfumes\terms_and_conditions.html:341
+msgid ""
+"Using the Services may involve third-party goods or software, subject to "
+"separate terms. These Terms do not affect those relationships."
+msgstr ""
+"Използването на Услугите може да включва стоки или софтуер на трети страни, подчинени на отделни условия. "
+"Настоящите Условия не засягат тези взаимоотношения."
+
+#: .\templates\perfumes\terms_and_conditions.html:345
+msgid ""
+"These Terms represent the entire agreement between you and Perfumeswap "
+"regarding the Services, replacing all prior agreements."
+msgstr ""
+"Тези Условия представляват цялостното споразумение между вас и „Perfumeswap“ относно Услугите и заменят "
+"всички предходни договорки."
+
+#: .\templates\perfumes\terms_and_conditions.html:349
+msgid ""
+"Perfumeswap may send notices by email, mail, or posting on the Services."
+msgstr ""
+"„Perfumeswap“ може да изпраща уведомления по имейл, по поща или чрез публикуване в Услугите."
+
+#: .\templates\perfumes\terms_and_conditions.html:353
+msgid ""
+"If Perfumeswap fails to enforce any part of the Terms, it does not waive its "
+"right to do so later."
+msgstr ""
+"Ако „Perfumeswap“ не приложи някоя част от Условията, това не означава, че се отказва от правото си да го направи по-късно."
+
+#: .\templates\perfumes\terms_and_conditions.html:357
+msgid ""
+"If a court finds part of the Terms invalid, the rest will remain in effect."
+msgstr ""
+"Ако съдът установи, че част от Условията е невалидна, останалата част остава в сила."
+
+#: .\templates\perfumes\terms_and_conditions.html:361
+msgid ""
+"Companies affiliated with Perfumeswap may enforce the Terms where a benefit "
+"is conferred on them. No other parties have such rights."
+msgstr ""
+"Компании, свързани с „Perfumeswap“, могат да прилагат Условията, когато им се предоставя полза. "
+"Нито една друга страна няма такива права."
+
+#: .\templates\perfumes\terms_and_conditions.html:365
+msgid ""
+"The Terms are governed by Nevada law. Disputes shall be resolved in Las "
+"Vegas courts. Perfumeswap may seek urgent legal relief elsewhere. May 08, "
+"2011. Address update: October 21st 2013."
+msgstr ""
+"Условията се уреждат от законодателството на щата Невада. Споровете се разрешават от съдилищата в Лас Вегас. "
+"„Perfumeswap“ може да търси спешна правна защита и другаде. 08 май 2011 г. Актуализация на адреса: 21 октомври 2013 г."
+
+#: .\templates\perfumes\trade_history.html:8
+msgid "Trade History"
+msgstr "История на размените"
+
+#: .\templates\perfumes\trade_history.html:13
+#: .\templates\perfumes\trade_history.html:33
+msgid "Completed"
+msgstr "Завършено"
+
+#: .\templates\perfumes\trade_history.html:17
+#: .\templates\perfumes\trade_history.html:35
+msgid "Rejected"
+msgstr "Отхвърлено"
+
+#: .\templates\perfumes\trade_history.html:19
+msgid "Filter"
+msgstr "Филтър"
+
+#: .\templates\perfumes\trade_history.html:27
+msgid "offered"
+msgstr "предлага"
+
+#: .\templates\perfumes\trade_history.html:29
+msgid "to"
+msgstr "на"
+
+#: .\templates\perfumes\trade_history.html:43
+msgid "Details unavailable for this trade."
+msgstr "Няма подробности за тази размяна."
+
+#: .\templates\perfumes\trade_history.html:49
+msgid "No trade history found. Try adjusting your filter."
+msgstr "Не е намерена история на размяната. Опитайте да коригирате филтъра си."
+
+#: .\templates\perfumes\trade_summary.html:4
+#: .\templates\perfumes\trade_summary.html:7
+msgid "Trade Summary"
+msgstr "Обобщение на размяната"
+
+#: .\templates\perfumes\trade_summary.html:15
+msgid "Mark as In Transit"
+msgstr "Отбележете като „В движение“ "
+
+#: .\templates\perfumes\trade_summary.html:21
+msgid "Mark as Completed"
+msgstr "Отбележете като „завършено“ "
+
+#: .\templates\perfumes\trade_summary.html:28
+msgid "Sender: "
+msgstr "Подател: "
+
+#: .\templates\perfumes\trade_summary.html:29
+#: .\templates\perfumes\trade_summary.html:36
+msgid "Perfume:"
+msgstr "Парфюм: "
+
+#: .\templates\perfumes\trade_summary.html:35
+msgid "Receiver: "
+msgstr "Получател: "
+
+#: .\templates\perfumes\trade_summary.html:45
+msgid "Additional Payment:"
+msgstr "Допълнително заплащане"
+
+#: .\templates\perfumes\trade_summary.html:49
+msgid "← Back to My Offers"
+msgstr "← Обратно към Моите поръчки"
+
+#: .\templates\perfumes\wishlist.html:4 .\templates\perfumes\wishlist.html:8
+msgid "My Wish List"
+msgstr "Моят списък с любими"
+
+#: .\templates\perfumes\wishlist.html:33
+msgid "Your wishlist is empty."
+msgstr "Вашият списък с любими е празен"
+
+#: .\templates\registration\login.html:25
+#: .\templates\registration\password_reset_form.html:6
+msgid "Forgot your password?"
+msgstr "Забравена парола?"
+
+#: .\templates\registration\password_reset_complete.html:3
+msgid "Password Reset Complete"
+msgstr "Отбележете като „завършено“ "
+
+#: .\templates\registration\password_reset_complete.html:6
+msgid "✅ Password Reset Successful"
+msgstr "✅Успешно възстановяване на паролата"
+
+#: .\templates\registration\password_reset_complete.html:7
+msgid "Your password has been set. You can now "
+msgstr "Паролата ви е зададена. Вече можете"
+
+#: .\templates\registration\password_reset_confirm.html:3
+msgid "Set New Password"
+msgstr "Задаване на нова парола"
+
+#: .\templates\registration\password_reset_confirm.html:6
+msgid "🔑 Set New Password"
+msgstr "🔑 Задаване на нова парола"
+
+#: .\templates\registration\password_reset_confirm.html:11
+msgid "Change Password"
+msgstr "Промяна на паролата"
+
+#: .\templates\registration\password_reset_confirm.html:14
+msgid ""
+"This password reset link is invalid, possibly because it has already been "
+"used."
+msgstr ""
+"Този линк за нулиране на парола е невалиден, вероятно защото вече е бил "
+"използван."
+
+#: .\templates\registration\password_reset_done.html:3
+msgid "Reset Email Sent"
+msgstr "Нулиране на изпратения имейл"
+
+#: .\templates\registration\password_reset_done.html:6
+msgid "📧 Check your email"
+msgstr "📧 Проверете имейла си"
+
+#: .\templates\registration\password_reset_done.html:7
+msgid ""
+"We’ve emailed you instructions for setting your password. You should receive "
+"them shortly."
+msgstr ""
+"Изпратихме ви инструкции по имейл за задаване на нова парола. Трябва да ги "
+"получите скоро."
+
+#: .\templates\registration\password_reset_done.html:8
+msgid "Back to Login"
+msgstr "Връщане към кошницата"
+
+#: .\templates\registration\password_reset_email.html:6
+msgid "Password Reset"
+msgstr "Възстановяване на парола"
+
+#: .\templates\registration\password_reset_email.html:10
+msgid "🔒 Reset Your Password"
+msgstr "🔒 Нулирайте паролата си"
+
+#: .\templates\registration\password_reset_email.html:13
+msgid "Hi"
+msgstr "Здравей,"
+
+#: .\templates\registration\password_reset_email.html:14
+msgid ""
+"You requested a password reset. Click the button below to choose a new "
+"password:"
+msgstr ""
+"Заявихте възстановяване на парола. Кликнете върху бутона по-долу, за да "
+"изберете нова парола:"
+
+#: .\templates\registration\password_reset_email.html:21
+#: .\templates\registration\password_reset_form.html:3
+msgid "Reset Password"
+msgstr "Нулиране на парола"
+
+#: .\templates\registration\password_reset_email.html:26
+msgid "If you didn’t request this, you can safely ignore this email."
+msgstr "Ако не сте поискали това, можете спокойно да игнорирате този имейл."
+
+#: .\templates\registration\password_reset_form.html:7
+msgid "Enter your email and we'll send you a reset link."
+msgstr "Въведете имейл адреса си и ще ви изпратим линк за нулиране"
+
+#: .\templates\registration\password_reset_form.html:12
+msgid "Send Reset Email"
+msgstr "Изпратен имейл за нулиране"
+
+#: .\templates\users\banned.html:3
+msgid "Account Banned"
+msgstr "Забранен акаунт"
+
+#: .\templates\users\banned.html:8
+msgid "🚫 Your Account Has Been Banned"
+msgstr "🚫 Вашият акаунт беше забранен"
+
+#: .\templates\users\banned.html:9
+msgid ""
+"Your account has been permanently suspended due to multiple reports from "
+"buyers regarding inappropriate or unprofessional behavior."
+msgstr ""
+"Вашият акаунт е окончателно спрян поради множество сигнали от купувачи "
+"относно неподходящо или непрофесионално поведение"
+
+#: .\templates\users\banned.html:13
+msgid "If you believe this is a mistake, please contact our support team at"
+msgstr ""
+"Ако смятате, че това е грешка, моля, свържете се с нашия екип за поддръжка на"
+
+#: .\templates\users\leave_review.html:6
+msgid "📝 Leave a Review for "
+msgstr "📝 Оставете отзив за "
+
+#: .\templates\users\leave_review.html:12
+msgid "Rating (1–5 stars)"
+msgstr "Оценка (1–5 звезди)"
+
+#: .\templates\users\leave_review.html:14
+msgid "Select"
+msgstr "Изберете"
+
+#: .\templates\users\leave_review.html:22
+msgid "Your Review"
+msgstr "Вашият отзив"
+
+#: .\templates\users\profile.html:6
+msgid "'s Profile"
+msgstr "профил"
+
+#: .\templates\users\profile.html:7
+msgid "Average Rating: "
+msgstr "Средна оценка: "
+
+#: .\templates\users\profile.html:7
+msgid "reviews"
+msgstr "отзиви"
+
+#: .\templates\users\profile.html:10
+msgid "Write Review"
+msgstr "Напиши отзив"
+
+#: .\templates\users\profile.html:11
+msgid "Report Seller"
+msgstr "Докладвай продавач"
+
+#: .\templates\users\profile.html:16
+msgid "🧴 Listed Perfumes:"
+msgstr "🧴 Качени парфюми: "
+
+#: .\templates\users\profile.html:30
+msgid "This user has no perfumes listed."
+msgstr "Този потребител няма добавени парфюми"
+
+#: .\templates\users\profile.html:35
+msgid "📝 Reviews:"
+msgstr "📝 Отзиви:"
+
+#: .\templates\users\report_user.html:6
+msgid "🚨 Report "
+msgstr "🚨 Докладвай "
+
+#: .\templates\users\report_user.html:11
+msgid "Reason for reporting"
+msgstr "Причина за докладването"
+
+#: .\templates\users\report_user.html:15
+msgid "Submit Report"
+msgstr "Изпращане на доклада"
+
+#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:16
+msgid "Messages"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\staticfiles\apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\syndication\apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: .\venv\Lib\site-packages\django\core\paginator.py:30
+msgid "…"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:32
+msgid "That page number is not an integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:33
+msgid "That page number is less than 1"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:34
+msgid "That page contains no results"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:70
+msgid "Enter a valid domain name."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:153
+#: .\venv\Lib\site-packages\django\forms\fields.py:775
+msgid "Enter a valid URL."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:200
+msgid "Enter a valid integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:211
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: .\venv\Lib\site-packages\django\core\validators.py:289
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:297
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:309
+#: .\venv\Lib\site-packages\django\core\validators.py:318
+#: .\venv\Lib\site-packages\django\core\validators.py:332
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2220
+#, python-format
+msgid "Enter a valid %(protocol)s address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:311
+msgid "IPv4"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:320
+#: .\venv\Lib\site-packages\django\utils\ipv6.py:43
+msgid "IPv6"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:334
+msgid "IPv4 or IPv6"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:375
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:381
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:416
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:425
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:434
+#, python-format
+msgid "Ensure this value is a multiple of step size %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:441
+#, python-format
+msgid ""
+"Ensure this value is a multiple of step size %(limit_value)s, starting from "
+"%(offset)s, e.g. %(offset)s, %(valid_value1)s, %(valid_value2)s, and so on."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:473
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:491
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:514
+#: .\venv\Lib\site-packages\django\forms\fields.py:366
+#: .\venv\Lib\site-packages\django\forms\fields.py:405
+msgid "Enter a number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:516
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:521
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:526
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:597
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:659
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1600
+#: .\venv\Lib\site-packages\django\forms\models.py:908
+msgid "and"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1602
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\constraints.py:22
+#, python-format
+msgid "Constraint “%(name)s” is violated."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:134
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:135
+msgid "This field cannot be null."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:136
+msgid "This field cannot be blank."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:137
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or
+#. 'month'. Eg: "Title must be unique for pub_date year"
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:141
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:180
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1162
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1163
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1165
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1215
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1217
+msgid "String (unlimited)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1326
+msgid "Comma-separated integers"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1427
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1431
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1566
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1435
+msgid "Date (without time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1562
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1570
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1575
+msgid "Date (with time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1702
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1704
+msgid "Decimal number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1864
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] "
+"[[HH:]MM:]ss[.uuuuuu] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1868
+msgid "Duration"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1920
+msgid "Email address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1945
+msgid "File path"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2023
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2025
+msgid "Floating point number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2065
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2067
+msgid "Integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2163
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2180
+msgid "Small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2188
+msgid "IPv4 address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2219
+msgid "IP address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2310
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2311
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2313
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2364
+msgid "Positive big integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2379
+msgid "Positive integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2394
+msgid "Positive small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2410
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2446
+msgid "Text"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2526
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2530
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2534
+msgid "Time"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2642
+msgid "URL"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2666
+msgid "Raw binary data"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2731
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2733
+msgid "Universally unique identifier"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:244
+msgid "File"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:420
+msgid "Image"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:24
+msgid "A JSON object"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:26
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:978
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r is not a valid choice."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:981
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1275
+msgid "One-to-one relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1332
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1334
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1382
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: .\venv\Lib\site-packages\django\forms\boundfield.py:185
+msgid ":?.!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:95
+msgid "This field is required."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:315
+msgid "Enter a whole number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:486
+#: .\venv\Lib\site-packages\django\forms\fields.py:1267
+msgid "Enter a valid date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:509
+#: .\venv\Lib\site-packages\django\forms\fields.py:1268
+msgid "Enter a valid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:536
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:570
+msgid "Enter a valid duration."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:571
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:640
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:641
+msgid "No file was submitted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:642
+msgid "The submitted file is empty."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:644
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:649
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:717
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:889
+#: .\venv\Lib\site-packages\django\forms\fields.py:975
+#: .\venv\Lib\site-packages\django\forms\models.py:1592
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:977
+#: .\venv\Lib\site-packages\django\forms\fields.py:1096
+#: .\venv\Lib\site-packages\django\forms\models.py:1590
+msgid "Enter a list of values."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1097
+msgid "Enter a complete value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1339
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1369
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: .\venv\Lib\site-packages\django\forms\forms.py:97
+msgid ":"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\forms.py:239
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:65
+#, python-format
+msgid "Please submit at most %(num)d form."
+msgid_plural "Please submit at most %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:70
+#, python-format
+msgid "Please submit at least %(num)d form."
+msgid_plural "Please submit at least %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:484
+#: .\venv\Lib\site-packages\django\forms\formsets.py:491
+msgid "Order"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:901
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:906
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:913
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:922
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1359
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1450
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1594
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\utils.py:229
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:527
+msgid "Clear"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:528
+msgid "Currently"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:529
+msgid "Change"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:866
+msgid "Unknown"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:867
+msgid "Yes"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:868
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:873
+msgid "yes,no,maybe"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:903
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:920
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:922
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:924
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:926
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:928
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:930
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:74
+msgid "p.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:75
+msgid "a.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:80
+msgid "PM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:81
+msgid "AM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:153
+msgid "midnight"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:155
+msgid "noon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:7
+msgid "Monday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:8
+msgid "Tuesday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:9
+msgid "Wednesday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Thursday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:11
+msgid "Friday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:12
+msgid "Saturday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:13
+msgid "Sunday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:16
+msgid "Mon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:17
+msgid "Tue"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:18
+msgid "Wed"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "Thu"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "Fri"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:21
+msgid "Sat"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:22
+msgid "Sun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:25
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:26
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:27
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:28
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:29
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:30
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:31
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:32
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:33
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:34
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:35
+msgid "November"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:36
+msgid "December"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:39
+msgid "jan"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:40
+msgid "feb"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:41
+msgid "mar"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:42
+msgid "apr"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:43
+msgid "may"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:44
+msgid "jun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:45
+msgid "jul"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:46
+msgid "aug"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:47
+msgid "sep"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:48
+msgid "oct"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:49
+msgid "nov"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:50
+msgid "dec"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:53
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:54
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:55
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:56
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:57
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:58
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:59
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:60
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:61
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:62
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:63
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:64
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:67
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:68
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:69
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:70
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:71
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:72
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:73
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:74
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:75
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:76
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:77
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:78
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\ipv6.py:20
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\text.py:67
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\text.py:278
+msgid "or"
+msgstr "или"
+
+#. Translators: This string is used as a separator between list elements
+#: .\venv\Lib\site-packages\django\utils\text.py:297
+#: .\venv\Lib\site-packages\django\utils\timesince.py:135
+msgid ", "
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:8
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:9
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:10
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:11
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:12
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:13
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:29
+msgid "Forbidden"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:30
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:34
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:40
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:45
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:54
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:60
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:66
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:44
+msgid "No year specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:64
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:115
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:214
+msgid "Date out of range"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:94
+msgid "No month specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:147
+msgid "No day specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:194
+msgid "No week specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:353
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:384
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:680
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because "
+"%(class_name)s.allow_future is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:720
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\detail.py:56
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:70
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:77
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:173
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:49
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:51
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:68
+#: .\venv\Lib\site-packages\django\views\templates\directory_index.html:8
+#: .\venv\Lib\site-packages\django\views\templates\directory_index.html:11
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:204
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:206
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:208
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:217
+msgid "Django Documentation"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:218
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:226
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:227
+msgid "Get started with Django"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:235
+msgid "Django Community"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:236
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#, fuzzy
+#~| msgid "log in"
+#~ msgid " log in "
+#~ msgstr " влезте  "

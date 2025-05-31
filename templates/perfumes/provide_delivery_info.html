@@ -1,29 +1,31 @@
 {% extends 'base.html' %}
-{% block title %}Delivery Information{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Delivery Information" %}{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="text-light">Enter Your Delivery Details</h2>
-    <p class="text-light">These details will only be visible to the other party once both sides have submitted them.</p>
+    <h2 class="text-light">{% trans "Enter Your Delivery Details" %}</h2>
+    <p class="text-light">{% trans "These details will only be visible to the other party once both sides have submitted them." %}</p>
 
     <form method="POST" class="bg-dark p-4 rounded">
         {% csrf_token %}
         <div class="mb-3">
-            <label for="full_name" class="form-label text-light">Full Name</label>
+            <label for="full_name" class="form-label text-light">{% trans "Full Name" %}</label>
             <input type="text" class="form-control" id="full_name" name="full_name" required>
         </div>
 
         <div class="mb-3">
-            <label for="phone" class="form-label text-light">Phone Number</label>
+            <label for="phone" class="form-label text-light">{% trans "Phone Number" %}</label>
             <input type="text" class="form-control" id="phone" name="phone" required>
         </div>
 
         <div class="mb-3">
-            <label for="address" class="form-label text-light">Shipping Address</label>
+            <label for="address" class="form-label text-light">{% trans "Shipping Address" %}</label>
             <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
         </div>
 
-        <button type="submit" class="btn btn-success">Submit Delivery Info</button>
+        <button type="submit" class="btn btn-success">{% trans "Submit Delivery Info" %}</button>
     </form>
 </div>
 {% endblock %}

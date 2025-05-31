@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
-{% block title %}All Perfumes{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "All Perfumes" %}{% endblock %}
 
 {% block content %}
   {% if filter_for_trade %}
-    <h2 class="text-info">Perfumes Available for Trade</h2>
+    <h2 class="text-info">{% trans "Perfumes Available for Trade" %}</h2>
 
     {% if not user.is_authenticated %}
       <div class="alert alert-warning mt-3">
-        To trade perfumes, please <a href="{% url 'login' %}?next={{ request.path }}" class="alert-link">log in</a> or <a href="{% url 'register' %}" class="alert-link">register</a>.
+        {% trans "To trade perfumes, please " %}<a href="{% url 'login' %}?next={{ request.path }}" class="alert-link">{% trans "log in" %}</a>{% trans " or " %}<a href="{% url 'register' %}" class="alert-link">{% trans "register" %}</a>.
       </div>
     {% endif %}
 
   {% elif filter_brand %}
-    <h2 class="text-info">Brand: {{ filter_brand }}</h2>
+    <h2 class="text-info">{% trans "Brand:" %} {{ filter_brand }}</h2>
   {% else %}
-    <h1>All Perfumes</h1>
+    <h1>{% trans "All Perfumes" %}</h1>
   {% endif %}
 
 
@@ -25,7 +27,7 @@
             <div class="position-relative">
               <a href="{% url 'perfume_detail' perfume.id %}">
                 <img src="{{ perfume.image.url }}" class="card-img-top" alt="{{ perfume.name }}">
-                <span class="view-details-btn">View Details</span>
+                <span class="view-details-btn">{% trans "View Details" %}</span>
               </a>
             </div>
 

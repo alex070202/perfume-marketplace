@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}Delete Perfume{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Delete Perfume" %}{% endblock %}
 {% block content %}
 
-<h1>Confirm Delete</h1>
-<p>Are you sure you want to delete "{{ perfume.name }}"?</p>
+<h1>{% trans "Confirm Delete" %}</h1>
+<p>{% trans "Are you sure you want to delete " %}"{{ perfume.name }}"?</p>
 <form method="post">
     {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Yes, delete</button>
-    <a href="{% url 'my_perfumes' %}" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-danger">{% trans "Yes, delete" %}</button>
+    <a href="{% url 'my_perfumes' %}" class="btn btn-secondary">{% trans "Cancel" %}</a>
 </form>
 {% endblock %}

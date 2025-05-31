@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
-
-{% block title %}Account Banned{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Account Banned" %}
+{% endblock %}
 
 {% block content %}
 <div class="container py-5 text-center text-danger">
-    <h1 class="display-4 fw-bold">🚫 Your Account Has Been Banned</h1>
-    <p class="mt-4 fs-5">
-        Your account has been permanently suspended due to multiple reports from buyers
-        regarding inappropriate or unprofessional behavior.
+    <h1 class="display-4 fw-bold">{% trans "🚫 Your Account Has Been Banned" %}</h1>
+    <p class="mt-4 fs-5">{% trans "Your account has been permanently suspended due to multiple reports from buyers regarding inappropriate or unprofessional behavior." %}
+        
     </p>
     <hr class="border-danger my-4">
-    <p class="text-light">If you believe this is a mistake, please contact our support team at
+    <p class="text-light">{% trans "If you believe this is a mistake, please contact our support team at" %}
         <a href="mailto:perfumeswap@gmail.com" class="text-warning">perfumeswap@gmail.com</a>.
     </p>
 </div>

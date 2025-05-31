@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Order Complete{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Order Complete" %}{% endblock %}
 {% block content %}
 
 <div class="container mt-5 text-center">
-    <h1 class="text-success">✅ Order Confirmed!</h1>
-    <p class="text-light">Thank you for your order. Total: ${{ total|floatformat:2 }}</p>
-    <a href="{% url 'perfume_list' %}" class="btn btn-primary mt-3">Continue Shopping</a>
+    <h1 class="text-success">{% trans "✅ Order Confirmed!" %}</h1>
+    <p class="text-light">{% trans "Thank you for your order. Total: " %}${{ total|floatformat:2 }}</p>
+    <a href="{% url 'perfume_list' %}" class="btn btn-primary mt-3">{% trans "Continue Shopping" %}</a>
 </div>
 {% endblock %}

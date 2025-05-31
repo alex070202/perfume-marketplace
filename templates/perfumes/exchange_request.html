@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
-{% block title %}Propose Trade{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans "Propose Trade" %}{% endblock %}
 
 {% block content %}
 <div class="container py-5">
-    <h2 class="text-light mb-4">Propose Trade</h2>
+    <h2 class="text-light mb-4">{% trans "Propose Trade" %}</h2>
 
     <div class="row g-4">
         <!-- Requested Perfume -->
         <div class="col-md-6">
             <div class="card bg-dark text-light shadow">
                 <div class="card-header text-white bg-primary">
-                    You Want This
+                    {% trans "You Want This" %}
                 </div>
                 <div class="card-body text-center">
                     <img src="{{ requested_perfume.image.url }}" class="img-fluid rounded mb-3" style="max-height: 250px;">
@@ -25,14 +27,14 @@
         <div class="col-md-6">
             <div class="card bg-dark text-light shadow">
                 <div class="card-header text-white bg-success">
-                    Offer One of Yours
+                    {% trans "Offer One of Yours" %}
                 </div>
                 <div class="card-body">
                     {% if user_perfumes %}
                         <form method="POST">
                             {% csrf_token %}
                             <div class="mb-3">
-                                <label for="offered_perfume" class="form-label">Choose your perfume to offer:</label>
+                                <label for="offered_perfume" class="form-label">{% trans "Choose your perfume to offer:" %}</label>
                                 <select name="offered_perfume" id="offered_perfume" class="form-select bg-dark text-white border-secondary">
                                     {% for perfume in user_perfumes %}
                                         <option value="{{ perfume.id }}">{{ perfume.name }} – ${{ perfume.price }}</option>
@@ -40,14 +42,14 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="extra_payment" class="form-label text-light">Extra Payment (optional):</label>
+                                <label for="extra_payment" class="form-label text-light">{% trans "Extra Payment (optional):" %}</label>
                                 <input type="number" step="0.01" min="0" name="extra_payment" class="form-control" placeholder="e.g. 20.00">
                             </div>
 
-                            <button type="submit" class="btn btn-outline-info w-100">Send Trade Offer</button>
+                            <button type="submit" class="btn btn-outline-info w-100">{% trans "Send Trade Offer" %}</button>
                         </form>
                     {% else %}
-                        <p class="text-warning">You don't have any perfumes available for trade.</p>
+                        <p class="text-warning">{% trans "You don't have any perfumes available for trade." %}</p>
                     {% endif %}
                 </div>
             </div>

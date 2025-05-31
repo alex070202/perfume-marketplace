@@ -1,25 +1,26 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block title %}Admin Dashboard{% endblock %}
+{% block title %}{% trans "Admin Dashboard" %}{% endblock %}
 
 {% block content %}
 <div class="container py-5 text-light">
-    <h2 class="mb-4">⚙️ Admin Dashboard</h2>
+    <h2 class="mb-4">{% trans "⚙️ Admin Dashboard" %}</h2>
 
     <!-- Dropdown menu -->
     <div class="dropdown mb-4">
         <button class="btn btn-outline-light dropdown-toggle" type="button" id="adminSectionDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            Select Section
+            {% trans "Select Section" %}
         </button>
         <ul class="dropdown-menu bg-dark border-secondary" aria-labelledby="adminSectionDropdown">
-            <li><a class="dropdown-item text-white" href="#" onclick="showSection('reports')">🚨 User Reports</a></li>
-            <li><a class="dropdown-item text-white" href="#" onclick="showSection('banned')">🔒 Banned Users</a></li>
+            <li><a class="dropdown-item text-white" href="#" onclick="showSection('reports')">{% trans "🚨 User Reports" %}</a></li>
+            <li><a class="dropdown-item text-white" href="#" onclick="showSection('banned')">{% trans "🔒 Banned Users" %}</a></li>
         </ul>
     </div>
 
     <!-- 🚨 Reports Section -->
     <div id="reports-section">
-        <h4 class="text-danger">🚨 User Reports</h4>
+        <h4 class="text-danger">{% trans "🚨 User Reports" %}</h4>
 
         <input type="text" id="reportSearchInput" class="form-control mb-3 bg-dark text-light border-light" placeholder="🔍 Search reported usernames..." onkeyup="filterReports()">
 
@@ -28,16 +29,16 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Reported User</th>
-                <th>Reports</th>
-                <th>Actions</th>
+                <th>{% trans "Reported User" %}</th>
+                <th>{% trans "Reports" %}</th>
+                <th>{% trans "Actions" %}</th>
             </tr>
         </thead>
         <tbody>
             {% for user, reports in grouped_reports.items %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{{ user.username }} <span class="badge bg-danger">{{ reports|length }} reports</span></td>
+                    <td>{{ user.username }} <span class="badge bg-danger">{{ reports|length }} {% trans "reports" %}</span></td>
                     <td>
                         <ul class="mb-0">
                             {% for report in reports %}
@@ -50,11 +51,11 @@
                     </td>
                     <td>
                         {% if user.is_active %}
-                            <a href="{% url 'ban_user' user.id %}" class="btn btn-sm btn-danger">
-                                ❌ Ban {{ user.username }}
+                            <a href="{% url 'ban_user' user_id=3 %}" class="btn btn-sm btn-danger">
+                                {% trans "❌ Ban " %}{{ user.username }}
                             </a>
                         {% else %}
-                            <span class="text-light">Already banned</span>
+                            <span class="text-light">{% trans "Already banned" %}</span>
                         {% endif %}
                     </td>
                 </tr>
@@ -62,14 +63,14 @@
         </tbody>
     </table>
 {% else %}
-    <p>No reports submitted.</p>
+    <p>{% trans "No reports submitted." %}</p>
 {% endif %}
 
     </div>
 
     <!-- 🔒 Banned Users Section -->
     <div id="banned-section" style="display: none;">
-        <h4 class="text-warning">🔒 Banned Users</h4>
+        <h4 class="text-warning">{% trans "🔒 Banned Users" %}</h4>
 
         <input type="text" id="bannedSearchInput" class="form-control mb-3 bg-dark text-light border-light" placeholder="🔍 Search banned usernames..." onkeyup="filterBannedUsers()">
 
@@ -81,13 +82,13 @@
                         <a href="{% url 'unban_user' user.id %}" 
                            class="btn btn-sm btn-outline-success"
                            onclick="return confirm('Unban {{ user.username }}?');">
-                           🔓 Unban
+                           {% trans "🔓 Unban" %}
                         </a>
                     </li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p>No users are currently banned.</p>
+            <p>{% trans "No users are currently banned." %}</p>
         {% endif %}
     </div>
 </div>

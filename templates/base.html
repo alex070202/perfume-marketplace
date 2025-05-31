@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,26 +23,27 @@
 
       <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
         <ul class="navbar-nav align-items-center">
-          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/">{% trans "Home" %}</a></li>
 
           <!-- Perfume Categories -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="{% url 'perfume_list' %}" id="perfumeDropdown" role="button" data-bs-toggle="dropdown">
-              Perfumes
+              {% trans "Perfumes" %}           
             </a>
             <ul class="dropdown-menu bg-dark border-secondary mt-2" aria-labelledby="perfumeDropdown">
-              <li><a class="dropdown-item text-white" href="{% url 'perfume_list' %}">All</a></li>
-              <li><a class="dropdown-item text-white" href="{% url 'perfumes_for_trade' %}">For Trade</a></li>
-              <li><a class="dropdown-item text-white" href="{% url 'perfume_category' 'men' %}">Men</a></li>
-              <li><a class="dropdown-item text-white" href="{% url 'perfume_category' 'women' %}">Women</a></li>
-              <li><a class="dropdown-item text-white" href="{% url 'perfume_category' 'unisex' %}">Unisex</a></li>
+              <li><a class="dropdown-item text-white" href="{% url 'perfume_list' %}">{% trans "All" %}</a></li>
+              <li><a class="dropdown-item text-white" href="{% url 'perfumes_for_trade' %}">{% trans "For Trade" %}</a></li>
+              <li><a class="dropdown-item text-white" href="{% url 'perfume_category' 'men' %}">{% trans "Men" %}</a></li>
+              <li><a class="dropdown-item text-white" href="{% url 'perfume_category' 'women' %}">{% trans "Women" %}</a></li>
+              <li><a class="dropdown-item text-white" href="{% url 'perfume_category' 'unisex' %}">{% trans "Unisex" %}</a></li>
+
             </ul>
           </li>
 
           <!-- Wishlist -->
           <li class="nav-item position-relative">
             <a class="nav-link" href="{% url 'wishlist' %}">
-            ❤️ Wish List
+            {% trans "❤️ Wish List" %}             
             {% if user.is_authenticated %}
               <span id="wishlist-count"
                     class="badge bg-danger position-absolute top-0 start-100 translate-middle {% if user.wishlistitem_set.count == 0 %}d-none{% endif %}">
@@ -56,7 +57,7 @@
           <!-- Cart -->
           <li class="nav-item position-relative">
             <a class="nav-link" href="{% url 'cart_detail' %}">
-              🛒 Cart
+              {% trans "🛒 Cart" %}           
               {% if user.is_authenticated %}
                 {% with user.cart.cartitem_set.count as count %}
                   <span id="cart-count" class="badge bg-danger position-absolute top-0 start-100 translate-middle {% if count == 0 %}d-none{% endif %}">
@@ -71,7 +72,7 @@
           {% if user.is_authenticated %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle position-relative" href="#" role="button" data-bs-toggle="dropdown">
-                My Trades
+                {% trans "My Trades" %}           
                 {% if new_received_offers_count > 0 %}
                   <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
                     {{ new_received_offers_count }}
@@ -81,7 +82,7 @@
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item d-flex justify-content-between align-items-center" href="{% url 'my_sent_offers' %}">
-                    📤 Sent Offers
+                    {% trans "📤 Sent Offers" %}             
                     {% if updated_sent_offers_count > 0 %}
                       <span class="badge bg-danger ms-2">{{ updated_sent_offers_count }}</span>
                     {% endif %}
@@ -89,7 +90,7 @@
                 </li>
                 <li>
                   <a class="dropdown-item d-flex justify-content-between align-items-center" href="{% url 'my_received_offers' %}">
-                    📥 Received Offers
+                    {% trans "📥 Received Offers" %}           
                     <span>
                       {% if new_received_offers_count > 0 %}
                         <span class="badge bg-danger ms-1">{{ new_received_offers_count }}</span>
@@ -100,7 +101,7 @@
                     </span>
                   </a>
                 </li>
-                <li><a class="dropdown-item" href="{% url 'trade_history' %}">🧾 Trade History</a></li>
+                <li><a class="dropdown-item" href="{% url 'trade_history' %}">{% trans "🧾 Trade History" %}</a></li>
               </ul>
             </li>
           {% endif %}
@@ -110,38 +111,38 @@
             <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
               <i class="bi bi-person fs-5"></i>
               {% if user.is_authenticated %}
-                <span class="ms-2">Hi, {{ user.username }} 👋</span>
+                <span class="ms-2">{% trans "Hi," %} {{ user.username }} 👋</span>
               {% endif %}
             </a>
             <ul class="dropdown-menu dropdown-menu-end bg-dark border-secondary mt-2" aria-labelledby="userDropdown">
               {% if user.is_authenticated %}
                 <li>
                   <a class="dropdown-item text-white d-flex justify-content-between align-items-center" href="{% url 'my_orders' %}">
-                    My Orders
+                    {% trans "My Orders" %}
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item text-white d-flex justify-content-between align-items-center" href="{% url 'sales_dashboard' %}">
-                    Sales dashboard
+                    {% trans "Sales dashboard" %}
                     {% if new_orders_count > 0 %}
                       <span class="badge bg-danger ms-2">{{ new_orders_count }}</span>
                     {% endif %}
                   </a>
                 </li>
-                <li><a class="dropdown-item text-white" href="{% url 'add_perfume' %}">Add perfume</a></li>
-                <li><a class="dropdown-item text-white" href="{% url 'my_perfumes' %}">My perfumes</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'add_perfume' %}">{% trans "Add perfume" %}</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'my_perfumes' %}">{% trans "My perfumes" %}</a></li>
                 <li><hr class="dropdown-divider bg-secondary"></li>
                 <li>
                   <form method="POST" action="{% url 'logout' %}">
                     {% csrf_token %}
-                    <button type="submit" class="dropdown-item text-white">Logout</button>
+                    <button type="submit" class="dropdown-item text-white">{% trans "Logout" %}</button>
                   </form>
                 </li>
               {% else %}
-                <li><a class="dropdown-item text-white" href="{% url 'register' %}">Register</a></li>
-                <li><a class="dropdown-item text-white" href="{% url 'login' %}">Login</a></li>
-                <li><a class="dropdown-item text-white" href="{% url 'cart_detail' %}">Shopping Cart</a></li>
-                <li><a class="dropdown-item text-white" href="{% url 'checkout' %}">Checkout</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'register' %}">{% trans "Register" %}</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'login' %}">{% trans "Login" %}</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'cart_detail' %}">{% trans "Shopping cart" %}</a></li>
+                <li><a class="dropdown-item text-white" href="{% url 'checkout' %}">{% trans "Checkout" %}</a></li>
               {% endif %}
             </ul>
           </li>
@@ -150,7 +151,7 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item position-relative">
               <a class="nav-link text-warning d-flex align-items-center" href="{% url 'admin_dashboard' %}">
-                ⚠ Admin Dashboard
+                 {% trans "⚠ Admin Dashboard" %}
                 {% if admin_report_count > 0 %}
                   <span class="badge bg-danger ms-2">{{ admin_report_count }}</span>
                 {% endif %}
@@ -162,9 +163,25 @@
 
         <!-- Search -->
         <form class="d-flex" method="get" action="{% url 'perfume_list' %}">
-          <input class="form-control me-2" type="search" name="q" placeholder="Search perfumes..." value="{{ request.GET.q }}">
-          <button class="btn btn-outline-light" type="submit">Search</button>
+          <input class="form-control me-2" type="search" name="q" placeholder="{% trans "Search perfumes..." %}" value="{{ request.GET.q }}">
+          <button class="btn btn-outline-light" type="submit">{% trans "Search" %}</button>
         </form>
+
+        <!-- Language switcher -->
+        <form id="languageForm" action="/i18n/setlang/" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="/" />
+          <select name="language" id="languageSelect" class="form-select form-select-sm bg-dark text-white border-secondary">
+            <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>🇬🇧 English</option>
+            <option value="bg" {% if LANGUAGE_CODE == 'bg' %}selected{% endif %}>🇧🇬 Български</option>
+          </select>
+        </form>
+
+        <script>
+          document.getElementById('languageSelect').addEventListener('change', function () {
+            document.getElementById('languageForm').submit();
+          });
+        </script>
       </div>
     </div>
   </nav>
@@ -196,8 +213,8 @@
           <div><strong>${name}</strong><br><span>Added to cart - $${price}</span></div>
         </div>
         <div class="mt-2 d-flex justify-content-between">
-          <a href="/cart/" class="btn btn-light btn-sm me-2">View Cart</a>
-          <a href="/checkout/" class="btn btn-dark btn-sm">Checkout</a>
+          <a href="/cart/" class="btn btn-light btn-sm me-2">{% trans "View Cart" %}</a>
+          <a href="/checkout/" class="btn btn-dark btn-sm">{% trans "Checkout" %}</a>
         </div>
       `;
       toast.style.display = 'block';

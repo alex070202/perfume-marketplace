@@ -1,27 +1,29 @@
+{% load i18n %}
+
 <footer class="bg-black text-light mt-5 pt-5 border-top border-secondary">
     <div class="container pb-4">
       <div class="row text-center text-md-start">
         <div class="col-md-4 mb-4">
-          <h5 class="text-white">Store Information</h5>
+          <h5 class="text-white">{% trans "Store Information" %}</h5>
           <p><i class="bi bi-geo-alt text-warning me-2"></i>PerfumeSwap, Bulgaria</p>
           <p><i class="bi bi-telephone text-warning me-2"></i>+359988898805</p>
           <p><i class="bi bi-envelope text-warning me-2"></i>perfumeswap@gmail.com</p>
         </div>
   
         <div class="col-md-4 mb-4">
-          <h5 class="text-white">Information</h5>
+          <h5 class="text-white">{% trans "Information" %}</h5>
           <ul class="list-unstyled">
-            <li><a href="{% url 'about_us' %}" class="text-white text-decoration-none">About Us</a></li>
-            <li><a href="{% url 'privacy_policy' %} " class="text-white text-decoration-none">Privacy Policy</a></li>
-            <li><a href="{% url 'terms' %}"class="text-white text-decoration-none">Terms & Conditions</a></li>
-            <li><a href="{% url 'shipping_returns' %}" class="text-light text-decoration-none">Shipping & Returns</a></li>
+            <li><a href="{% url 'about_us' %}" class="text-white text-decoration-none">{% trans "About Us" %}</a></li>
+            <li><a href="{% url 'privacy_policy' %} " class="text-white text-decoration-none">{% trans "Privacy Policy" %}</a></li>
+            <li><a href="{% url 'terms' %}"class="text-white text-decoration-none">{% trans "Terms & Conditions" %}</a></li>
+            <li><a href="{% url 'shipping_returns' %}" class="text-light text-decoration-none">{% trans "Shipping & Returns" %}</a></li>
 
           </ul>
         </div>
   
         <div class="col-md-4 mb-4">
-          <h5 class="text-white">Free Shipping</h5>
-          <p class="text-white">Free delivery for orders over 200 BGN in Bulgaria!</p>
+          <h5 class="text-white">{% trans "Free Shipping" %}</h5>
+          <p class="text-white">{% trans "Free delivery for orders over 200 BGN in Bulgaria!" %}</p>
         </div>
       </div>
     </div>

@@ -1,79 +1,80 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Edit Perfume{% endblock %}
+{% block title %}{% trans "Edit Perfume" %}{% endblock %}
 
 {% block content %}
-<h1>Edit Perfume</h1>
+<h1>{% trans "Edit Perfume" %}</h1>
 
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     <div class="mb-3">
-        <label for="name" class="form-label">Name:</label>
+        <label for="name" class="form-label">{% trans "Name:" %}</label>
         <input type="text" name="name" class="form-control" value="{{ perfume.name }}">
     </div>
 
     <div class="mb-3">
-        <label for="brand" class="form-label">Brand:</label>
+        <label for="brand" class="form-label">{% trans "Brand:" %}</label>
         <input type="text" name="brand" class="form-control" value="{{ perfume.brand }}">
     </div>
 
     <div class="mb-3">
-        <label for="description" class="form-label">Description:</label>
+        <label for="description" class="form-label">{% trans "Description:" %}</label>
         <textarea name="description" class="form-control">{{ perfume.description }}</textarea>
     </div>
 
     <div class="mb-3">
-        <label for="price" class="form-label">Price:</label>
+        <label for="price" class="form-label">{% trans "Price:" %}</label>
         <input type="text" name="price" class="form-control" value="{{ perfume.price }}">
     </div>
 
     <div class="mb-3">
-        <label for="is_for_trade" class="form-check-label">Available for Trade:</label>
+        <label for="is_for_trade" class="form-check-label">{% trans "Available for Trade:" %}</label>
         <input type="checkbox" name="is_for_trade" class="form-check-input" {% if perfume.is_for_trade %}checked{% endif %}>
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Main Image:</label>
+        <label class="form-label">{% trans "Main Image:" %}</label>
         <input type="file" name="main_image" class="form-control">
         {% if perfume.image %}
-            <small>Current: <img src="{{ perfume.image.url }}" style="height: 80px;"></small>
+            <small>{% trans "Current: " %}<img src="{{ perfume.image.url }}" style="height: 80px;"></small>
         {% endif %}
     </div>
     
     <div class="mb-3">
-        <label class="form-label">Additional Image 1:</label>
+        <label class="form-label">{% trans "Additional Image 1:" %}</label>
         <input type="file" name="extra_image1" class="form-control">
     </div>
     <div class="mb-3">
-        <label class="form-label">Additional Image 2:</label>
+        <label class="form-label">{% trans "Additional Image 2:" %}</label>
         <input type="file" name="extra_image2" class="form-control">
     </div>
     <div class="mb-3">
-        <label class="form-label">Additional Image 3:</label>
+        <label class="form-label">{% trans "Additional Image 3:" %}</label>
         <input type="file" name="extra_image3" class="form-control">
     </div>
     
     <div class="mb-3">
-        <label for="stock" class="form-label">Stock</label>
+        <label for="stock" class="form-label">{% trans "Stock" %}</label>
         <input type="number" name="stock" min="0" class="form-control" required value="{{ perfume.stock|default_if_none:'' }}">
     </div>
     
     <div class="mb-3">
-        <label for="category" class="form-label">Category</label>
+        <label for="category" class="form-label">{% trans "Category" %}</label>
         <select name="category" class="form-select" required>
-          <option value="men" {% if perfume.category == 'men' %}selected{% endif %}>Men</option>
-          <option value="women" {% if perfume.category == 'women' %}selected{% endif %}>Women</option>
-          <option value="unisex" {% if perfume.category == 'unisex' %}selected{% endif %}>Unisex</option>
+          <option value="men" {% if perfume.category == 'men' %}selected{% endif %}>{% trans "Men" %}</option>
+          <option value="women" {% if perfume.category == 'women' %}selected{% endif %}>{% trans "Women" %}</option>
+          <option value="unisex" {% if perfume.category == 'unisex' %}selected{% endif %}>{% trans "Unisex" %}</option>
         </select>
       </div> 
     
     <div class="mb-3">
-        <label for="notes" class="form-label">Fragrance Notes</label>
+        <label for="notes" class="form-label">{% trans "Fragrance Notes" %}</label>
         <textarea name="notes" rows="3" class="form-control">{{ perfume.notes }}</textarea>
       </div>
       
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-    <a href="{% url 'my_perfumes' %}" class="btn btn-secondary">Cancel</a>
+    <button type="submit" class="btn btn-primary">{% trans "Save Changes" %}</button>
+    <a href="{% url 'my_perfumes' %}" class="btn btn-secondary">{% trans "Cancel" %}</a>
 </form>
 {% endblock %}
