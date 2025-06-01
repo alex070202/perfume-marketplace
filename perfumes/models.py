@@ -54,8 +54,13 @@ class CartItem(models.Model):
     perfume = models.ForeignKey(Perfume, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
+    @property
+    def subtotal(self):
+        return self.perfume.price * self.quantity
+
     def __str__(self):
         return f"{self.quantity} x {self.perfume.name}"
+
 
 ORDER_STATUS_CHOICES = [
     ('pending', 'Pending'),
@@ -83,6 +88,11 @@ class OrderItem(models.Model):
     seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sold_items')
     quantity = models.PositiveIntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    @property
+    def total(self):
+        return self.price * self.quantity
+
 
 class Review(models.Model):
     perfume = models.ForeignKey(Perfume, on_delete=models.CASCADE, related_name='reviews')

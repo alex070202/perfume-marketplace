@@ -28,13 +28,21 @@
             </tr>
         </thead>
         <tbody>
+            {% for item in order.items.all %}
             <tr>
                 <td>{{ item.perfume.name }}</td>
                 <td>{{ item.quantity }}</td>
                 <td>${{ item.price|floatformat:2 }}</td>
-                <td>${{ item.price|floatformat:2|floatformat:2|floatformat:2|floatformat:2 }}</td>
+                <td>${{ item.total|floatformat:2 }}</td>
             </tr>
+            {% endfor %}
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-end"><strong>{% trans "Order Total:" %}</strong></td>
+                <td><strong>${{ order_total|floatformat:2 }}</strong></td>
+            </tr>
+        </tfoot>
     </table>
 
     <form method="post">

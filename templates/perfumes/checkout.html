@@ -50,9 +50,10 @@
                         <tr>
                             <td>{{ item.perfume.name }}</td>
                             <td>{{ item.quantity }}</td>
-                            <td>${{ item.perfume.price }}</td>
-                            <td>${{ item.perfume.price|floatformat:2|add:item.quantity|floatformat:2 }}</td>
+                            <td>${{ item.perfume.price|floatformat:2 }}</td>
+                            <td>${{ item.subtotal|floatformat:2 }}</td>
                         </tr>
+
                         {% endfor %}
                         <tr>
                             <td colspan="3" class="text-end"><strong>{% trans "Total:" %}</strong></td>

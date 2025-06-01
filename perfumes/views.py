@@ -247,15 +247,15 @@ def add_to_cart(request, perfume_id):
 
 @login_required
 def cart_detail(request):
-    cart, _ = Cart.objects.get_or_create(user=request.user)
+    cart = get_object_or_404(Cart, user=request.user)
     cart_items = cart.cartitem_set.all()
-    for item in cart_items:
-        item.subtotal = item.perfume.price * item.quantity
     total = sum(item.subtotal for item in cart_items)
+
     return render(request, 'perfumes/cart_detail.html', {
         'cart_items': cart_items,
         'total': total
     })
+
 
 @require_POST
 @login_required
@@ -397,6 +397,7 @@ def update_order_status(request, item_id):
 def order_detail(request, item_id):
     item = get_object_or_404(OrderItem, id=item_id, seller=request.user)
     order = item.order
+    items = order.items.all()
 
     if request.method == 'POST':
         status = request.POST.get('status', '').strip()
@@ -404,16 +405,21 @@ def order_detail(request, item_id):
             if status != order.status:
                 order.status = status
                 order.save()
-                messages.success(request,_('Order status updated.'))
+                messages.success(request, _('Order status updated.'))
             else:
-                messages.info(request,_('Status was not changed.'))
+                messages.info(request, _('Status was not changed.'))
             return redirect('order_detail', item_id=item_id)
+
+    order_total = sum(i.total for i in items)  # assumes total property exists in model
 
     return render(request, 'perfumes/order_detail.html', {
         'item': item,
         'order': order,
-        'status_choices': ORDER_STATUS_CHOICES
+        'items': items,
+        'status_choices': ORDER_STATUS_CHOICES,
+        'order_total': order_total
     })
+
 
 def perfume_detail(request, perfume_id):
     perfume = get_object_or_404(Perfume, id=perfume_id)
