@@ -9,9 +9,19 @@
   <div class="card bg-dark text-light mb-3 p-3">
     <p>
       <strong>{{ offer.user_from.username }}</strong>{% trans " offered" %} 
-      <strong>{{ offer.offered_perfume.name }}</strong> 
+      <td>
+        <a href="{% url 'perfume_detail' offer.offered_perfume.id %}" style="color: #a41075; text-decoration: underline;">
+          {{ offer.offered_perfume.name }}
+        </a>
+      </td>
+ 
       {% trans "for your perfume" %} 
-      <strong>{{ offer.requested_perfume.name }}</strong>
+      <td>
+        <a href="{% url 'perfume_detail' offer.requested_perfume.id %}" style="color: #a41075; text-decoration: underline;">
+          {{ offer.requested_perfume.name }}
+        </a>
+      </td>
+
     </p>
     <p class="text-info text-end m-0">{% trans "Sent on: " %}{{ offer.created_at|date:"F j, Y, H:i" }}</p>
 
