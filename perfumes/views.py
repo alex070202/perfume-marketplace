@@ -1,24 +1,25 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Perfume, PerfumeImage, Cart, CartItem,TradeOffer
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.views.decorators.http import require_POST
-from .models import Order, OrderItem, ORDER_STATUS_CHOICES
-from .models import Review,TradeDeliveryInfo
-from django.db.models import Avg
-from django.http import JsonResponse
-from .models import WishlistItem
-from django.db.models import Q
-from .forms import CustomUserCreationForm
-from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib.auth.models import User
-from .models import UserReview, UserReport
-from django.http import HttpResponseForbidden
 from collections import defaultdict, OrderedDict
+
+from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+from django.db.models import Avg, Q
+from django.http import JsonResponse, HttpResponseForbidden
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.formats import sanitize_separators
 from django.utils.translation import gettext as _
+from django.views.decorators.http import require_POST
+
+from .forms import CustomUserCreationForm
+from .models import (
+    Perfume, PerfumeImage, Cart, CartItem, WishlistItem,
+    Order, OrderItem, ORDER_STATUS_CHOICES,
+    TradeOffer, TradeDeliveryInfo,
+    Review, UserReview, UserReport
+)
 
 
 def home(request):
@@ -55,7 +56,7 @@ def add_perfume(request):
         brand = request.POST['brand']
         description = request.POST['description']
         raw_price = request.POST['price']
-        price = sanitize_separators(raw_price)  # Тук пазим в отделна променлива!
+        price = sanitize_separators(raw_price) 
         stock = request.POST['stock']
         category = request.POST.get('category')
         notes = request.POST.get('notes')
@@ -66,7 +67,6 @@ def add_perfume(request):
         extra_image2 = request.FILES.get('extra_image2')
         extra_image3 = request.FILES.get('extra_image3')
 
-        # Сега вече създаваме perfume, използвайки коригираната цена
         perfume = Perfume(
             name=name,
             brand=brand,
@@ -202,7 +202,6 @@ def edit_perfume(request, perfume_id):
     return render(request, 'perfumes/edit_perfume.html', {'perfume': perfume})
 
 
-
 @login_required(login_url='/login/')
 def add_to_cart(request, perfume_id):
     perfume = get_object_or_404(Perfume, id=perfume_id)
@@ -243,8 +242,6 @@ def add_to_cart(request, perfume_id):
     messages.success(request, success_message)
     return redirect('perfume_detail', perfume_id=perfume.id)
 
-
-
 @login_required
 def cart_detail(request):
     cart = get_object_or_404(Cart, user=request.user)
@@ -255,7 +252,6 @@ def cart_detail(request):
         'cart_items': cart_items,
         'total': total
     })
-
 
 @require_POST
 @login_required
@@ -518,6 +514,7 @@ def respond_exchange(request, request_id):
 def incoming_requests(request):
     offers = TradeOffer.objects.filter(user_to=request.user).select_related('offered_perfume', 'requested_perfume', 'user_from')
     return render(request, 'perfumes/my_received_offers.html', {'received_offers': offers})
+
 @login_required
 def my_sent_offers(request):
     # Всички изпратени
@@ -575,7 +572,6 @@ def trade_summary(request, trade_id):
     if request.user != offer.user_from and request.user != offer.user_to:
         return redirect('home')
 
-    # Убедени сме, че и двете страни са попълнили информация
     if not hasattr(offer, 'delivery_info_from') or not hasattr(offer, 'delivery_info_to'):
         messages.error(request,_("Delivery information is not yet complete."))
         return redirect('my_sent_offers')
@@ -650,7 +646,6 @@ def ban_user(request, user_id):
     user.is_active = False
     user.save()
 
-    # ❗ Скриваме обявите на потребителя, вместо да ги трием
     Perfume.objects.filter(owner=user).update(is_active=False)
 
     messages.success(request, _('User %(username)s has been banned and their perfumes have been hidden.') % {
@@ -712,7 +707,6 @@ def admin_dashboard(request):
     for report in all_reports:
         grouped_reports[report.reported_user].append(report)
 
-    # Преобразуваме в обикновен речник, сортиран по брой репорти
     grouped_reports = dict(sorted(grouped_reports.items(), key=lambda x: len(x[1]), reverse=True))
 
     banned_users = User.objects.filter(is_active=False)
@@ -731,7 +725,6 @@ def unban_user(request, user_id):
     user.is_active = True
     user.save()
 
-    # Връщаме обявите му като активни (ако искаш)
     Perfume.objects.filter(owner=user).update(is_active=True)
     
     messages.success(request, _('User %(username)s has been unbanned and their perfumes are now visible again.') % {

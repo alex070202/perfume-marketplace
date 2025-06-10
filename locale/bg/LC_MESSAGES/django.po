@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-01 13:48+0300\n"
+"POT-Creation-Date: 2025-06-04 14:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -533,15 +533,15 @@ msgstr "Цена"
 msgid "Subtotal"
 msgstr "Междинна сума"
 
-#: .\templates\perfumes\checkout.html:58
+#: .\templates\perfumes\checkout.html:59
 msgid "Total:"
 msgstr "Общо:"
 
-#: .\templates\perfumes\checkout.html:63
+#: .\templates\perfumes\checkout.html:64
 msgid "Place Order"
 msgstr "Завършете поръчката"
 
-#: .\templates\perfumes\checkout.html:64
+#: .\templates\perfumes\checkout.html:65
 msgid "Back to Cart"
 msgstr "Връщане към кошницата"
 
@@ -590,7 +590,7 @@ msgstr "Редактиране на парфюм"
 
 #: .\templates\perfumes\edit_perfume.html:13
 #: .\templates\perfumes\my_orders.html:17
-#: .\templates\perfumes\my_received_offers.html:40
+#: .\templates\perfumes\my_received_offers.html:50
 #: .\templates\perfumes\my_sent_offers.html:35
 msgid "Name:"
 msgstr "Име:"
@@ -728,13 +728,13 @@ msgid "Order #"
 msgstr "Номер на поръчка #"
 
 #: .\templates\perfumes\my_orders.html:14
-#: .\templates\perfumes\my_received_offers.html:22
+#: .\templates\perfumes\my_received_offers.html:32
 #: .\templates\perfumes\my_sent_offers.html:13
 msgid "Status: "
 msgstr "Статус: "
 
 #: .\templates\perfumes\my_orders.html:18
-#: .\templates\perfumes\my_received_offers.html:41
+#: .\templates\perfumes\my_received_offers.html:51
 #: .\templates\perfumes\my_sent_offers.html:36
 #: .\templates\perfumes\order_detail.html:15
 #: .\templates\perfumes\trade_summary.html:32
@@ -743,7 +743,7 @@ msgid "Address:"
 msgstr "Адрес:"
 
 #: .\templates\perfumes\my_orders.html:19
-#: .\templates\perfumes\my_received_offers.html:42
+#: .\templates\perfumes\my_received_offers.html:52
 #: .\templates\perfumes\my_sent_offers.html:37
 #: .\templates\perfumes\order_detail.html:14
 #: .\templates\perfumes\trade_summary.html:31
@@ -787,47 +787,47 @@ msgstr "Получени оферти за размяна"
 msgid " offered"
 msgstr " предлага"
 
-#: .\templates\perfumes\my_received_offers.html:13
+#: .\templates\perfumes\my_received_offers.html:18
 msgid "for your perfume"
 msgstr "за вашия парфюм"
 
-#: .\templates\perfumes\my_received_offers.html:16
+#: .\templates\perfumes\my_received_offers.html:26
 msgid "Sent on: "
 msgstr "Изпратено на: "
 
-#: .\templates\perfumes\my_received_offers.html:19
+#: .\templates\perfumes\my_received_offers.html:29
 msgid "Additional Payment: "
 msgstr "Допълнително плащане: "
 
-#: .\templates\perfumes\my_received_offers.html:27
+#: .\templates\perfumes\my_received_offers.html:37
 msgid "Accept"
 msgstr "Приеми"
 
-#: .\templates\perfumes\my_received_offers.html:28
+#: .\templates\perfumes\my_received_offers.html:38
 msgid "Reject"
 msgstr "Откажи"
 
-#: .\templates\perfumes\my_received_offers.html:33
+#: .\templates\perfumes\my_received_offers.html:43
 #: .\templates\perfumes\my_sent_offers.html:29
 msgid "Provide Delivery Info"
 msgstr "Предоставете информация за доставка"
 
-#: .\templates\perfumes\my_received_offers.html:39
+#: .\templates\perfumes\my_received_offers.html:49
 msgid "Sender Delivery Info"
 msgstr "Информация за доставката на подателя:"
 
-#: .\templates\perfumes\my_received_offers.html:44
+#: .\templates\perfumes\my_received_offers.html:54
 #: .\templates\perfumes\my_sent_offers.html:39
 msgid "Note:"
 msgstr "Допълнителна информация:"
 
-#: .\templates\perfumes\my_received_offers.html:50
+#: .\templates\perfumes\my_received_offers.html:60
 #: .\templates\perfumes\my_sent_offers.html:24
 #: .\templates\perfumes\trade_history.html:40
 msgid "View Trade Details"
 msgstr "Вижте детайли за размяната"
 
-#: .\templates\perfumes\my_received_offers.html:57
+#: .\templates\perfumes\my_received_offers.html:67
 msgid "No trade offers received."
 msgstr "Не са получени оферти за размяна."
 
@@ -2543,7 +2543,7 @@ msgstr "Въведете имейл адреса си и ще ви изпрат�
 
 #: .\templates\registration\password_reset_form.html:12
 msgid "Send Reset Email"
-msgstr "Изпратен имейл за нулиране"
+msgstr "Изпратeте имейл за нулиране"
 
 #: .\templates\users\banned.html:3
 msgid "Account Banned"
