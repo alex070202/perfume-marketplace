@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-04 14:44+0300\n"
+"POT-Creation-Date: 2025-06-11 14:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,88 +42,94 @@ msgstr "Парфюмът беше успешно премахнат!!"
 msgid "Perfume updated successfully!"
 msgstr "Парфюмът е актуализиран успешно!"
 
-#: .\perfumes\views.py:218
+#: .\perfumes\views.py:217
 #, python-format
 msgid "Only %(stock)s units of %(name)s are available in stock."
 msgstr "Само %(stock)s броя от %(name)s са налични на склад."
 
-#: .\perfumes\views.py:237
+#: .\perfumes\views.py:236
 #, python-format
 msgid "%(name)s added to cart."
 msgstr "%(name)s беше добавен в количката."
 
-#: .\perfumes\views.py:273
+#: .\perfumes\views.py:269
 #, python-format
 msgid "Not enough stock for '%(name)s'. Only %(stock)s left."
 msgstr "Недостатъчна наличност за '%(name)s'. Само %(stock)s са останали."
 
-#: .\perfumes\views.py:279
+#: .\perfumes\views.py:275
 #, python-format
 msgid "Invalid quantity for '%(name)s'."
 msgstr "Невалидно количество за '%(name)s'. "
 
-#: .\perfumes\views.py:290
+#: .\perfumes\views.py:286
 msgid "Cart updated successfully!"
 msgstr "Количката е актуализирана успешно!"
 
-#: .\perfumes\views.py:304
+#: .\perfumes\views.py:300
 msgid "Item removed from your cart!"
 msgstr "Парфюмът е премахнат успешно от количката!"
 
-#: .\perfumes\views.py:324
+#: .\perfumes\views.py:320
 #, python-format
 msgid "Not enough stock for \"%(name)s\". Only %(available)s available."
 msgstr ""
 "Недостатъчна наличност за „%(name)s“. Останали са само %(available)s броя."
 
-#: .\perfumes\views.py:392 .\perfumes\views.py:408
+#: .\perfumes\views.py:417 .\perfumes\views.py:437
 msgid "Order status updated."
 msgstr "Успешно актулизиран статус на поръчка."
 
-#: .\perfumes\views.py:410
+#: .\perfumes\views.py:427
+#, fuzzy
+#| msgid "You don't have any perfumes available for trade."
+msgid "You don't have permission to view this order."
+msgstr "Нямате налични парфюми за размяна. "
+
+#: .\perfumes\views.py:439
 msgid "Status was not changed."
 msgstr "Статусът не е променен"
 
-#: .\perfumes\views.py:451
+#: .\perfumes\views.py:492
 #, python-format
 msgid "%(name)s was removed from your wishlist."
 msgstr "%(name)s беше премахнат от списъка с любими."
 
-#: .\perfumes\views.py:463
+#: .\perfumes\views.py:504
 msgid "Review submitted successfully!"
 msgstr "Отзивът е изпратен успешно!"
 
-#: .\perfumes\views.py:546
+#: .\perfumes\views.py:588
 msgid "You have already submitted your delivery information for this trade."
 msgstr "Вече сте подали информацията си за доставка за тази размяна."
 
-#: .\perfumes\views.py:563
+#: .\perfumes\views.py:605
 msgid "Your delivery info has been saved."
 msgstr "Информацията ви за доставка е запазена."
 
-#: .\perfumes\views.py:580
+#: .\perfumes\views.py:621
 msgid "Delivery information is not yet complete."
 msgstr "Информацията за доставката все още не е пълна."
 
-#: .\perfumes\views.py:594
+#: .\perfumes\views.py:635
 msgid "Trade offer canceled."
 msgstr "Офертата за размяна е отменена."
 
-#: .\perfumes\views.py:656
+#: .\perfumes\views.py:696
 #, python-format
 msgid "User %(username)s has been banned and their perfumes have been hidden."
 msgstr ""
 "Потребител %(username)s е забранен успешно и парфюмите му стават скрити."
 
-#: .\perfumes\views.py:685
+#: .\perfumes\views.py:725
 msgid "Your review has been submitted."
 msgstr "Вашият отзив е изпратен"
 
-#: .\perfumes\views.py:699
+#: .\perfumes\views.py:739
 msgid "User has been reported."
 msgstr "Потребителят е докладван."
 
-#: .\perfumes\views.py:737
+#: .\perfumes\views.py:775
 #, python-format
 msgid ""
 "User %(username)s has been unbanned and their perfumes are now visible again."
@@ -205,19 +211,19 @@ msgstr "За размяна"
 
 #: .\templates\base.html:36 .\templates\perfumes\add_perfume.html:58
 #: .\templates\perfumes\edit_perfume.html:66
-#: .\templates\perfumes\perfume_detail.html:55
+#: .\templates\perfumes\perfume_detail.html:62
 msgid "Men"
 msgstr "Мъжки"
 
 #: .\templates\base.html:37 .\templates\perfumes\add_perfume.html:59
 #: .\templates\perfumes\edit_perfume.html:67
-#: .\templates\perfumes\perfume_detail.html:56
+#: .\templates\perfumes\perfume_detail.html:63
 msgid "Women"
 msgstr "Женски"
 
 #: .\templates\base.html:38 .\templates\perfumes\add_perfume.html:60
 #: .\templates\perfumes\edit_perfume.html:68
-#: .\templates\perfumes\perfume_detail.html:57
+#: .\templates\perfumes\perfume_detail.html:64
 msgid "Unisex"
 msgstr "Универсални"
 
@@ -225,83 +231,83 @@ msgstr "Универсални"
 msgid "❤️ Wish List"
 msgstr "❤️ Любими"
 
-#: .\templates\base.html:60
+#: .\templates\base.html:59
 msgid "🛒 Cart"
 msgstr "🛒 Количка"
 
-#: .\templates\base.html:75
+#: .\templates\base.html:74
 msgid "My Trades"
 msgstr "Моите размени"
 
-#: .\templates\base.html:85
+#: .\templates\base.html:84
 msgid "📤 Sent Offers"
 msgstr "📤 Изпратени оферти"
 
-#: .\templates\base.html:93
+#: .\templates\base.html:92
 msgid "📥 Received Offers"
 msgstr "📥 Получени оферти"
 
-#: .\templates\base.html:104
+#: .\templates\base.html:103
 msgid "🧾 Trade History"
 msgstr "🧾 История на размените"
 
-#: .\templates\base.html:114
+#: .\templates\base.html:113
 msgid "Hi,"
 msgstr "Здравей,"
 
-#: .\templates\base.html:121 .\templates\perfumes\my_orders.html:4
+#: .\templates\base.html:120 .\templates\perfumes\my_orders.html:4
 msgid "My Orders"
 msgstr "Моите поръчки"
 
-#: .\templates\base.html:126
+#: .\templates\base.html:125
 msgid "Sales dashboard"
 msgstr "Табло на продажби"
 
-#: .\templates\base.html:132
+#: .\templates\base.html:131
 msgid "Add perfume"
 msgstr "Добави парфюм"
 
-#: .\templates\base.html:133
+#: .\templates\base.html:132
 msgid "My perfumes"
 msgstr "Моите парфюми"
 
-#: .\templates\base.html:138
+#: .\templates\base.html:137
 msgid "Logout"
 msgstr "Изход"
 
-#: .\templates\base.html:142 .\templates\perfumes\register.html:4
+#: .\templates\base.html:141 .\templates\perfumes\register.html:4
 #: .\templates\perfumes\register.html:23
 msgid "Register"
 msgstr "Регистрaция"
 
-#: .\templates\base.html:143 .\templates\perfumes\register.html:27
+#: .\templates\base.html:142 .\templates\perfumes\register.html:27
 #: .\templates\registration\login.html:4 .\templates\registration\login.html:8
 #: .\templates\registration\login.html:23
 msgid "Login"
 msgstr "Вход"
 
-#: .\templates\base.html:144
+#: .\templates\base.html:143
 msgid "Shopping cart"
 msgstr "Количка"
 
-#: .\templates\base.html:145 .\templates\base.html:217
+#: .\templates\base.html:144 .\templates\base.html:216
 #: .\templates\perfumes\checkout.html:4 .\templates\perfumes\checkout.html:8
 msgid "Checkout"
 msgstr "Плащане"
 
-#: .\templates\base.html:154
+#: .\templates\base.html:153
 msgid "⚠ Admin Dashboard"
 msgstr "⚠ Административно табло"
 
-#: .\templates\base.html:166
+#: .\templates\base.html:165
 msgid "Search perfumes..."
 msgstr "Търсене на парфюми..."
 
-#: .\templates\base.html:167
+#: .\templates\base.html:166
 msgid "Search"
 msgstr "Търсене"
 
-#: .\templates\base.html:216
+#: .\templates\base.html:215
 msgid "View Cart"
 msgstr "Виж количката"
 
@@ -423,7 +429,7 @@ msgid "Brand"
 msgstr "Марка"
 
 #: .\templates\perfumes\add_perfume.html:42
-#: .\templates\perfumes\perfume_detail.html:130
+#: .\templates\perfumes\perfume_detail.html:151
 msgid "Description"
 msgstr "Описание"
 
@@ -447,13 +453,13 @@ msgstr "-- Изберете --"
 
 #: .\templates\perfumes\add_perfume.html:65
 #: .\templates\perfumes\edit_perfume.html:73
-#: .\templates\perfumes\perfume_detail.html:149
+#: .\templates\perfumes\perfume_detail.html:170
 msgid "Fragrance Notes"
 msgstr "Ароматни нотки"
 
 #: .\templates\perfumes\add_perfume.html:73
 #: .\templates\perfumes\my_perfumes.html:27
-#: .\templates\perfumes\perfume_detail.html:72
+#: .\templates\perfumes\perfume_detail.html:79
 #: .\templates\perfumes\perfume_list_by_brand.html:19
 msgid "Available for Trade"
 msgstr "Предлага се за размяна"
@@ -596,7 +602,7 @@ msgid "Name:"
 msgstr "Име:"
 
 #: .\templates\perfumes\edit_perfume.html:18
-#: .\templates\perfumes\perfume_detail.html:49
+#: .\templates\perfumes\perfume_detail.html:56
 #: .\templates\perfumes\perfume_list.html:17
 msgid "Brand:"
 msgstr "Марка:"
@@ -706,7 +712,7 @@ msgstr "Доверено от любителите на парфюми. Безо
 msgid "Latest Arrivals"
 msgstr "Последни пристигания"
 
-#: .\templates\perfumes\home.html:46 .\templates\users\profile.html:25
+#: .\templates\perfumes\home.html:46 .\templates\users\profile.html:24
 msgid "View"
 msgstr "Преглед"
 
@@ -908,100 +914,138 @@ msgstr "Обнови"
 msgid "Back"
 msgstr "Обратно"
 
-#: .\templates\perfumes\perfume_detail.html:46
-msgid "(No reviews yet)"
-msgstr "(Няма ревюта все още)"
+#: .\templates\perfumes\perfume_detail.html:45
+#, python-format
+msgid ""
+"\n"
+"              %(count)s review\n"
+"            "
+msgid_plural ""
+"\n"
+"              %(count)s reviews\n"
+"            "
+msgstr[0] ""
+"\n"
+"              %(count)s отзив\n"
+"            "
+msgstr[1] ""
+"\n"
+"              %(count)s отзива\n"
+"            "
 
-#: .\templates\perfumes\perfume_detail.html:54
+#: .\templates\perfumes\perfume_detail.html:53
+msgid "(No reviews yet)"
+msgstr "(Няма налични отзиви все още)"
+
+#: .\templates\perfumes\perfume_detail.html:61
 msgid "Category:"
 msgstr "Категория:"
 
-#: .\templates\perfumes\perfume_detail.html:63
+#: .\templates\perfumes\perfume_detail.html:70
 msgid "Availability"
 msgstr "Наличност"
 
-#: .\templates\perfumes\perfume_detail.html:65
+#: .\templates\perfumes\perfume_detail.html:72
 msgid "In Stock "
 msgstr "На склад"
 
-#: .\templates\perfumes\perfume_detail.html:67
+#: .\templates\perfumes\perfume_detail.html:74
 msgid "Out of Stock"
 msgstr "Няма наличност"
 
-#: .\templates\perfumes\perfume_detail.html:80
+#: .\templates\perfumes\perfume_detail.html:87
 msgid "Add to cart"
 msgstr "Добави в количката"
 
-#: .\templates\perfumes\perfume_detail.html:84
+#: .\templates\perfumes\perfume_detail.html:91
 msgid " Trade"
 msgstr "Разменете"
 
-#: .\templates\perfumes\perfume_detail.html:101
+#: .\templates\perfumes\perfume_detail.html:108
 msgid "👤 Seller:"
 msgstr "👤 Продавач:"
 
-#: .\templates\perfumes\perfume_detail.html:109
-msgid "⭐ Average Rating: "
-msgstr "⭐ Среден рейтинг: "
+msgid ""
+"\n"
+"            ⭐ Average Rating: %(seller_avg_rating)s/5 based on %(count)s "
+"review\n"
+"            "
+msgid_plural ""
+"\n"
+"            ⭐ Average Rating: %(seller_avg_rating)s/5 based on %(count)s "
+"reviews\n"
+"            "
+msgstr[0] ""
+"\n"
+"            ⭐ Средна оценка: %(seller_avg_rating)s/5 на база на %(count)s отзив\n"
+"            "
+msgstr[1] ""
+"\n"
+"            ⭐ Средна оценка: %(seller_avg_rating)s/5 на база на %(count)s отзива\n"
+"            "
 
-#: .\templates\perfumes\perfume_detail.html:111
+#: .\templates\perfumes\perfume_detail.html:121
 msgid "No seller reviews yet."
 msgstr "Все още няма отзиви за продавача."
 
-#: .\templates\perfumes\perfume_detail.html:116
-msgid "✍️ Leave a Review"
+#: .\templates\perfumes\perfume_detail.html:127
+#, fuzzy
+#| msgid "✍️ Leave a Review"
+msgid "Leave a Review"
 msgstr "✍️ Оставете отзив"
 
-#: .\templates\perfumes\perfume_detail.html:117
-msgid "🚨 Report Seller"
-msgstr "🚨 Докладвай продавача"
+#: .\templates\perfumes\perfume_detail.html:130
+#: .\templates\users\profile.html:11
+msgid "Report Seller"
+msgstr "Докладвай продавач"
 
-#: .\templates\perfumes\perfume_detail.html:120
+#: .\templates\perfumes\perfume_detail.html:133
+#: .\templates\perfumes\perfume_detail.html:139
 msgid "View Seller Profile"
 msgstr "Преглед на профила на продавача"
 
-#: .\templates\perfumes\perfume_detail.html:133
+#: .\templates\perfumes\perfume_detail.html:154
 msgid "Notes"
 msgstr "Нотки"
 
-#: .\templates\perfumes\perfume_detail.html:136
-#: .\templates\perfumes\perfume_detail.html:158
+#: .\templates\perfumes\perfume_detail.html:157
+#: .\templates\perfumes\perfume_detail.html:179
 msgid "Reviews"
 msgstr "Отзиви"
 
-#: .\templates\perfumes\perfume_detail.html:152
+#: .\templates\perfumes\perfume_detail.html:173
 msgid "No notes available for this perfume."
 msgstr "Няма налични нотки за този парфюм."
 
-#: .\templates\perfumes\perfume_detail.html:167
-#: .\templates\users\profile.html:43
+#: .\templates\perfumes\perfume_detail.html:188
+#: .\templates\users\profile.html:42
 msgid "No reviews yet."
 msgstr "Все още няма отзиви."
 
-#: .\templates\perfumes\perfume_detail.html:174
+#: .\templates\perfumes\perfume_detail.html:195
 msgid "Rating:"
 msgstr "Оценка:"
 
-#: .\templates\perfumes\perfume_detail.html:182
+#: .\templates\perfumes\perfume_detail.html:203
 msgid "Your Review:"
 msgstr "Вашият отзив:"
 
-#: .\templates\perfumes\perfume_detail.html:185
+#: .\templates\perfumes\perfume_detail.html:206
 #: .\templates\users\leave_review.html:26
 msgid "Submit Review"
 msgstr "Изпращане на отзив"
 
-#: .\templates\perfumes\perfume_detail.html:188
+#: .\templates\perfumes\perfume_detail.html:209
 msgid "Please"
 msgstr "Моля "
 
-#: .\templates\perfumes\perfume_detail.html:188
+#: .\templates\perfumes\perfume_detail.html:209
 #: .\templates\perfumes\perfume_list.html:12
 #: .\templates\registration\password_reset_complete.html:7
 msgid "log in"
 msgstr "влезте"
 
-#: .\templates\perfumes\perfume_detail.html:188
+#: .\templates\perfumes\perfume_detail.html:209
 msgid " to leave a review."
 msgstr " за да оставите отзив."
 
@@ -2598,19 +2642,15 @@ msgstr "отзиви"
 msgid "Write Review"
 msgstr "Напиши отзив"
 
-#: .\templates\users\profile.html:11
-msgid "Report Seller"
-msgstr "Докладвай продавач"
-
-#: .\templates\users\profile.html:16
+#: .\templates\users\profile.html:15
 msgid "🧴 Listed Perfumes:"
 msgstr "🧴 Качени парфюми: "
 
-#: .\templates\users\profile.html:30
+#: .\templates\users\profile.html:29
 msgid "This user has no perfumes listed."
 msgstr "Този потребител няма добавени парфюми"
 
-#: .\templates\users\profile.html:35
+#: .\templates\users\profile.html:34
 msgid "📝 Reviews:"
 msgstr "📝 Отзиви:"
 
@@ -3845,6 +3885,15 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:236
 msgid "Connect, get help, or contribute"
 msgstr ""
+
+#~ msgid "🚨 Report Seller"
+#~ msgstr "🚨 Докладвай продавача"
+
+#~ msgid "⭐ Average Rating: "
+#~ msgstr "⭐ Среден рейтинг: "
+
+#~ msgid "review"
+#~ msgstr "отзивa"
 
 #, fuzzy
 #~| msgid "log in"

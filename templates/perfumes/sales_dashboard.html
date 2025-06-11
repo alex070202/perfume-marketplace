@@ -23,7 +23,7 @@
             <tbody>
                 {% for item in items %}
                     <tr>
-                        <td>#{{ item.order.id }}</td>
+                        <td>#{{ item.local_order_number }}</td>
                         <td>{{ item.order.buyer.username }}</td>
                         <td>
                             <a href="{% url 'perfume_detail' perfume_id=item.perfume.id %}" class="text-info text-decoration-none">
@@ -34,7 +34,7 @@
                         <td>${{ item.price|floatformat:2 }}</td>
                         <td>{{ item.order.get_status_display }}</td>
                         <td>
-                            <a href="{% url 'order_detail' item.id %}" class="btn btn-outline-info btn-sm">
+                            <a href="{% url 'order_detail' item.order.id %}" class="btn btn-outline-info btn-sm">
                                 {% trans "View Details" %} &rarr;
                             </a>
                         </td>

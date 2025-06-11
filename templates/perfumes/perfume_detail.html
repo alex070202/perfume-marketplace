@@ -40,7 +40,14 @@
         <div class="d-flex align-items-center mb-2">
           {% for _ in filled_stars %}<span class="text-warning">&#9733;</span>{% endfor %}
           {% for _ in empty_stars %}<span class="text-secondary">&#9734;</span>{% endfor %}
-          <span class="text-light ms-2">({{ average_rating }}/5 - {{ review_count }} review{{ review_count|pluralize }})</span>
+          <span class="text-light ms-2">
+            ({{ average_rating }}/5 - 
+            {% blocktrans count count=review_count %}
+              {{ count }} review
+            {% plural %}
+              {{ count }} reviews
+            {% endblocktrans %})
+          </span>
         </div>
       {% else %}
         <small class="text-light">{% trans "(No reviews yet)" %}</small>
@@ -104,21 +111,35 @@
             </a>
           </h5>
 
-          {% with perfume.owner.received_user_reviews.all as seller_reviews %}
-            {% if seller_reviews %}
-              <p class="mb-1">{% trans "⭐ Average Rating: " %}{{ seller_reviews|length }} review{{ seller_reviews|length|pluralize }}</p>
-            {% else %}
-              <p class="text-light mb-1">{% trans "No seller reviews yet." %}</p>
-            {% endif %}
-          {% endwith %}
-
-          {% if request.user.is_authenticated and request.user != perfume.owner %}
-            <a href="{% url 'leave_user_review' perfume.owner.id %}" class="btn btn-sm btn-outline-primary me-2 mb-2">{% trans "✍️ Leave a Review" %}</a>
-            <a href="{% url 'report_user' perfume.owner.id %}" class="btn btn-sm btn-outline-danger mb-2">{% trans "🚨 Report Seller" %}</a>
+          {% if seller_review_count > 0 %}
+            {% blocktrans count count=seller_review_count %}
+            ⭐ Average Rating: {{ seller_avg_rating }}/5 based on {{ count }} review
+            {% plural %}
+            ⭐ Average Rating: {{ seller_avg_rating }}/5 based on {{ count }} reviews
+            {% endblocktrans %}
+          {% else %}
+            <p class="text-light mb-1">{% trans "No seller reviews yet." %}</p>
           {% endif %}
 
-          <a href="{% url 'user_profile' perfume.owner.id %}" class="btn btn-sm btn-outline-light">{% trans "View Seller Profile" %}</a>
-        </div>
+          {% if request.user.is_authenticated and request.user != perfume.owner %}
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-2 mt-2">
+              <a href="{% url 'leave_user_review' perfume.owner.id %}" class="btn btn-sm btn-outline-primary">
+                ✍️ {% trans "Leave a Review" %}
+              </a>
+              <a href="{% url 'report_user' perfume.owner.id %}" class="btn btn-sm btn-outline-danger">
+                🚨 {% trans "Report Seller" %}
+              </a>
+              <a href="{% url 'user_profile' perfume.owner.id %}" class="btn btn-sm btn-outline-light">
+                {% trans "View Seller Profile" %}
+              </a>
+            </div>
+          {% else %}
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-2 mt-2">
+              <a href="{% url 'user_profile' perfume.owner.id %}" class="btn btn-sm btn-outline-light">
+                {% trans "View Seller Profile" %}
+              </a>
+            </div>
+          {% endif %}
       </div>
     </div>
   </div>

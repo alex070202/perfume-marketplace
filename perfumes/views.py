@@ -368,13 +368,42 @@ def checkout(request):
 
 @login_required
 def my_orders(request):
+    # Връщаме поръчките за визуализация, подредени от най-нови към най-стари
     orders = request.user.orders.prefetch_related('items__perfume', 'items__seller').order_by('-created_at')
+
+    # Взимаме всички поръчки по реда на създаване за номерация
+    chronological_orders = request.user.orders.order_by('created_at').values_list('id', flat=True)
+    local_number_map = {order_id: idx + 1 for idx, order_id in enumerate(chronological_orders)}
+
+    # Присвояваме локален номер според реда на създаване
+    for order in orders:
+        order.local_number = local_number_map.get(order.id, '-')
+
     return render(request, 'perfumes/my_orders.html', {'orders': orders})
+
 
 @login_required
 def sales_dashboard(request):
-    items = OrderItem.objects.filter(seller=request.user).select_related('order', 'perfume').order_by('-order__created_at')
+    # всички артикули на продавача
+    items = OrderItem.objects.filter(seller=request.user)\
+        .select_related('order', 'perfume')\
+        .order_by('-order__created_at')  # най-новите първи в таблицата
+
+   
+    unique_orders = OrderItem.objects.filter(seller=request.user)\
+        .select_related('order')\
+        .order_by('order__created_at')\
+        .values_list('order_id', flat=True)\
+        .distinct()
+
+    order_number_map = {order_id: idx + 1 for idx, order_id in enumerate(unique_orders)}
+
+    for item in items:
+        item.local_order_number = order_number_map.get(item.order.id, '-')
+
     return render(request, 'perfumes/sales_dashboard.html', {'items': items})
+
+
 
 @login_required
 def update_order_status(request, item_id):
@@ -390,9 +419,13 @@ def update_order_status(request, item_id):
     return redirect('sales_dashboard')
 
 @login_required
-def order_detail(request, item_id):
-    item = get_object_or_404(OrderItem, id=item_id, seller=request.user)
-    order = item.order
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+
+    # проверка дали потребителят има достъп
+    if request.user != order.buyer and not order.items.filter(seller=request.user).exists():
+        return HttpResponseForbidden(_("You don't have permission to view this order."))
+
     items = order.items.all()
 
     if request.method == 'POST':
@@ -404,16 +437,15 @@ def order_detail(request, item_id):
                 messages.success(request, _('Order status updated.'))
             else:
                 messages.info(request, _('Status was not changed.'))
-            return redirect('order_detail', item_id=item_id)
+        return redirect('order_detail', order_id=order_id)
 
-    order_total = sum(i.total for i in items)  # assumes total property exists in model
+    order_total = sum(i.price * i.quantity for i in items)
 
     return render(request, 'perfumes/order_detail.html', {
-        'item': item,
-        'order': order,
-        'items': items,
-        'status_choices': ORDER_STATUS_CHOICES,
-        'order_total': order_total
+    'order': order,
+    'items': items,
+    'status_choices': ORDER_STATUS_CHOICES,
+    'order_total': order_total
     })
 
 
@@ -421,24 +453,37 @@ def perfume_detail(request, perfume_id):
     perfume = get_object_or_404(Perfume, id=perfume_id)
     reviews = perfume.reviews.all()
     additional_images = perfume.additional_images.all()
+
+    # За продукта (горе)
     average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
     review_count = reviews.count()
     filled_stars = range(int(round(average_rating)))
     empty_stars = range(5 - int(round(average_rating)))
 
+    # За продавача (долу)
+    seller_reviews = perfume.owner.received_user_reviews.all()
+    seller_avg_rating = seller_reviews.aggregate(Avg('rating'))['rating__avg'] or 0
+    seller_review_count = seller_reviews.count()
+
     in_wishlist = False
     if request.user.is_authenticated:
         in_wishlist = perfume.wishlistitem_set.filter(user=request.user).exists()
+
     return render(request, 'perfumes/perfume_detail.html', {
         'perfume': perfume,
         'additional_images': additional_images,
         'reviews': reviews,
-        'average_rating': round(average_rating, 1),
+        'average_rating': round(average_rating, 1),  # за продукта
+        'avg_rating': round(average_rating, 1),
         'review_count': review_count,
         'filled_stars': filled_stars,
         'empty_stars': empty_stars,
         'in_wishlist': in_wishlist,
+        'seller_reviews': seller_reviews,
+        'seller_avg_rating': round(seller_avg_rating, 1),  # за продавача
+        'seller_review_count': seller_review_count,
     })
+
 
 @login_required
 def remove_from_wishlist(request, perfume_id):
