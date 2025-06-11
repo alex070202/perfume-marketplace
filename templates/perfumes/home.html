@@ -42,7 +42,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ perfume.name }}</h5>
                 <p class="card-text">{{ perfume.brand }}</p>
-                <p class="card-text text-warning">${{ perfume.price }}</p>
+                <p class="card-text text-warning">€{{ perfume.price }}</p>
                 <a href="{% url 'perfume_detail' perfume.id %}" class="btn btn-outline-light">{% trans "View" %}</a>
             </div>
         </div>

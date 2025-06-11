@@ -454,13 +454,12 @@ def perfume_detail(request, perfume_id):
     reviews = perfume.reviews.all()
     additional_images = perfume.additional_images.all()
 
-    # За продукта (горе)
     average_rating = reviews.aggregate(Avg('rating'))['rating__avg'] or 0
     review_count = reviews.count()
     filled_stars = range(int(round(average_rating)))
     empty_stars = range(5 - int(round(average_rating)))
 
-    # За продавача (долу)
+
     seller_reviews = perfume.owner.received_user_reviews.all()
     seller_avg_rating = seller_reviews.aggregate(Avg('rating'))['rating__avg'] or 0
     seller_review_count = seller_reviews.count()
@@ -473,17 +472,16 @@ def perfume_detail(request, perfume_id):
         'perfume': perfume,
         'additional_images': additional_images,
         'reviews': reviews,
-        'average_rating': round(average_rating, 1),  # за продукта
+        'average_rating': round(average_rating, 1),  
         'avg_rating': round(average_rating, 1),
         'review_count': review_count,
         'filled_stars': filled_stars,
         'empty_stars': empty_stars,
         'in_wishlist': in_wishlist,
         'seller_reviews': seller_reviews,
-        'seller_avg_rating': round(seller_avg_rating, 1),  # за продавача
+        'seller_avg_rating': round(seller_avg_rating, 1),  
         'seller_review_count': seller_review_count,
     })
-
 
 @login_required
 def remove_from_wishlist(request, perfume_id):

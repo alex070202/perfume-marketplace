@@ -65,7 +65,7 @@
         {% endif %}
       </p>
 
-      <h3 class="text-warning">${{ perfume.price }}</h3>
+      <h3 class="text-warning">€{{ perfume.price }}</h3>
 
       <p><strong>{% trans "Availability" %}:</strong>
         {% if perfume.stock > 0 %}
@@ -288,7 +288,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
-
 
 {% endblock %}
 

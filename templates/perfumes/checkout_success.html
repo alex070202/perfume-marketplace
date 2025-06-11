@@ -6,7 +6,7 @@
 
 <div class="container mt-5 text-center">
     <h1 class="text-success">{% trans "✅ Order Confirmed!" %}</h1>
-    <p class="text-light">{% trans "Thank you for your order. Total: " %}${{ total|floatformat:2 }}</p>
+    <p class="text-light">{% trans "Thank you for your order. Total: " %}€{{ total|floatformat:2 }}</p>
     <a href="{% url 'perfume_list' %}" class="btn btn-primary mt-3">{% trans "Continue Shopping" %}</a>
 </div>
 {% endblock %}

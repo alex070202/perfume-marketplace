@@ -13,7 +13,7 @@
           <img src="{{ item.perfume.image.url }}" alt="{{ item.perfume.name }}" class="me-3 rounded" style="width: 60px; height: 60px; object-fit: cover;">
           <div>
             <h6 class="mb-0 text-white">{{ item.perfume.name }}</h6>
-            <small class="text-light">{% trans "Price: $" %}{{ item.perfume.price }}</small>
+            <small class="text-light">{% trans "Price: €" %}{{ item.perfume.price }}</small>
           </div>
         </div>
         <div class="d-flex align-items-center gap-3">
@@ -24,7 +24,7 @@
                    max="{{ item.perfume.stock }}"
                    data-item-id="{{ item.id }}">
 
-            <span class="text-warning fw-bold">$<span class="item-subtotal">{{ item.subtotal|floatformat:2 }}</span></span>
+            <span class="text-warning fw-bold">€<span class="item-subtotal">{{ item.subtotal|floatformat:2 }}</span></span>
             <form method="POST" action="{% url 'remove_from_cart' item.id %}">
               {% csrf_token %}
               <button class="btn btn-sm btn-outline-danger" title="Remove"><i class="bi bi-x-lg"></i></button>
@@ -35,7 +35,7 @@
 
     <div class="d-flex justify-content-between align-items-center mt-4">
       <a href="{% url 'perfume_list' %}" class="btn btn-outline-light">{% trans "← Continue Shopping" %}</a>
-      <h4 class="text-warning">{% trans "Total: $" %}<span id="cartTotal">{{ total|floatformat:2 }}</span></h4>
+      <h4 class="text-warning">{% trans "Total: €" %}<span id="cartTotal">{{ total|floatformat:2 }}</span></h4>
     </div>
     <div class="text-end mt-3">
       <a href="{% url 'checkout' %}" class="btn btn-success">{% trans "Proceed to Checkout" %}</a>
@@ -64,7 +64,6 @@
         total += subtotal;
       });
 
-      // Обнови total сумата
       totalSpan.textContent = total.toFixed(2);
     }
     document.querySelectorAll('.quantity-input').forEach(input => {
